@@ -16,4 +16,4 @@ add_subdirectory(libs)
 add_executable(${PROJECT_NAME} main.cpp)
 
 # Vincular a(s) biblioteca(s) ao executável
-target_link_libraries(${PROJECT_NAME} glfw) 
+target_link_libraries(${PROJECT_NAME} glad glfw) 
