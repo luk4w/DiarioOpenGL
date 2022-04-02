@@ -1,3 +1,5 @@
+#include <GLFW/glfw3.h>
+
 #include <iostream>
 using std::cout;
 using std::endl;
