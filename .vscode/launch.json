@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run C/C++",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "build/Debug/DiarioOpenGL.exe",
+            "cwd": "${cwd}",
+            "console": "externalTerminal",
+            "preLaunchTask": "build"
+        }
+    ]
+}
