@@ -10,6 +10,14 @@ void framebufferSizeCallback(GLFWwindow* window, int width, int height); // Prot
 const unsigned int WIDTH = 800; 
 const unsigned int HEIGHT = 600;
 
+// Código-Fonte Vertex Shader
+const char *vertexShaderSource = "#version 330 core\n"
+    "layout (location = 0) in vec3 aPos;\n"
+    "void main()\n"
+    "{\n"
+    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+    "}\0";
+
 int main()
 {
     // Inicializar biblioteca GLFW
