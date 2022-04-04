@@ -80,6 +80,10 @@ int main()
         cout << "Erro ao vincular Shader Program" << endl;
         cout << infoLog << endl;
     }
+
+    // Deletar shaders inutilizados
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
     
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
