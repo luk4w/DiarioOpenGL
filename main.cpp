@@ -84,7 +84,15 @@ int main()
     // Deletar shaders inutilizados
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
-    
+
+    // Vertices do triângulo
+    float vertices[] =
+    {
+        -0.5f, -0.5f, 0.0f, // A
+        0.0f,  0.5f, 0.0f,  // B  
+        0.5f, -0.5f, 0.0f // C
+    };
+
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
     {
