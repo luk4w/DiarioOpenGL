@@ -4,3 +4,22 @@
 - Criar uma janela.
 - Importar a biblioteca GLAD.
 - Carregar o contexto OpenGL e mudar o fundo da janela de cor.
+- Criar função de retorno de chamada para redimensionamento de janela.
+- Importar o código-fonte para Vertex e Fragment Shader.
+- Criar programas para o Vertex e Fragment Shader e compilar.
+- Criar Shader Program.
+- Anexar esses Shaders criados ao Shader Program.
+- Vincular Shader Program ao OpenGL.
+- Verificar erros de vinculação.
+- Deletar Vertex e Fragment Shader, pois foram anexados ao Shader Program e estão inutilizados.
+- Configurar os dados dos vertices do triângulo.
+- Criar VBO (Vertex Buffer Object), que de modo simplificado, tem como objetivo armazenar o buffer na memória da placa de vídeo, para melhorar o desempenho.
+- Vincular VBO ao OpenGL.
+- Copiar os dados dos vertices para o VBO.
+- Criar VAO (Vertex Array Object), que de modo simplificado, tem como objetivo descrever como os vertices são armazenados no VBO.
+- Vincular VAO ao OpenGL.
+- Atribuir ponteiros para os vertices.
+- Desvincular VBO e VAO para não modificar acidentalmente esses objetos.
+- Definir qual Shader Program o OpenGL deve usar.
+- Definir primitiva GL_TRIANGLES.
+- Desenhar triângulo.
