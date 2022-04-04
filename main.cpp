@@ -125,6 +125,13 @@ int main()
         // Definir qual ou quais buffers precisam ser limpos
         glClear(GL_COLOR_BUFFER_BIT);
 
+        // Definir qual Shader Program o OpenGL deve usar
+        glUseProgram(shaderProgram);
+        // Vincular Vertex Array Object
+        glBindVertexArray(VAO);
+        // Desenhar vertices a partir do VAO, e definir a primitiva GL_TRIANGLES
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
 
