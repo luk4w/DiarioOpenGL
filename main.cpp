@@ -93,6 +93,16 @@ int main()
         0.5f, -0.5f, 0.0f // C
     };
 
+    // Vertex Buffer Object
+    unsigned int VBO;
+    glGenBuffers(1, &VBO);
+
+    // Vincular VBO
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+    // Copiar dados dos vertices para o VBO vinculado
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
     {
@@ -109,6 +119,7 @@ int main()
         glfwPollEvents();
     }
 
+    glDeleteBuffers(1, &VBO); // Opcional
     glfwDestroyWindow(window); // Opcional
     glfwTerminate(); // Terminar biblioteca GLFW
 
