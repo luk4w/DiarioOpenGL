@@ -5,6 +5,8 @@
 using std::cout;
 using std::endl;
 
+void framebufferSizeCallback(GLFWwindow* window, int width, int height); // Protótipo de função
+
 const unsigned int WIDTH = 800; 
 const unsigned int HEIGHT = 600;
 
@@ -27,11 +29,13 @@ int main()
     }
     // Definir window como contexto atual da thread de chamada
     glfwMakeContextCurrent(window);
+    // Definir função de retorno de chamada para redimensionamento de janela
+    glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 
     // Verificar GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
-        std::cout << "Nao foi possivel carregar o contexto OpenGL!" << std::endl;
+        cout << "Nao foi possivel carregar o contexto OpenGL!" << endl;
         return -1;
     }
 
@@ -56,3 +60,8 @@ int main()
 
     return 0;
 } 
+
+void framebufferSizeCallback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
