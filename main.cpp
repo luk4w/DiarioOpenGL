@@ -70,7 +70,17 @@ int main()
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
-
+    // Verificar erros de vinculação
+    int success;
+    char infoLog[512];
+    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+    if (!success)
+    {
+        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+        cout << "Erro ao vincular Shader Program" << endl;
+        cout << infoLog << endl;
+    }
+    
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
     {
