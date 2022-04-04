@@ -97,11 +97,24 @@ int main()
     unsigned int VBO;
     glGenBuffers(1, &VBO);
 
-    // Vincular VBO
+    // Vertex Array Object
+    unsigned int VAO;
+    glGenVertexArrays(1, &VAO);
+
+    // Vincular VAO e VBO
+    glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
     // Copiar dados dos vertices para o VBO vinculado
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    // Atribuir ponteiros para os vertices
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    // Desvincular VBO e VAO para não modificar acidentalmente
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
 
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
@@ -119,6 +132,7 @@ int main()
         glfwPollEvents();
     }
 
+    glDeleteVertexArrays(1, &VAO); // Opcional
     glDeleteBuffers(1, &VBO); // Opcional
     glfwDestroyWindow(window); // Opcional
     glfwTerminate(); // Terminar biblioteca GLFW
