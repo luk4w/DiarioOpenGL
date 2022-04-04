@@ -55,6 +55,11 @@ int main()
         return -1;
     }
 
+    // Vertex Shader
+    unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+    glCompileShader(vertexShader);
+
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
     {
