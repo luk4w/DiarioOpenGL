@@ -85,7 +85,7 @@ int main()
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    // Vertices do triângulo
+    // Vertices dos triângulos
     float vertices[] =
     {
         -0.5f, -0.5f, 0.0f, // A
@@ -108,12 +108,20 @@ int main()
     unsigned int VAO;
     glGenVertexArrays(1, &VAO);
 
-    // Vincular VAO e VBO
+    // Element Buffer Object
+    unsigned int EBO;
+    glGenBuffers(1, &EBO);
+
+    // Vincular VAO, VBO e EBO
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
     // Copiar dados dos vertices para o VBO vinculado
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    // Copiar dados dos indices para o EBO vinculado
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // Atribuir ponteiros para os vertices
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
@@ -136,8 +144,8 @@ int main()
         glUseProgram(shaderProgram);
         // Vincular Vertex Array Object
         glBindVertexArray(VAO);
-        // Desenhar vertices a partir do VAO, e definir a primitiva GL_TRIANGLES
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        // Desenhar triângulos a partir dos indices
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
@@ -148,6 +156,7 @@ int main()
 
     glDeleteVertexArrays(1, &VAO); // Opcional
     glDeleteBuffers(1, &VBO); // Opcional
+    glDeleteBuffers(1, &EBO); // Opcional
     glfwDestroyWindow(window); // Opcional
     glfwTerminate(); // Terminar biblioteca GLFW
 
