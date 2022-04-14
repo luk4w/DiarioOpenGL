@@ -94,6 +94,12 @@ int main()
         0.5f, -0.5f, 0.0f // D
     };
 
+    unsigned int indices[] =
+    {
+        0, 1, 3,  // Primeiro triângulo
+        1, 2, 3   // Segundo triângulo
+    };
+
     // Vertex Buffer Object
     unsigned int VBO;
     glGenBuffers(1, &VBO);
