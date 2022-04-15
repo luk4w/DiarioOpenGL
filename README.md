@@ -24,6 +24,6 @@
 - Definir primitiva GL_TRIANGLES.
 - Desenhar triângulo.
 - Atualizar e adicionar mais um vertice aos vertices, para desenhar um retângulo, a partir de dois triângulos.
-- Criar indices a partir dos vertices, para desenhar o retângulo sem repetir as coordenadas.
+- Criar indices a partir dos vertices, para desenhar os triângulos sem repetir as coordenadas.
 - Criar EBO (Element Buffer Object), que de modo simplificado, tem como objetivo armazenar um buffer com os indices dos vertices dos elementos.
 - Desenhar retângulo.
