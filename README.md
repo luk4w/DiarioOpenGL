@@ -27,3 +27,7 @@
 - Criar indices a partir dos vertices, para desenhar os triângulos sem repetir as coordenadas.
 - Criar EBO (Element Buffer Object), que de modo simplificado, tem como objetivo armazenar um buffer com os indices dos vertices dos elementos.
 - Desenhar retângulo.
+- Criar classe Shader, e a partir disso, criar arquivos fragment_shader.glsl e vertex_shaders.glsl para serem lidos por essa classe.
+- Instânciar a classe criada e usar os shaders.
+- Adicionar três floats na sequência das coordenadas de cada vertice para indicar a cor.
+- Configurar os ponteiros de vertices e cores para um tamanho de seis floats, pois os três primeiros indicam o vertice, e os três últimos indicam a cor.
