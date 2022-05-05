@@ -47,9 +47,16 @@ int main()
     float vertices[] =
     {
         -0.5f, -0.5f, 0.0f, // A
+        1.0f, 1.0f, 1.0f,
+
         -0.5, 0.5f, 0.0f, // B
-        0.5f, 0.5f, 0.0f,  // C 
-        0.5f, -0.5f, 0.0f // D
+        1.0f, 1.0f, 1.0f,
+
+        0.5f, 0.5f, 0.0f,  // C
+        1.0f, 1.0f, 1.0f,
+
+        0.5f, -0.5f, 0.0f, // D
+        1.0f, 1.0f, 1.0f,
     };
 
     unsigned int indices[] =
@@ -82,7 +89,7 @@ int main()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // Atribuir ponteiros para os vertices
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
     // Desvincular VBO e VAO para não modificar acidentalmente
