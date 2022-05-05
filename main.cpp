@@ -41,6 +41,7 @@ int main()
         return -1;
     }
 
+    Shader shaderProgram("shaders/vertex_shader.glsl", "shaders/fragment_shader.glsl");
 
     // Vertices dos triângulos
     float vertices[] =
@@ -98,7 +99,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Definir qual Shader Program o OpenGL deve usar
-        glUseProgram(shaderProgram);
+        shaderProgram.use();
         // Vincular Vertex Array Object
         glBindVertexArray(VAO);
         // Desenhar triângulos a partir dos indices
