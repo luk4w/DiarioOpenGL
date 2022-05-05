@@ -1,6 +1,8 @@
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "shader.h"
+
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -9,22 +11,6 @@ void framebufferSizeCallback(GLFWwindow* window, int width, int height); // Prot
 
 const unsigned int WIDTH = 800; 
 const unsigned int HEIGHT = 600;
-
-// Código-Fonte Vertex Shader
-const char *vertexShaderSource = "#version 330 core\n"
-    "layout (location = 0) in vec3 aPos;\n"
-    "void main()\n"
-    "{\n"
-    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-    "}\0";
-
-// Código-Fonte Fragment Shader
-const char *fragmentShaderSource = "#version 330 core\n"
-    "out vec4 FragColor;\n"
-    "void main()\n"
-    "{\n"
-    "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-    "}\n\0";
 
 int main()
 {
@@ -55,35 +41,6 @@ int main()
         return -1;
     }
 
-    // Vertex Shader
-    unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-    glCompileShader(vertexShader);
-
-    // Fragment Shader
-    unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-    glCompileShader(fragmentShader);
-
-    // Shader Program
-    unsigned int shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-    // Verificar erros de vinculação
-    int success;
-    char infoLog[512];
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-    if (!success)
-    {
-        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        cout << "Erro ao vincular Shader Program" << endl;
-        cout << infoLog << endl;
-    }
-
-    // Deletar shaders inutilizados
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
 
     // Vertices dos triângulos
     float vertices[] =
