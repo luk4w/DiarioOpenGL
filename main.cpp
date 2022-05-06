@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 
 #include "shader.h"
+#include "stb/stb_image.h"
 
 #include <iostream>
 using std::cout;
@@ -104,6 +105,36 @@ int main()
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
     glEnableVertexAttribArray(2);
     
+    // Textura
+    unsigned int texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    // Definir parâmetros de quebra de textura
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    // Definir parâmetros de filtragem de textura
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    // Inverter as texturas carregadas no eixo y
+    stbi_set_flip_vertically_on_load(true);
+    
+    // Carregar textura
+    int width, height, channels;
+    unsigned char *data = stbi_load("textures/wall.jpg", &width, &height, &channels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        cout << "Falha ao carregar textura" << endl;
+    }
+    stbi_image_free(data);
+
     // Desvincular VBO e VAO para não modificar acidentalmente
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -116,6 +147,9 @@ int main()
 
         // Definir qual ou quais buffers precisam ser limpos
         glClear(GL_COLOR_BUFFER_BIT);
+
+        // Vincular textura
+        glBindTexture(GL_TEXTURE_2D, texture);
 
         // Definir qual Shader Program o OpenGL deve usar
         shaderProgram.use();
