@@ -31,3 +31,11 @@
 - Instânciar a classe criada e usar os shaders.
 - Adicionar três floats na sequência das coordenadas de cada vertice para indicar a cor.
 - Configurar os ponteiros de vertices e cores para um tamanho de seis floats, pois os três primeiros indicam o vertice, e os três últimos indicam a cor.
+- Importar imagem wall.jpg para servir de textura.
+- Importar biblioteca stb_image para carregar o arquivo de imagem da textura.
+- Adicionar coordenadas de textura para cada vertice.
+- Configurar os ponteiros de vertices, cores e texturas, para um tamanho de oito floats, pois os três primeiros indicam o vertice, os três consequentes indicam a cor, e os dois últimos, a coordenada da textura.
+- Alterar variável ID da classe Shader para public.
+- Configurar as texturas nos shaders, ou seja, nos arquivos de código-fonte GLSL.
+- Configurar a textura na main.cpp.
+- Desenhar um retângulo texturizado.
