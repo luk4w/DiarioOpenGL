@@ -8,10 +8,10 @@ using std::string;
 class Shader
 {
 public:
+    unsigned int ID;
     Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath = nullptr);
     void use();
 private:
-    unsigned int ID;
     void checkCompileErrors(unsigned int shader, string type);
 };
 #endif
