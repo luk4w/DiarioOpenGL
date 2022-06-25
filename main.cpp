@@ -148,8 +148,6 @@ int main()
 
         // Matriz de transformação 4x4
         glm::mat4 transform = glm::mat4(1.0f);
-        // Alterar escala
-        transform = glm::scale(transform, glm::vec3(0.5, -0.5, 0.5));
         // Rotacionar
         transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
 
