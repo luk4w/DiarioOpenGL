@@ -4,8 +4,10 @@ layout (location = 1) in vec2 aTexture;
 
 out vec2 textureCoordinate;
 
+uniform mat4 transform;
+
 void main()
 {
-    gl_Position = vec4(aPos, 1.0);
-    textureCoordinate = aTexture;
+    gl_Position = transform * vec4(aPos, 1.0);
+    textureCoordinate = vec2(aTexture.x, aTexture.y);
 }

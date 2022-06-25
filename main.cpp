@@ -1,8 +1,11 @@
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
+#include <stb/stb_image.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include "shader.h"
-#include "stb/stb_image.h"
 
 #include <iostream>
 using std::cout;
@@ -143,8 +146,21 @@ int main()
         // Vincular textura
         glBindTexture(GL_TEXTURE_2D, texture);
 
+        // Matriz de transformação 4x4
+        glm::mat4 transform = glm::mat4(1.0f);
+        // Alterar escala
+        transform = glm::scale(transform, glm::vec3(0.5, -0.5, 0.5));
+        // Rotacionar
+        transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+
         // Definir qual Shader Program o OpenGL deve usar
         shaderProgram.use();
+
+        // Localizar uniform de transformação
+        unsigned int transformLocation = glGetUniformLocation(shaderProgram.ID, "transform");
+        // Aplicar transformação na matriz
+        glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(transform));
+
         // Vincular Vertex Array Object
         glBindVertexArray(VAO);
         // Desenhar triângulos a partir dos indices
