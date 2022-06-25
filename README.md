@@ -48,3 +48,6 @@
 - Criar uma matriz 4x4 para sofrer transformações, e depois, multiplicar ela pela matriz do objeto.
 - Alterar a escala e rotacionar o objeto ao longo do tempo.
 - <img src="https://user-images.githubusercontent.com/73361955/175783078-024ede84-1723-427c-a60d-a36a7bd9d854.gif" width="300" height="200">
+- Remover a alteração de escala.
+- Mover o objeto (transladar) para o canto inferior direito e depois rotacionar.
+- <img src="https://user-images.githubusercontent.com/73361955/175789202-b507a023-ff13-4c0b-a7fb-94a7e017cb16.gif" width="300" height="200">
