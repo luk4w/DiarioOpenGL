@@ -43,3 +43,4 @@
 - Remover os atributos de cor dos vértices, pois não serão mais usados.
 - Criar uma matriz 4x4 para sofrer transformações, e depois, multiplicar ela pela matriz do objeto.
 - Alterar a escala e rotacionar objeto ao longo do tempo.
+- <img src="https://user-images.githubusercontent.com/73361955/175783078-024ede84-1723-427c-a60d-a36a7bd9d854.gif" width="300" height="200">
