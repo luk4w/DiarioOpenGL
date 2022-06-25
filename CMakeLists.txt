@@ -19,4 +19,4 @@ add_subdirectory(libs)
 add_executable(${PROJECT_NAME} main.cpp src/shader.cpp)
 
 # Vincular a(s) biblioteca(s) ao executável
-target_link_libraries(${PROJECT_NAME} glad glfw stb) 
+target_link_libraries(${PROJECT_NAME} glad glfw stb glm) 
