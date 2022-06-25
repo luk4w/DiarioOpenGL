@@ -3,7 +3,8 @@
 - Importar a biblioteca GLFW.
 - Criar uma janela.
 - Importar a biblioteca GLAD.
-- Carregar o contexto OpenGL e mudar o fundo da janela de cor.
+- <a href="https://youtu.be/MvAavNh-f8w">Carregar o contexto OpenGL e mudar o fundo da janela de cor.
+- <img src="https://user-images.githubusercontent.com/73361955/175784032-04498bba-fcf5-4d32-8be9-d05b8037c5a9.png" width="300" height="200"> <a>
 - Criar função de retorno de chamada para redimensionamento de janela.
 - Importar o código-fonte para Vertex e Fragment Shader.
 - Criar programas para o Vertex e Fragment Shader e compilar.
@@ -22,11 +23,13 @@
 - Desvincular VBO e VAO para não modificar acidentalmente esses objetos.
 - Definir qual Shader Program o OpenGL deve usar.
 - Definir primitiva GL_TRIANGLES.
-- Desenhar triângulo.
+- <a href="https://youtu.be/C2fJJhRKMl4">Desenhar triângulo.
+- <img src="https://user-images.githubusercontent.com/73361955/175783682-888e35d1-f695-41e1-88e7-4e2a8e02f174.png" width="300" height="200"><a>
 - Atualizar e adicionar mais um vertice aos vertices, para desenhar um retângulo, a partir de dois triângulos.
 - Criar indices a partir dos vertices, para desenhar os triângulos sem repetir as coordenadas.
 - Criar EBO (Element Buffer Object), que de modo simplificado, tem como objetivo armazenar um buffer com os indices dos vertices dos elementos.
-- Desenhar retângulo.
+- <a href="https://youtu.be/X_hD_ea1D_E">Desenhar retângulo.
+- <img src="https://user-images.githubusercontent.com/73361955/175783783-35100de8-0262-4c82-b80a-c87a308bc2c4.png" width="300" height="200"><a>
 - Criar classe Shader, e a partir disso, criar arquivos fragment_shader.glsl e vertex_shaders.glsl para serem lidos por essa classe.
 - Instânciar a classe criada e usar os shaders.
 - Adicionar três floats na sequência das coordenadas de cada vertice para indicar a cor.
@@ -39,8 +42,9 @@
 - Configurar as texturas nos shaders, ou seja, nos arquivos de código-fonte GLSL.
 - Configurar a textura na main.cpp.
 - Desenhar um retângulo texturizado.
+- <img src="https://user-images.githubusercontent.com/73361955/175783971-1b031f0e-6a61-4fe7-adcb-c0edfef96f27.png" width="300" height="200"> 
 - Importar GLM, uma biblioteca matemática, para facilitar os cálculos de matrizes e vetores.
 - Remover os atributos de cor dos vértices, pois não serão mais usados.
 - Criar uma matriz 4x4 para sofrer transformações, e depois, multiplicar ela pela matriz do objeto.
-- Alterar a escala e rotacionar objeto ao longo do tempo.
+- Alterar a escala e rotacionar o objeto ao longo do tempo.
 - <img src="https://user-images.githubusercontent.com/73361955/175783078-024ede84-1723-427c-a60d-a36a7bd9d854.gif" width="300" height="200">
