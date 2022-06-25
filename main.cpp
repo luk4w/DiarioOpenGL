@@ -48,19 +48,15 @@ int main()
     float vertices[] =
     {
         -0.5f, -0.5f, 0.0f, // A
-        1.0f, 1.0f, 1.0f,
         0.0f, 0.0f,
 
         -0.5, 0.5f, 0.0f, // B
-        1.0f, 1.0f, 1.0f,
         0.0f, 1.0f,
 
         0.5f, 0.5f, 0.0f,  // C
-        1.0f, 1.0f, 1.0f,
         1.0f, 1.0f,
 
         0.5f, -0.5f, 0.0f, // D
-        1.0f, 1.0f, 1.0f,
         1.0f, 0.0f,
     };
 
@@ -94,16 +90,12 @@ int main()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // Atribuir ponteiros para os vertices
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
-    // Atribuir ponteiros para as cores
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3*sizeof(float)));
-    glEnableVertexAttribArray(1);
-
     // Atribuir ponteiros para as texuturas
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
     
     // Textura
     unsigned int texture;
