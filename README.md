@@ -39,3 +39,7 @@
 - Configurar as texturas nos shaders, ou seja, nos arquivos de código-fonte GLSL.
 - Configurar a textura na main.cpp.
 - Desenhar um retângulo texturizado.
+- Importar GLM, uma biblioteca matemática, para facilitar os cálculos de matrizes e vetores.
+- Remover os atributos de cor dos vértices, pois não serão mais usados.
+- Criar uma matriz 4x4 para sofrer transformações, e depois, multiplicar ela pela matriz do objeto.
+- Alterar a escala e rotacionar objeto ao longo do tempo.
