@@ -34,7 +34,7 @@
 - Instânciar a classe criada e usar os shaders.
 - Adicionar três floats na sequência das coordenadas de cada vertice para indicar a cor.
 - Configurar os ponteiros de vertices e cores para um tamanho de seis floats, pois os três primeiros indicam o vertice, e os três últimos indicam a cor.
-- <img src="https://user-images.githubusercontent.com/73361955/175819855-e7b0cd66-cbdf-46e7-833f-721cad542178.png" width="300" height="200"><a>
+- <a href="https://youtu.be/RmLedWWnYO4"><img src="https://user-images.githubusercontent.com/73361955/175819855-e7b0cd66-cbdf-46e7-833f-721cad542178.png" width="300" height="200"><a>
 - Importar imagem wall.jpg para servir de textura.
 - Importar biblioteca stb_image para carregar o arquivo de imagem da textura.
 - Adicionar coordenadas de textura para cada vertice.
