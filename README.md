@@ -55,7 +55,7 @@
 - Remover a matriz de transformação.
 - Criar três matrizes identidades (Model, View e Projection) para realizar a projeção de perspectiva.
 - Model Matrix: para transformar as coordenadas do modelo em coordenadas no mundo.
-- View Matrix: mover o mundo em relação a visualização.
+- View Matrix: transformar a visualização.
 - Projection Matrix: espaço da câmera, o ângulo de abertura e a distância dos planos de corte de renderização.
 - Aplicar rotação de -55° na Model Matrix, em relação ao eixo x. Isso modificará a angulação do objeto.
 - Transladar em -3.0f no eixo z a View Matrix, ou seja, mover a visualização para trás. A visualização abrange todos os objetos do mundo.
