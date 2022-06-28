@@ -51,7 +51,7 @@
 - <img src="https://user-images.githubusercontent.com/73361955/176321672-407a4b85-2562-4c02-9624-bac3deff47ad.gif" width="300" height="200">
 - Remover a alteração de escala.
 - Mover o objeto (transladar) para o canto inferior direito e depois rotacionar.
-- <img src="https://user-images.githubusercontent.com/73361955/176321794-193aeb6d-db6a-42fa-9c7b-f4b8c40d44c8.gif" width="300" height="200">
+- <img src="https://user-images.githubusercontent.com/73361955/176322487-df41c190-5693-4238-b8e3-b61e20643fd0.gif" width="300" height="200">
 - Remover a matriz de transformação.
 - Criar três matrizes identidades (Model, View e Projection) para realizar a projeção de perspectiva.
 - Model Matrix: para transformar as coordenadas do modelo em coordenadas no mundo.
