@@ -61,4 +61,10 @@
 - Transladar em -3.0f no eixo z a View Matrix, ou seja, mover a visualização para trás. A visualização abrange todos os objetos do mundo.
 - Determinar o campo de visão, a proporção de tela e o intervalo de renderização dos objetos no mundo, através da Projection Matrix.
 - <img src="https://user-images.githubusercontent.com/73361955/176261937-18f583c2-b292-48b1-93cc-a0209850262e.png" width="300" height="200"> 
+- Importar vertices do cubo.
+- Remover Element Buffer Object.
+- Desenhar cubo.
+- <img src="https://user-images.githubusercontent.com/73361955/176319221-2edb6b57-683e-4b3f-8943-c8efbe374cca.gif" width="300" height="200"> 
+- Habilitar teste do buffer de profundidade e limpar o buffer de profundidade.
+- <img src="https://user-images.githubusercontent.com/73361955/176318846-92caa0f3-575a-4592-a2b6-0fd6908ab24e.gif" width="300" height="200"> 
 
