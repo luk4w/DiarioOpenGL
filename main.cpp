@@ -150,6 +150,9 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
+    // Habilitar teste do buffer de profundidade
+    glEnable(GL_DEPTH_TEST);  
+
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
     {
