@@ -184,8 +184,8 @@ int main()
 
         // Vincular Vertex Array Object
         glBindVertexArray(VAO);
-        // Desenhar triângulos a partir dos indices
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        // Desenhar triângulos a partir dos vertices
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
