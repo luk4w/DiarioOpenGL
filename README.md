@@ -52,3 +52,8 @@
 - Remover a alteração de escala.
 - Mover o objeto (transladar) para o canto inferior direito e depois rotacionar.
 - <img src="https://user-images.githubusercontent.com/73361955/175789202-b507a023-ff13-4c0b-a7fb-94a7e017cb16.gif" width="300" height="200">
+- Remover a matriz de transformação.
+- Criar três matrizes identidades (Model, View e Projection) para realizar a projeção de perspectiva.
+- Model Matrix: para transformar as coordenadas do modelo em coordenadas no mundo.
+- View Matrix: mover o mundo em relação a visualização.
+- Projection Matrix: espaço da câmera, o ângulo de abertura e a distância dos planos de corte de renderização.
