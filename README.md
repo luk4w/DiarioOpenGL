@@ -48,10 +48,10 @@
 - Remover os atributos de cor dos vértices, pois não serão mais usados.
 - Criar uma matriz 4x4 para sofrer transformações, e depois, multiplicar ela pela matriz do objeto.
 - Alterar a escala e rotacionar o objeto ao longo do tempo.
-- <img src="https://user-images.githubusercontent.com/73361955/175783078-024ede84-1723-427c-a60d-a36a7bd9d854.gif" width="300" height="200">
+- <img src="https://user-images.githubusercontent.com/73361955/176321672-407a4b85-2562-4c02-9624-bac3deff47ad.gif" width="300" height="200">
 - Remover a alteração de escala.
 - Mover o objeto (transladar) para o canto inferior direito e depois rotacionar.
-- <img src="https://user-images.githubusercontent.com/73361955/175789202-b507a023-ff13-4c0b-a7fb-94a7e017cb16.gif" width="300" height="200">
+- <img src="https://user-images.githubusercontent.com/73361955/176321794-193aeb6d-db6a-42fa-9c7b-f4b8c40d44c8.gif" width="300" height="200">
 - Remover a matriz de transformação.
 - Criar três matrizes identidades (Model, View e Projection) para realizar a projeção de perspectiva.
 - Model Matrix: para transformar as coordenadas do modelo em coordenadas no mundo.
@@ -67,6 +67,7 @@
 - <img src="https://user-images.githubusercontent.com/73361955/176320367-182c348d-cd1f-49d1-ac79-93a8ac02e3c9.gif" width="300" height="200">
 - Habilitar teste do buffer de profundidade e limpar o buffer de profundidade.
 - <img src="https://user-images.githubusercontent.com/73361955/176321260-1d5a34e4-6680-4870-895f-020921d42c7c.gif" width="300" height="200"> 
-
-
+  
+  
+  
 
