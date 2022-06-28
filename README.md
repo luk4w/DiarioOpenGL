@@ -64,7 +64,9 @@
 - Importar vertices do cubo.
 - Remover Element Buffer Object.
 - Desenhar cubo.
-- <img src="https://user-images.githubusercontent.com/73361955/176319221-2edb6b57-683e-4b3f-8943-c8efbe374cca.gif" width="300" height="200"> 
+- <img src="https://user-images.githubusercontent.com/73361955/176320367-182c348d-cd1f-49d1-ac79-93a8ac02e3c9.gif" width="300" height="200">
 - Habilitar teste do buffer de profundidade e limpar o buffer de profundidade.
-- <img src="https://user-images.githubusercontent.com/73361955/176318846-92caa0f3-575a-4592-a2b6-0fd6908ab24e.gif" width="300" height="200"> 
+- <img src="https://user-images.githubusercontent.com/73361955/176321260-1d5a34e4-6680-4870-895f-020921d42c7c.gif" width="300" height="200"> 
+
+
 
