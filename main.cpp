@@ -183,28 +183,39 @@ int main()
         // Definir qual Shader Program o OpenGL deve usar
         shaderProgram.use();
 
-        // Model Matrix
-        glm::mat4 model = glm::mat4(1.0f);
+        
         // View Matrix
         glm::mat4 view = glm::mat4(1.0f);
         // Projection Matrix
         glm::mat4 projection = glm::mat4(1.0f);
 
         // Transformações
-        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-        model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
         view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); 
         projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
         
         // Enviar as matrizes transformadas para o Vertex Shader
-        shaderProgram.setMat4("model", model);
         shaderProgram.setMat4("view", view);
         shaderProgram.setMat4("projection", projection);
 
         // Vincular Vertex Array Object
         glBindVertexArray(VAO);
-        // Desenhar triângulos a partir dos vertices
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        for(unsigned int i = 0; i < 10; i++)
+        {
+            // Model Matrix
+            glm::mat4 model = glm::mat4(1.0f);
+
+            // Transformações
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i;
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            
+            // Enviar Model Matrix para o Vertex Shader
+            shaderProgram.setMat4("model", model);
+
+            // Desenhar triângulos a partir dos vertices
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
 
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
