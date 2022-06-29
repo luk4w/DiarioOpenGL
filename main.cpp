@@ -166,7 +166,13 @@ int main()
     glBindVertexArray(0);
 
     // Habilitar teste do buffer de profundidade
-    glEnable(GL_DEPTH_TEST);  
+    glEnable(GL_DEPTH_TEST);
+
+    // Projection Matrix
+    shaderProgram.use();
+    glm::mat4 projection = glm::mat4(1.0f);  
+    projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+    shaderProgram.setMat4("projection", projection);
 
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
@@ -183,19 +189,14 @@ int main()
         // Definir qual Shader Program o OpenGL deve usar
         shaderProgram.use();
 
-        
         // View Matrix
         glm::mat4 view = glm::mat4(1.0f);
-        // Projection Matrix
-        glm::mat4 projection = glm::mat4(1.0f);
 
         // Transformações
         view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); 
-        projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
         
         // Enviar as matrizes transformadas para o Vertex Shader
         shaderProgram.setMat4("view", view);
-        shaderProgram.setMat4("projection", projection);
 
         // Vincular Vertex Array Object
         glBindVertexArray(VAO);
