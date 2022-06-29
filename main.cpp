@@ -191,11 +191,10 @@ int main()
 
         // View Matrix
         glm::mat4 view = glm::mat4(1.0f);
-
-        // Transformações
-        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); 
-        
-        // Enviar as matrizes transformadas para o Vertex Shader
+        float radius = 10.0f;
+        float cameraX = static_cast<float>(sin(glfwGetTime()) * radius);
+        float cameraZ = static_cast<float>(cos(glfwGetTime()) * radius);
+        view = glm::lookAt(glm::vec3(cameraX, 0.0f, cameraZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         shaderProgram.setMat4("view", view);
 
         // Vincular Vertex Array Object
