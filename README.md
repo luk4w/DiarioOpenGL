@@ -67,7 +67,8 @@
 - <img src="https://user-images.githubusercontent.com/73361955/176320367-182c348d-cd1f-49d1-ac79-93a8ac02e3c9.gif" width="300" height="200">
 - Habilitar o teste do buffer de profundidade e limpar o buffer de profundidade.
 - <img src="https://user-images.githubusercontent.com/73361955/176321260-1d5a34e4-6680-4870-895f-020921d42c7c.gif" width="300" height="200"> 
-  
-  
-  
+- Definir uma posição para cada cubo no espaço do mundo.
+- Criar um laço de repetição "for" dentro do loop de renderização principal, e dentro dele, instânciar todos os cubos que possuírem posições no espaço do mundo.
+- Desenhar múltiplos cubos.
+- <img src="https://user-images.githubusercontent.com/73361955/176333394-3acb7c49-0c24-41aa-9fe4-7e04b55306da.png" width="300" height="200"> 
 
