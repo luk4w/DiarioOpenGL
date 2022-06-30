@@ -12,6 +12,7 @@ using std::cout;
 using std::endl;
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height); // Protótipo de função
+void processInput(GLFWwindow *window); // Protótipo de função
 
 const unsigned int WIDTH = 800; 
 const unsigned int HEIGHT = 600;
@@ -176,7 +177,10 @@ int main()
 
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
-    {
+    {   
+        // Realizar comandos por meio do teclado e do mouse
+        processInput(window);
+
         // Especificar os valores de vermelho, verde, azul e alfa, para limpar os buffers de cores
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
@@ -235,4 +239,12 @@ int main()
 void framebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
+}
+
+void processInput(GLFWwindow *window)
+{
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    {
+        glfwSetWindowShouldClose(window, true);
+    }
 }
