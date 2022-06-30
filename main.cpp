@@ -17,6 +17,10 @@ void processInput(GLFWwindow *window); // Protótipo de função
 const unsigned int WIDTH = 800; 
 const unsigned int HEIGHT = 600;
 
+glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, 3.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
 int main()
 {
     // Inicializar biblioteca GLFW
@@ -244,7 +248,5 @@ void framebufferSizeCallback(GLFWwindow* window, int width, int height)
 void processInput(GLFWwindow *window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-    {
         glfwSetWindowShouldClose(window, true);
-    }
 }
