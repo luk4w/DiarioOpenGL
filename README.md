@@ -70,5 +70,9 @@
 - Definir uma posição para cada cubo no espaço do mundo.
 - Criar um laço de repetição "for" dentro do loop de renderização principal, e dentro dele, criar um cubo para cada posição definida.
 - Desenhar múltiplos cubos.
-- <img src="https://user-images.githubusercontent.com/73361955/176333394-3acb7c49-0c24-41aa-9fe4-7e04b55306da.png" width="300" height="200"> 
+- <img src="https://user-images.githubusercontent.com/73361955/176333394-3acb7c49-0c24-41aa-9fe4-7e04b55306da.png" width="300" height="200">
+- Definir a Projection Matrix fora do loop de renderização principal.
+- Transformar a View Matrix com a função lookAt, para ver as coordenadas dos vertices da perspectiva de uma câmera.
+- <img src="https://user-images.githubusercontent.com/73361955/176566835-78f4f104-de2a-4e98-b264-12667ae5ef29.gif" width="300" height="200">
+
 
