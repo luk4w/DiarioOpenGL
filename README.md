@@ -74,5 +74,10 @@
 - Definir a Projection Matrix fora do loop de renderização principal.
 - Transformar a View Matrix com a função lookAt, para ver as coordenadas dos vertices da perspectiva de uma câmera.
 - <img src="https://user-images.githubusercontent.com/73361955/176566835-78f4f104-de2a-4e98-b264-12667ae5ef29.gif" width="300" height="200">
+- Criar uma função para processar os comandos de entrada de teclado e mouse, e chamar essa função dentro do loop de renderização principal.
+- Definir um sistema de três variáveis para movimentar a visualização em relação a câmera.
+- Movimentar a visualização da perspectiva da câmera, através do teclado.
+- Ajustar a velocidade do movimento através do deltaTime.
+- O deltaTime pode ser definido como a diferença de tempo entre cada renderização.
 
 
