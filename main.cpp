@@ -21,6 +21,11 @@ glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, 3.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
+// Tempo entre o quadro atual e o último quadro
+float deltaTime = 0.0f;
+// Tempo do último quadro
+float lastFrame = 0.0f;
+
 int main()
 {
     // Inicializar biblioteca GLFW
@@ -182,6 +187,11 @@ int main()
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
     {   
+        // Lógica do tempo por quadro
+        float currentFrame = static_cast<float>(glfwGetTime());
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+
         // Realizar comandos por meio do teclado e do mouse
         processInput(window);
 
@@ -247,7 +257,7 @@ void processInput(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 
-    const float cameraSpeed = 0.05f;
+    const float cameraSpeed = static_cast<float>(2.5 * deltaTime);
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         cameraPosition += cameraSpeed * cameraFront;
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
