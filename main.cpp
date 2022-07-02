@@ -13,6 +13,7 @@ using std::endl;
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height); // Protótipo de função
 void processInput(GLFWwindow *window); // Protótipo de função
+void mouseCallback(GLFWwindow* window, double xpos, double ypos);
 
 const unsigned int WIDTH = 800; 
 const unsigned int HEIGHT = 600;
@@ -47,6 +48,11 @@ int main()
     glfwMakeContextCurrent(window);
     // Definir função de retorno de chamada para redimensionamento de janela
     glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
+    // Definir função de rertorno de chamada para o mouse
+    glfwSetCursorPosCallback(window, mouseCallback);
+
+    // Ativar a captura do mouse
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // Verificar GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -266,4 +272,9 @@ void processInput(GLFWwindow *window)
         cameraPosition -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         cameraPosition += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+}
+
+void mouseCallback(GLFWwindow* window, double xposIn, double yposIn)
+{
+    
 }
