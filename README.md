@@ -80,6 +80,6 @@
 - Ajustar a velocidade do movimento através do deltaTime.
 - O deltaTime pode ser definido como a diferença de tempo entre cada renderização.
 - Definir função de retorno de chamada para o mouse.
-- Movimentar a câmera com o mouse.
+- Movimentar a visualização da perspectiva da câmera, através do mouse.
 - <img src="https://user-images.githubusercontent.com/73361955/177018740-232719dc-3e4e-4d01-8c17-92af5dc5365a.gif" width="300" height="200">
 
