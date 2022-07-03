@@ -74,7 +74,7 @@
 - Definir a Projection Matrix fora do loop de renderização principal.
 - Transformar a View Matrix com a função lookAt, para ver as coordenadas dos vertices da perspectiva de uma câmera.
 - <img src="https://user-images.githubusercontent.com/73361955/176566835-78f4f104-de2a-4e98-b264-12667ae5ef29.gif" width="300" height="200">
-- Criar uma função para processar os comandos de entrada de teclado e mouse, e chamar essa função dentro do loop de renderização principal.
+- Criar uma função para processar os comandos do teclado, e chamar essa função dentro do loop de renderização principal.
 - Definir um sistema de três variáveis para movimentar a visualização em relação a câmera.
 - Movimentar a visualização da perspectiva da câmera, através do teclado.
 - Ajustar a velocidade do movimento através do deltaTime.
@@ -82,4 +82,8 @@
 - Definir função de retorno de chamada para o mouse.
 - Movimentar a visualização da perspectiva da câmera, através do mouse.
 - <img src="https://user-images.githubusercontent.com/73361955/177018740-232719dc-3e4e-4d01-8c17-92af5dc5365a.gif" width="300" height="200">
+- Criar uma função de retorno de chamada para o scroll do mouse. 
+- Definir o FOV como um parâmetro variável na Projection Matrix.
+- Mover a Projection Matrix para dentro do loop de renderização principal.
+- Aplicar zoom através do scroll do mouse.
 
