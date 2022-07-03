@@ -86,4 +86,6 @@
 - Definir o FOV como um parâmetro variável na Projection Matrix.
 - Mover a Projection Matrix para dentro do loop de renderização principal.
 - Aplicar zoom através do scroll do mouse.
+- <img src="https://user-images.githubusercontent.com/73361955/177022233-7adeffd6-e229-43a0-b42d-d34d1f92d209.gif" width="300" height="200">
+
 
