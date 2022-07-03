@@ -194,12 +194,6 @@ int main()
     // Habilitar teste do buffer de profundidade
     glEnable(GL_DEPTH_TEST);
 
-    // Projection Matrix
-    shaderProgram.use();
-    glm::mat4 projection = glm::mat4(1.0f);  
-    projection = glm::perspective(glm::radians(fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-    shaderProgram.setMat4("projection", projection);
-
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
     {   
@@ -222,6 +216,11 @@ int main()
 
         // Definir qual Shader Program o OpenGL deve usar
         shaderProgram.use();
+
+        // Projection Matrix
+        glm::mat4 projection = glm::mat4(1.0f);  
+        projection = glm::perspective(glm::radians(fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+        shaderProgram.setMat4("projection", projection);
 
         // View Matrix
         glm::mat4 view = glm::mat4(1.0f);
