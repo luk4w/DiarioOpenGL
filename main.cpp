@@ -14,6 +14,7 @@ using std::endl;
 void framebufferSizeCallback(GLFWwindow* window, int width, int height); // Protótipo de função
 void processInput(GLFWwindow *window); // Protótipo de função
 void mouseCallback(GLFWwindow* window, double xpos, double ypos);
+void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 
 const unsigned int WIDTH = 800; 
 const unsigned int HEIGHT = 600;
@@ -55,8 +56,10 @@ int main()
     glfwMakeContextCurrent(window);
     // Definir função de retorno de chamada para redimensionamento de janela
     glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
-    // Definir função de rertorno de chamada para o mouse
+    // Definir função de retorno de chamada para o mouse
     glfwSetCursorPosCallback(window, mouseCallback);
+    // Definir função de rertorno de chamada para o scroll
+    glfwSetScrollCallback(window, scrollCallback);
 
     // Ativar a captura do mouse
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -316,4 +319,13 @@ void mouseCallback(GLFWwindow* window, double xposIn, double yposIn)
     front.y = sin(glm::radians(pitch));
     front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
     cameraFront = glm::normalize(front);
+}
+
+void scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    fov -= (float)yoffset;
+    if (fov < 1.0f)
+        fov = 1.0f;
+    if (fov > 45.0f)
+        fov = 45.0f;
 }
