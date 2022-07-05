@@ -88,4 +88,4 @@
 - Aplicar zoom através do scroll do mouse.
 - <img src="https://user-images.githubusercontent.com/73361955/177022233-7adeffd6-e229-43a0-b42d-d34d1f92d209.gif" width="300" height="200">
 - Criar uma classe chamada Camera, com a finalidade de organizar o código, armazenar os valores, processar os eventos de entrada, e para obter e atualizar a View Matrix.
-- Usar a classe Camera.
+
