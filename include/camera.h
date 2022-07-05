@@ -54,7 +54,6 @@ public:
     void processMouseScroll(float yoffset);
 
 private:
-    // Calcular o vetor frontal dos Ângulos de Euler da Câmera
     void updateCameraVectors();
 };
 #endif
