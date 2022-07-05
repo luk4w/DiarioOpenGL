@@ -24,15 +24,15 @@ const float FOV = 45.0f;
 class Camera
 {
 public:
-    glm::vec3 Position;
-    glm::vec3 Front;
-    glm::vec3 Up;
-    glm::vec3 Right;
-    glm::vec3 WorldUp;
-    float Yaw;
-    float Pitch;
-    float MovementSpeed;
-    float MouseSensitivity;
+    glm::vec3 position;
+    glm::vec3 front;
+    glm::vec3 up;
+    glm::vec3 right;
+    glm::vec3 worldUp;
+    float yaw;
+    float pitch;
+    float movementSpeed;
+    float mouseSensitivity;
     float fov;
 
     // Construtor com vetores
@@ -42,16 +42,16 @@ public:
     Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch);
 
     // Retornar a View Matrix transformada
-    glm::mat4 GetViewMatrix();
+    glm::mat4 getViewMatrix();
 
     // Processar a entrada de teclado
-    void ProcessKeyboard(cameraMovement direction, float deltaTime);
+    void processKeyboard(cameraMovement direction, float deltaTime);
 
     // Processar a entrada de mouse, recebe os valores da direção x e y
-    void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true);
+    void processMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true);
 
     // Processar a entrada do scroll
-    void ProcessMouseScroll(float yoffset);
+    void processMouseScroll(float yoffset);
 
 private:
     // Calcular o vetor frontal dos Ângulos de Euler da Câmera

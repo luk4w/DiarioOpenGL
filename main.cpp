@@ -222,7 +222,7 @@ int main()
         shaderProgram.setMat4("projection", projection);
 
         // View Matrix
-        glm::mat4 view = camera.GetViewMatrix();
+        glm::mat4 view = camera.getViewMatrix();
         shaderProgram.setMat4("view", view);
 
         // Vincular Vertex Array Object
@@ -272,13 +272,13 @@ void processInput(GLFWwindow *window)
 
     const float cameraSpeed = static_cast<float>(2.5 * deltaTime);
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        camera.ProcessKeyboard(FORWARD, deltaTime);
+        camera.processKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        camera.ProcessKeyboard(BACKWARD, deltaTime);
+        camera.processKeyboard(BACKWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        camera.ProcessKeyboard(LEFT, deltaTime);
+        camera.processKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        camera.ProcessKeyboard(RIGHT, deltaTime);
+        camera.processKeyboard(RIGHT, deltaTime);
 }
 
 void mouseCallback(GLFWwindow* window, double xposIn, double yposIn)
@@ -298,10 +298,10 @@ void mouseCallback(GLFWwindow* window, double xposIn, double yposIn)
     lastX = xpos;
     lastY = ypos;
 
-    camera.ProcessMouseMovement(xoffset, yoffset);
+    camera.processMouseMovement(xoffset, yoffset);
 }
 
 void scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 {
-    camera.ProcessMouseScroll(static_cast<float>(yoffset));
+    camera.processMouseScroll(static_cast<float>(yoffset));
 }

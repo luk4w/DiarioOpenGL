@@ -1,60 +1,60 @@
 #include "camera.h"
 
-Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), fov(FOV)
+Camera::Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch) : front(glm::vec3(0.0f, 0.0f, -1.0f)), movementSpeed(SPEED), mouseSensitivity(SENSITIVITY), fov(FOV)
 {
-    Position = position;
-    WorldUp = up;
-    Yaw = yaw;
-    Pitch = pitch;
+    this->position = position;
+    this->worldUp = up;
+    this->yaw = yaw;
+    this->pitch = pitch;
     updateCameraVectors();
 }
 
-Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), fov(FOV)
+Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) : front(glm::vec3(0.0f, 0.0f, -1.0f)), movementSpeed(SPEED), mouseSensitivity(SENSITIVITY), fov(FOV)
 {
-    Position = glm::vec3(posX, posY, posZ);
-    WorldUp = glm::vec3(upX, upY, upZ);
-    Yaw = yaw;
-    Pitch = pitch;
+    this->position = glm::vec3(posX, posY, posZ);
+    this->worldUp = glm::vec3(upX, upY, upZ);
+    this->yaw = yaw;
+    this->pitch = pitch;
     updateCameraVectors();
 }
 
 // Retornar View Matrix transformada, com a função LookAt e os Ângulos de Euler
-glm::mat4 Camera::GetViewMatrix()
+glm::mat4 Camera::getViewMatrix()
 {
-    return glm::lookAt(Position, Position + Front, Up);
+    return glm::lookAt(this->position, this->position + this->front, this->up);
 }
 
-void Camera::ProcessKeyboard(cameraMovement direction, float deltaTime)
+void Camera::processKeyboard(cameraMovement direction, float deltaTime)
 {
-    float velocity = MovementSpeed * deltaTime;
+    float velocity = movementSpeed * deltaTime;
     if (direction == FORWARD)
-        Position += Front * velocity;
+        this->position += this->front * velocity;
     if (direction == BACKWARD)
-        Position -= Front * velocity;
+        this->position -= this->front * velocity;
     if (direction == LEFT)
-        Position -= Right * velocity;
+        this->position -= this->right * velocity;
     if (direction == RIGHT)
-        Position += Right * velocity;
+        this->position += this->right * velocity;
 }
 
-void Camera::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)
+void Camera::processMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)
 {
-    xoffset *= MouseSensitivity;
-    yoffset *= MouseSensitivity;
-    Yaw   += xoffset;
-    Pitch += yoffset;
+    xoffset *= mouseSensitivity;
+    yoffset *= mouseSensitivity;
+    this->yaw += xoffset;
+    this->pitch += yoffset;
     // Evitar flip
     if (constrainPitch)
     {
-        if (Pitch > 89.0f)
-            Pitch = 89.0f;
-        if (Pitch < -89.0f)
-            Pitch = -89.0f;
+        if (this->pitch > 89.0f)
+            this->pitch = 89.0f;
+        if (this->pitch < -89.0f)
+            this->pitch = -89.0f;
     }
     updateCameraVectors();
 }
 
-void Camera::ProcessMouseScroll(float yoffset)
+void Camera::processMouseScroll(float yoffset)
 {
     fov -= (float)yoffset;
     if (fov < 1.0f)
@@ -66,10 +66,10 @@ void Camera::ProcessMouseScroll(float yoffset)
 void Camera::updateCameraVectors()
 {
     glm::vec3 front;
-    front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-    front.y = sin(glm::radians(Pitch));
-    front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-    Front = glm::normalize(front);
-    Right = glm::normalize(glm::cross(Front, WorldUp));  
-    Up = glm::normalize(glm::cross(Right, Front));
+    front.x = cos(glm::radians(this->yaw)) * cos(glm::radians(this->pitch));
+    front.y = sin(glm::radians(this->pitch));
+    front.z = sin(glm::radians(this->yaw)) * cos(glm::radians(this->pitch));
+    this->front = glm::normalize(front);
+    this->right = glm::normalize(glm::cross(this->front, this->worldUp));  
+    this->up = glm::normalize(glm::cross(this->right, this->front));
 }
