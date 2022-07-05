@@ -18,7 +18,6 @@ Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float u
     updateCameraVectors();
 }
 
-// Retornar View Matrix transformada, com a função LookAt e os Ângulos de Euler
 glm::mat4 Camera::getViewMatrix()
 {
     return glm::lookAt(this->position, this->position + this->front, this->up);
