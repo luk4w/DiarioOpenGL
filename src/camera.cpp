@@ -42,6 +42,7 @@ void Camera::processMouseMovement(float xoffset, float yoffset, GLboolean constr
     yoffset *= mouseSensitivity;
     this->yaw += xoffset;
     this->pitch += yoffset;
+    
     // Evitar flip
     if (constrainPitch)
     {
