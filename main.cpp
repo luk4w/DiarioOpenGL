@@ -12,26 +12,22 @@
 using std::cout;
 using std::endl;
 
-void framebufferSizeCallback(GLFWwindow* window, int width, int height); // Protótipo de função
-void processInput(GLFWwindow *window); // Protótipo de função
+// Protótipos de função
+void framebufferSizeCallback(GLFWwindow* window, int width, int height);
+void processInput(GLFWwindow *window);
 void mouseCallback(GLFWwindow* window, double xpos, double ypos);
 void scrollCallback(GLFWwindow* window, double xoffset, double yoffset);
 
 const unsigned int WIDTH = 800; 
 const unsigned int HEIGHT = 600;
 
-glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 bool firstMouseInput = true;
 float lastX = WIDTH / 2;
 float lastY = HEIGHT / 2;
 
-// Tempo entre o quadro atual e o último quadro
+// Temporizador
 float deltaTime = 0.0f;
-// Tempo do último quadro
 float lastFrame = 0.0f;
 
 int main()
@@ -47,8 +43,9 @@ int main()
     // Instanciar GLFWwindow
     GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "DiarioOpenGL", NULL, NULL);
     if (window == NULL)
-    {
+    {   
         cout << "Falha ao criar GLFWwindow!" << endl;
+        glfwTerminate();
         return -1;
     }
     // Definir window como contexto atual da thread de chamada
@@ -67,6 +64,7 @@ int main()
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         cout << "Nao foi possivel carregar o contexto OpenGL!" << endl;
+        glfwTerminate();
         return -1;
     }
 
@@ -148,11 +146,11 @@ int main()
     // Copiar dados dos vertices para o VBO vinculado
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    // Atribuir ponteiros para os vertices
+    // Atribuir ponteiros para os vertices do VBO vinculado
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
-    // Atribuir ponteiros para as texuturas
+    // Atribuir ponteiros para as texturas do VBO vinculado
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
     
