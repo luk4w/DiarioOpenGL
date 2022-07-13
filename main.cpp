@@ -28,7 +28,7 @@ float lastY = HEIGHT / 2;
 
 // Temporizador
 float deltaTime = 0.0f;
-float lastFrame = 0.0f;
+float lastTime = 0.0f;
 
 int main()
 {
@@ -195,9 +195,9 @@ int main()
     while (!glfwWindowShouldClose(window))
     {   
         // Lógica do tempo por quadro
-        float currentFrame = static_cast<float>(glfwGetTime());
-        deltaTime = currentFrame - lastFrame;
-        lastFrame = currentFrame;
+        float currentTime = static_cast<float>(glfwGetTime());
+        deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
 
         // Realizar comandos por meio do teclado e do mouse
         processInput(window);
