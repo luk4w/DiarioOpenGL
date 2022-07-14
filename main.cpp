@@ -174,21 +174,12 @@ int main()
         // Vincular Vertex Array Object
         glBindVertexArray(cubeVAO);
 
-        for(unsigned int i = 0; i < 10; i++)
-        {
-            // Model Matrix
-            glm::mat4 model = glm::mat4(1.0f);
+        // Model Matrix
+        glm::mat4 model = glm::mat4(1.0f);
+        shaderCube.setMat4("model", model);
 
-            // Transformações
-            float angle = 20.0f * i;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-            
-            // Enviar Model Matrix para o Vertex Shader
-            shaderCube.setMat4("model", model);
-
-            // Desenhar triângulos a partir dos vertices
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
+        // Desenhar cubo
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
