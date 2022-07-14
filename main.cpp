@@ -31,7 +31,7 @@ float deltaTime = 0.0f;
 float lastTime = 0.0f;
 
 // Posição da lâmpada
-glm::vec3 lampPosition(2.0f, 1.0f, 0.0f);
+glm::vec3 lampPosition(1.2f, 1.0f, 2.0f);
 
 int main()
 {
