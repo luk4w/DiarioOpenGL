@@ -182,6 +182,8 @@ int main()
         // Definir a cor do cubo e a cor da luz incidente
         shaderCube.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
         shaderCube.setVec3("lightColor",  1.0f, 1.0f, 1.0f);
+        // Definir a posição da fonte de luz
+        shaderCube.setVec3("lightPos", lampPosition);
 
         // Projection Matrix
         glm::mat4 projection = glm::mat4(1.0f);  
