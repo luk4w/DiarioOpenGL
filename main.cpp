@@ -69,6 +69,7 @@ int main()
     }
 
     Shader shaderCube("shaders/vertex_cube.glsl", "shaders/fragment_cube.glsl");
+    Shader shaderLamp("shaders/vertex_lamp.glsl", "shaders/fragment_lamp.glsl");
 
     // Vertices dos triângulos
     float vertices[] =
