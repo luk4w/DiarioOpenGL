@@ -189,6 +189,21 @@ int main()
         // Desenhar cubo
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
+        // Definir qual Shader Program o OpenGL deve usar
+        shaderLamp.use();
+        // Reutilizar Projection e View Matrix
+        shaderLamp.setMat4("projection", projection);
+        shaderLamp.setMat4("view", view);
+        // Definir Model Matrix
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lampPosition);
+        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        shaderLamp.setMat4("model", model);
+        // Vincular o mesmo VAO do cubo
+        glBindVertexArray(cubeVAO);
+        // Desenhar a lâmpada
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
 
