@@ -162,6 +162,10 @@ int main()
         // Definir qual Shader Program o OpenGL deve usar
         shaderCube.use();
 
+        // Definir a cor do cubo e a cor da luz incidente
+        shaderCube.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+        shaderCube.setVec3("lightColor",  1.0f, 1.0f, 1.0f);
+
         // Projection Matrix
         glm::mat4 projection = glm::mat4(1.0f);  
         projection = glm::perspective(glm::radians(camera.fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
