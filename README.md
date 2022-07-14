@@ -1,1 +1,17 @@
 # DiarioOpenGL - Iluminação
+- Renomear vertex_shader.glsl e fragment_shader.glsl, para vertex_cube.glsl e fragment_cube.glsl.
+- Remover a textura de toda a aplicação.
+- Instanciar um objeto do tipo Shader, para carregar os shaders renomeados, e nomear ele de shaderCube.
+- Criar um VAO para o cubo, para definir o formato dos dados dos vertices.
+- Remover as posições do cubo.
+- Desenhar o cubo.
+- Adicionar sobrecarga de função para setVec3 na classe Shader, para abranger diferentes maneiras de definir os vetores tridimensionais nos tipos uniformes.
+- Adicionar uma cor ao cubo.
+- <img src="https://user-images.githubusercontent.com/73361955/177887650-ee2cc7a3-e76a-42b1-8915-66e2ae2b2619.png" width="300" height="200">
+- Criar vertex_lamp.glsl e fragment_lamp.glsl, os shaders da lâmpada.
+- Instanciar outro objeto do tipo Shader, para carregar os shaders criados, e nomear ele de shaderLamp.
+- Definir a posição da lâmpada.
+- Desenhar a lâmpada, em conjunto com o cubo.
+- <img src="https://user-images.githubusercontent.com/73361955/177644474-e8a9a1ee-9665-4140-a739-ef14db97a79d.png" width="300" height="200">
+- Adicionar uma iluminação ambiente, homogenea, no cubo.
+- <img src="https://user-images.githubusercontent.com/73361955/177896449-5cdcba0b-0509-4158-babf-2f71015b30c9.png" width="300" height="200">
