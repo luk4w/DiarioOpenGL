@@ -30,6 +30,9 @@ float lastY = HEIGHT / 2;
 float deltaTime = 0.0f;
 float lastTime = 0.0f;
 
+// Posição da lâmpada
+glm::vec3 lampPosition(2.0f, 1.0f, 0.0f);
+
 int main()
 {
     // Inicializar biblioteca GLFW
@@ -132,7 +135,7 @@ int main()
     // Copiar dados dos vertices para o VBO vinculado
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    // Atribuir ponteiros para os vertices do VBO vinculado na localização zero 
+    // Atribuir ponteiros para os vertices do VBO
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
