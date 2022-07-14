@@ -5,8 +5,9 @@
 - Criar um VAO para o cubo, para definir o formato dos dados dos vertices.
 - Remover as posições do cubo.
 - Desenhar o cubo.
+- <img src="https://user-images.githubusercontent.com/73361955/178903376-bd64eb1d-c919-4606-8ad6-75bafa333371.png" width="300" height="200">
 - Adicionar sobrecarga de função para setVec3 na classe Shader, para abranger diferentes maneiras de definir os vetores tridimensionais nos tipos uniformes.
-- Adicionar uma cor ao cubo.
+- Adicionar uma cor no cubo.
 - <img src="https://user-images.githubusercontent.com/73361955/177887650-ee2cc7a3-e76a-42b1-8915-66e2ae2b2619.png" width="300" height="200">
 - Criar vertex_lamp.glsl e fragment_lamp.glsl, os shaders da lâmpada.
 - Instanciar outro objeto do tipo Shader, para carregar os shaders criados, e nomear ele de shaderLamp.
