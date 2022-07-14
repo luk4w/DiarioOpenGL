@@ -135,18 +135,18 @@ int main()
     unsigned int VBO;
     glGenBuffers(1, &VBO);
 
-    // Vertex Array Object
-    unsigned int VAO;
-    glGenVertexArrays(1, &VAO);
+    // Cube Vertex Array Object
+    unsigned int cubeVAO;
+    glGenVertexArrays(1, &cubeVAO);
 
-    // Vincular VAO, VBO e EBO
-    glBindVertexArray(VAO);
+    // Vincular cubeVAO e VBO
+    glBindVertexArray(cubeVAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
     // Copiar dados dos vertices para o VBO vinculado
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    // Atribuir ponteiros para os vertices do VBO vinculado
+    // Atribuir ponteiros para os vertices do VBO vinculado na localização zero 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
@@ -187,7 +187,7 @@ int main()
         shaderCube.setMat4("view", view);
 
         // Vincular Vertex Array Object
-        glBindVertexArray(VAO);
+        glBindVertexArray(cubeVAO);
 
         for(unsigned int i = 0; i < 10; i++)
         {
@@ -213,7 +213,7 @@ int main()
         glfwPollEvents();
     }
 
-    glDeleteVertexArrays(1, &VAO); // Opcional
+    glDeleteVertexArrays(1, &cubeVAO); // Opcional
     glDeleteBuffers(1, &VBO); // Opcional
     glfwDestroyWindow(window); // Opcional
     glfwTerminate(); // Terminar biblioteca GLFW
