@@ -143,6 +143,15 @@ int main()
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
 
+    // Lamp Vertex Array Object
+    unsigned int lampVAO;
+    glGenVertexArrays(1, &lampVAO);
+    // Vincular lampVAO
+    glBindVertexArray(lampVAO);
+    // Atribuir ponteiros para os vertices do VBO do cubo, e pular as normais
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
     // Desvincular VBO e VAO para não modificar acidentalmente
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -201,10 +210,10 @@ int main()
         // Definir Model Matrix
         model = glm::mat4(1.0f);
         model = glm::translate(model, lampPosition);
-        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        model = glm::scale(model, glm::vec3(0.2f));
         shaderLamp.setMat4("model", model);
-        // Vincular o mesmo VAO do cubo
-        glBindVertexArray(cubeVAO);
+        // Vincular lampVAO
+        glBindVertexArray(lampVAO);
         // Desenhar a lâmpada
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
