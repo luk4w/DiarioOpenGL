@@ -135,9 +135,13 @@ int main()
     // Copiar dados dos vertices para o VBO vinculado
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    // Atribuir ponteiros para os vertices do VBO
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    // Atribuir ponteiros para os vertices do VBO do cubo
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+
+    // Atribuir ponteiros para as normais do VBO do cubo
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // Desvincular VBO e VAO para não modificar acidentalmente
     glBindBuffer(GL_ARRAY_BUFFER, 0);
