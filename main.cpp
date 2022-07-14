@@ -71,8 +71,8 @@ int main()
         return -1;
     }
 
-    Shader shaderCube("shaders/vertex_cube.glsl", "shaders/fragment_cube.glsl");
-    Shader shaderLamp("shaders/vertex_lamp.glsl", "shaders/fragment_lamp.glsl");
+    Shader shaderCube("shaders/cube_vertex.glsl", "shaders/cube_fragment.glsl");
+    Shader shaderLamp("shaders/lamp_vertex.glsl", "shaders/lamp_fragment.glsl");
 
     // Dados dos vertices dos triângulos
     float vertices[] =
