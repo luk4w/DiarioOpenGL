@@ -68,7 +68,7 @@ int main()
         return -1;
     }
 
-    Shader shaderProgram("shaders/vertex_shader.glsl", "shaders/fragment_shader.glsl");
+    Shader shaderCube("shaders/vertex_cube.glsl", "shaders/fragment_cube.glsl");
 
     // Vertices dos triângulos
     float vertices[] =
@@ -175,16 +175,16 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Definir qual Shader Program o OpenGL deve usar
-        shaderProgram.use();
+        shaderCube.use();
 
         // Projection Matrix
         glm::mat4 projection = glm::mat4(1.0f);  
         projection = glm::perspective(glm::radians(camera.fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-        shaderProgram.setMat4("projection", projection);
+        shaderCube.setMat4("projection", projection);
 
         // View Matrix
         glm::mat4 view = camera.getViewMatrix();
-        shaderProgram.setMat4("view", view);
+        shaderCube.setMat4("view", view);
 
         // Vincular Vertex Array Object
         glBindVertexArray(VAO);
@@ -200,7 +200,7 @@ int main()
             model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             
             // Enviar Model Matrix para o Vertex Shader
-            shaderProgram.setMat4("model", model);
+            shaderCube.setMat4("model", model);
 
             // Desenhar triângulos a partir dos vertices
             glDrawArrays(GL_TRIANGLES, 0, 36);
