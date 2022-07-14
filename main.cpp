@@ -116,21 +116,6 @@ int main()
         -0.5f,  0.5f, -0.5f
     };
 
-    // Definir a posição dos cubos no espaço do mundo
-    glm::vec3 cubePositions[] =
-    {
-        glm::vec3( 0.0f,  0.0f,  0.0f),
-        glm::vec3( 2.0f,  5.0f, -15.0f),
-        glm::vec3(-1.5f, -2.2f, -2.5f),
-        glm::vec3(-3.8f, -2.0f, -12.3f),
-        glm::vec3( 2.4f, -0.4f, -3.5f),
-        glm::vec3(-1.7f,  3.0f, -7.5f),
-        glm::vec3( 1.3f, -2.0f, -2.5f),
-        glm::vec3( 1.5f,  2.0f, -2.5f), 
-        glm::vec3( 1.5f,  0.2f, -1.5f), 
-        glm::vec3(-1.3f,  1.0f, -1.5f)
-    };
-
     // Vertex Buffer Object
     unsigned int VBO;
     glGenBuffers(1, &VBO);
@@ -195,7 +180,6 @@ int main()
             glm::mat4 model = glm::mat4(1.0f);
 
             // Transformações
-            model = glm::translate(model, cubePositions[i]);
             float angle = 20.0f * i;
             model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             
