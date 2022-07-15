@@ -25,3 +25,7 @@
 - Definir a posição da luz no cube_fragment.glsl, da main.cpp.
 - Adicionar uma iluminação difusa no cubo.
 - <img src="https://user-images.githubusercontent.com/73361955/179086817-97363c89-f90a-4290-82ae-f1a905dcd507.png" width="300" height="200">
+- Rotacionar o cubo ao longo do tempo.
+- <img src="https://user-images.githubusercontent.com/73361955/179121451-e75915ee-10c4-4037-87df-3c9f1daf820f.gif" width="300" height="200">
+- Corrigir a iluminação com a Normal Matrix, uma copia da Model Matrix adaptada para vetores normais, definida como "a parte 3x3 superior esquerda da transposição inversa da matriz modelo".
+- <img src="https://user-images.githubusercontent.com/73361955/179121005-e7f401ce-1239-4bba-95d6-49150a654d4e.gif" width="300" height="200">
