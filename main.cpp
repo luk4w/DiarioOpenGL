@@ -179,13 +179,18 @@ int main()
         // Definir qual Shader Program o OpenGL deve usar
         shaderCube.use();
 
-        // Definir a cor do cubo e a cor da luz incidente
-        shaderCube.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+        // Definir a cor da luz incidente
         shaderCube.setVec3("lightColor",  1.0f, 1.0f, 1.0f);
         // Definir a posição da fonte de luz
         shaderCube.setVec3("lightPos", lampPosition);
-        // Definir a posição do visualização
-        shaderCube.setVec3("viewPos", camera.position); 
+        // Definir a posição de visualização
+        shaderCube.setVec3("viewPos", camera.position);
+
+        // Definir as propriedades do material
+        shaderCube.setVec3("material.ambient", 1.0f, 0.5f, 0.31f);
+        shaderCube.setVec3("material.diffuse", 1.0f, 0.5f, 0.31f);
+        shaderCube.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+        shaderCube.setFloat("material.shininess", 32.0f);
 
         // Projection Matrix
         glm::mat4 projection = glm::mat4(1.0f);  
