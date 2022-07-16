@@ -32,4 +32,6 @@
 - Adicionar vetor viewPos no cube_fragment.glsl, para indicar a posição de visualização.
 - Adicionar uma iluminação especular, remover a rotação do cubo e mover a lâmpada ao redor do cubo.
 - <img src="https://user-images.githubusercontent.com/73361955/179367689-348826f3-689a-482a-94f4-da55ab7f3577.gif" width="300" height="200">
-
+- Adicionar uma estrutura para o material do cubo no cube_fragment.glsl.
+- Definir as propriedades do material, através dessa estrutura, na main.cpp.
+- <img src="https://user-images.githubusercontent.com/73361955/179369976-40fc9bf7-c0db-492c-beab-148ce4f54829.gif" width="300" height="200">
