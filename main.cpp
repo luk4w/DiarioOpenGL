@@ -201,7 +201,6 @@ int main()
 
         // Model Matrix
         glm::mat4 model = glm::mat4(1.0f);
-        model = glm::rotate(model, currentTime, glm::vec3(0.0f, 1.0f, 0.0f));
         shaderCube.setMat4("model", model);
         shaderCube.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
 
