@@ -179,8 +179,11 @@ int main()
         // Definir qual Shader Program o OpenGL deve usar
         shaderCube.use();
 
-        // Definir a cor da luz incidente
-        shaderCube.setVec3("lightColor",  1.0f, 1.0f, 1.0f);
+        // Definir as propriedades das iluminações
+        shaderCube.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
+        shaderCube.setVec3("light.diffuse",  0.5f, 0.5f, 0.5f);
+        shaderCube.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+
         // Definir a posição da fonte de luz
         shaderCube.setVec3("lightPos", lampPosition);
         // Definir a posição de visualização
