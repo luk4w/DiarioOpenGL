@@ -207,6 +207,11 @@ int main()
         // Desenhar cubo
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
+        // Mudar a posição da lâmpada ao longo do tempo
+        lampPosition.x = glm::sin(currentTime);
+        lampPosition.y = 0;
+        lampPosition.z = glm::cos(currentTime);
+
         // Definir qual Shader Program o OpenGL deve usar
         shaderLamp.use();
         // Reutilizar Projection e View Matrix
