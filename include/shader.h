@@ -29,6 +29,10 @@ public:
     { 
         glUniform3f(glGetUniformLocation(ID, name.c_str()), x, y, z); 
     }
+    void setFloat(const std::string &name, float value) const
+    { 
+        glUniform1f(glGetUniformLocation(ID, name.c_str()), value); 
+    }
 private:
     void checkCompileErrors(unsigned int shader, string type);
 };
