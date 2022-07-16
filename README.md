@@ -35,3 +35,9 @@
 - Adicionar uma estrutura para o material do cubo no cube_fragment.glsl.
 - Definir as propriedades do material, através dessa estrutura, na main.cpp.
 - <img src="https://user-images.githubusercontent.com/73361955/179369976-40fc9bf7-c0db-492c-beab-148ce4f54829.gif" width="300" height="200">
+- Adicionar uma estrutura para a iluminação do cubo no cube_fragment.glsl.
+- Definir as propriedades das iluminações, através dessa estrutura, na main.cpp.
+- <img src="https://user-images.githubusercontent.com/73361955/179373051-5444db72-629c-4b52-ae7f-cc8f9dd0ad8b.gif" width="300" height="200">
+
+
+
