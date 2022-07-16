@@ -30,6 +30,6 @@
 - Corrigir a iluminação com a Normal Matrix, uma copia da Model Matrix adaptada para vetores normais, definida como "a parte 3x3 superior esquerda da transposição inversa da matriz modelo".
 - <img src="https://user-images.githubusercontent.com/73361955/179326588-596df4b5-107e-4edd-a096-0d497f26d16a.gif" width="300" height="200">
 - Adicionar vetor viewPos no cube_fragment.glsl, para indicar a posição de visualização.
-- Adicionar uma iluminação especular no cubo, que calcula um reflexo em direção ao espectador.
-- <img src="https://user-images.githubusercontent.com/73361955/179360852-710bb355-9e45-4886-a13e-f7596ee0d852.gif" width="300" height="200">
+- Adicionar uma iluminação especular, remover a rotação do cubo e mover a lâmpada ao redor do cubo.
+- <img src="https://user-images.githubusercontent.com/73361955/179367689-348826f3-689a-482a-94f4-da55ab7f3577.gif" width="300" height="200">
 
