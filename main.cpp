@@ -164,10 +164,12 @@ int main()
     // Habilitar teste do buffer de profundidade
     glEnable(GL_DEPTH_TEST);
 
-    // Carregar textura
+    // Carregar texturas
     unsigned int diffuseMap = loadTexture("textures/container.png");
+    unsigned int specularMap = loadTexture("textures/container_specular.png");
     shaderCube.use(); 
     shaderCube.setInt("material.diffuse", 0);
+    shaderCube.setInt("material.specular", 1);
 
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
