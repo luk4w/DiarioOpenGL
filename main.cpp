@@ -214,13 +214,21 @@ int main()
         glm::mat4 view = camera.getViewMatrix();
         shaderCube.setMat4("view", view);
 
-        // Vincular Vertex Array Object
-        glBindVertexArray(cubeVAO);
-
         // Model Matrix
         glm::mat4 model = glm::mat4(1.0f);
         shaderCube.setMat4("model", model);
         shaderCube.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
+
+        // Vincular textura da iluminação difusa
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, diffuseMap);
+
+        // Vincular textura da iluminação especular
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, specularMap);
+        
+        // Vincular Vertex Array Object
+        glBindVertexArray(cubeVAO);
 
         // Desenhar cubo
         glDrawArrays(GL_TRIANGLES, 0, 36);
