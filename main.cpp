@@ -211,9 +211,14 @@ int main()
         shaderCube.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
         // Definir a posição da fonte de luz
-        shaderCube.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
+        shaderCube.setVec3("light.position", lampPosition);
         // Definir a posição de visualização
         shaderCube.setVec3("viewPos", camera.position);
+
+        // Definir atenuação da luz
+        shaderCube.setFloat("light.constant", 1.0f);
+        shaderCube.setFloat("light.linear", 0.09f);
+        shaderCube.setFloat("light.quadratic", 0.032f);
 
         // Definir as propriedades do material
         shaderCube.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
@@ -227,6 +232,9 @@ int main()
         // View Matrix
         glm::mat4 view = camera.getViewMatrix();
         shaderCube.setMat4("view", view);
+
+        // Model Matrix
+        glm::mat4 model = glm::mat4(1.0f);
 
         // Vincular textura da iluminação difusa
         glActiveTexture(GL_TEXTURE0);
@@ -242,7 +250,7 @@ int main()
         // Desenhar os cubos
         for (unsigned int i = 0; i < 10; i++)
         {
-            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
             float angle = 20.0f * i;
             model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
@@ -251,6 +259,17 @@ int main()
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
+        // Desenhar a lâmpada
+        shaderLamp.use();
+        shaderLamp.setMat4("projection", projection);
+        shaderLamp.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lampPosition);
+        model = glm::scale(model, glm::vec3(0.2f));
+        shaderLamp.setMat4("model", model);
+        glBindVertexArray(lampVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
 
