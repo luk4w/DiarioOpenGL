@@ -50,4 +50,10 @@
 - Carregar textura e configurar nos shaders, esse mapa de iluminação especular.
 - Desenhar um cubo texturizado com diferentes iluminações nos materiais, na parte de madeira, uma iluminação difusa, e na parte do metal, uma iluminação especular.
 - <img src="https://user-images.githubusercontent.com/73361955/180589452-32952a66-1264-4b26-bef7-54c880c9b856.gif" width="300" height="200">
+- Adicionar iluminação direcional.
+- Remover a lâmpada e desenhar vários cubos com uma iluminação parecida com a do sol.
+- <img src="https://user-images.githubusercontent.com/73361955/180626363-4fc6d3bd-56a9-4e0e-aa8f-e51852623c44.png" width="300" height="200">
+- Adicionar a lâmpada novamente.
+- Iluminar os objetos com diferemtes intensidades, uma atenuação, que leva em consideração a distância do objeto com a fonte de luz.
+- <img src="https://user-images.githubusercontent.com/73361955/180626393-220a7df3-72fc-40a5-8d9c-c465b9f9e249.png" width="300" height="200"> 
 
