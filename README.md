@@ -44,7 +44,7 @@
 - Atribuir ponteiros para ler as posições da textura no VAO.
 - Adicionar uma função na main.cpp para carregar texturas.
 - Carregar e configurar nos shaders a textura adicionada.
-- Desenhar um cubo com uma textura iluminada com um aspecto difuso.
+- Desenhar um cubo texturizado.
 - <img src="https://user-images.githubusercontent.com/73361955/180589146-27ea9ce3-d469-4dfd-a5ab-54a0849e38ba.gif" width="300" height="200">
 - Adicionar container_specular.png para servir como um mapa de iluminação especular.
 - Carregar textura e configurar nos shaders, esse mapa de iluminação especular.
