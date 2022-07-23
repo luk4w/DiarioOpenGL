@@ -121,6 +121,20 @@ int main()
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
     };
 
+    glm::vec3 cubePositions[] =
+    {
+        glm::vec3( 0.0f,  0.0f,  0.0f),
+        glm::vec3( 2.0f,  5.0f, -15.0f),
+        glm::vec3(-1.5f, -2.2f, -2.5f),
+        glm::vec3(-3.8f, -2.0f, -12.3f),
+        glm::vec3( 2.4f, -0.4f, -3.5f),
+        glm::vec3(-1.7f,  3.0f, -7.5f),
+        glm::vec3( 1.3f, -2.0f, -2.5f),
+        glm::vec3( 1.5f,  2.0f, -2.5f),
+        glm::vec3( 1.5f,  0.2f, -1.5f),
+        glm::vec3(-1.3f,  1.0f, -1.5f)
+    };
+
     // Vertex Buffer Object
     unsigned int VBO;
     glGenBuffers(1, &VBO);
@@ -197,7 +211,7 @@ int main()
         shaderCube.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
         // Definir a posição da fonte de luz
-        shaderCube.setVec3("light.position", lampPosition);
+        shaderCube.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
         // Definir a posição de visualização
         shaderCube.setVec3("viewPos", camera.position);
 
@@ -214,11 +228,6 @@ int main()
         glm::mat4 view = camera.getViewMatrix();
         shaderCube.setMat4("view", view);
 
-        // Model Matrix
-        glm::mat4 model = glm::mat4(1.0f);
-        shaderCube.setMat4("model", model);
-        shaderCube.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
-
         // Vincular textura da iluminação difusa
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, diffuseMap);
@@ -230,28 +239,17 @@ int main()
         // Vincular Vertex Array Object
         glBindVertexArray(cubeVAO);
 
-        // Desenhar cubo
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        // Mudar a posição da lâmpada ao longo do tempo
-        lampPosition.x = glm::sin(currentTime);
-        lampPosition.y = 0;
-        lampPosition.z = glm::cos(currentTime);
-
-        // Definir qual Shader Program o OpenGL deve usar
-        shaderLamp.use();
-        // Reutilizar Projection e View Matrix
-        shaderLamp.setMat4("projection", projection);
-        shaderLamp.setMat4("view", view);
-        // Definir Model Matrix
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, lampPosition);
-        model = glm::scale(model, glm::vec3(0.2f));
-        shaderLamp.setMat4("model", model);
-        // Vincular lampVAO
-        glBindVertexArray(lampVAO);
-        // Desenhar a lâmpada
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        // Desenhar os cubos
+        for (unsigned int i = 0; i < 10; i++)
+        {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i;
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            shaderCube.setMat4("model", model);
+            shaderCube.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
 
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
@@ -323,7 +321,7 @@ unsigned int loadTexture(char const *path)
     unsigned char *data = stbi_load(path, &width, &height, &nrComponents, 0);
     if (data)
     {
-        GLenum format;
+        unsigned int format;
         if (nrComponents == 1)
             format = GL_RED;
         else if (nrComponents == 3)
