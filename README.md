@@ -38,6 +38,16 @@
 - Adicionar uma estrutura para a iluminação do cubo no cube_fragment.glsl.
 - Definir as propriedades das iluminações, através dessa estrutura, na main.cpp.
 - <img src="https://user-images.githubusercontent.com/73361955/179373051-5444db72-629c-4b52-ae7f-cc8f9dd0ad8b.gif" width="300" height="200">
-
-
+- Adicionar container.png para servir de textura.
+- Adicionar uma função setInt() na classe Shader, para realizar a atribuição nas variáveis do tipo sampler2D.
+- Adicionar mais um atributo de vertice, em cada vértice, para a posição da textura.
+- Atribuir ponteiros para ler as posições da textura no VAO.
+- Adicionar uma função na main.cpp para carregar texturas.
+- Carregar e configurar nos shaders a textura adicionada.
+- Desenhar um cubo com uma textura iluminada com um aspecto difuso.
+- <img src="https://user-images.githubusercontent.com/73361955/180589146-27ea9ce3-d469-4dfd-a5ab-54a0849e38ba.gif" width="300" height="200">
+- Adicionar container_specular.png para servir como um mapa de iluminação especular.
+- Carregar textura e configurar nos shaders, esse mapa de iluminação especular.
+- Desenhar um cubo texturizado com diferentes iluminações nos materiais, na parte de madeira, uma iluminação difusa, e na parte do metal, uma iluminação especular.
+- <img src="https://user-images.githubusercontent.com/73361955/180589452-32952a66-1264-4b26-bef7-54c880c9b856.gif" width="300" height="200">
 
