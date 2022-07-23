@@ -54,6 +54,6 @@
 - Remover a lâmpada e desenhar vários cubos com uma iluminação parecida com a do sol.
 - <img src="https://user-images.githubusercontent.com/73361955/180626363-4fc6d3bd-56a9-4e0e-aa8f-e51852623c44.png" width="300" height="200">
 - Adicionar a lâmpada novamente.
-- Iluminar os objetos com diferemtes intensidades, uma atenuação, que leva em consideração a distância do objeto com a fonte de luz.
+- Iluminar os objetos com diferentes intensidades, uma atenuação, que leva em consideração a distância do objeto com a fonte de luz.
 - <img src="https://user-images.githubusercontent.com/73361955/180626393-220a7df3-72fc-40a5-8d9c-c465b9f9e249.png" width="300" height="200"> 
 
