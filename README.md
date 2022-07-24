@@ -50,10 +50,19 @@
 - Carregar textura e configurar nos shaders, esse mapa de iluminação especular.
 - Desenhar um cubo texturizado com diferentes iluminações nos materiais, na parte de madeira, uma iluminação difusa, e na parte do metal, uma iluminação especular.
 - <img src="https://user-images.githubusercontent.com/73361955/180589452-32952a66-1264-4b26-bef7-54c880c9b856.gif" width="300" height="200">
-- Adicionar iluminação direcional.
+- Adicionar luz direcional.
 - Remover a lâmpada e desenhar vários cubos com uma iluminação parecida com a do sol.
 - <img src="https://user-images.githubusercontent.com/73361955/180626363-4fc6d3bd-56a9-4e0e-aa8f-e51852623c44.png" width="300" height="200">
 - Adicionar a lâmpada novamente.
 - Iluminar os objetos com diferentes intensidades, uma atenuação, que leva em consideração a distância do objeto com a fonte de luz.
 - <img src="https://user-images.githubusercontent.com/73361955/180626393-220a7df3-72fc-40a5-8d9c-c465b9f9e249.png" width="300" height="200"> 
+- Adicionar uma função no cube_fragment.glsl para obter a luz direcional, e desenhar os cubos com essa luz direcional.
+- Adicionar uma função no cube_fragment.glsl para obter a luz de um determinado ponto de luz.
+- Adicionar quatro pontos de luz e desenhar os cubos.
+- <img src="https://user-images.githubusercontent.com/73361955/180628543-d7754ed4-4196-4ac1-9ffc-0eaecee6c289.png" width="300" height="200"> 
+- Adicionar uma função no cube_fragment.glsl para obter a luz de holofote.
+- Definir essa luz para funcionar como uma lanterna.
+- <img src="https://user-images.githubusercontent.com/73361955/180628588-36eda21b-874b-4489-b27c-9b1b735e22af.png" width="300" height="200"> 
+
+
 
