@@ -205,24 +205,17 @@ int main()
         // Definir qual Shader Program o OpenGL deve usar
         shaderCube.use();
 
-        // Definir as propriedades das iluminações
-        shaderCube.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
-        shaderCube.setVec3("light.diffuse",  0.5f, 0.5f, 0.5f);
-        shaderCube.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-
-        // Definir a posição da fonte de luz
-        shaderCube.setVec3("light.position", lampPosition);
         // Definir a posição de visualização
         shaderCube.setVec3("viewPos", camera.position);
 
-        // Definir atenuação da luz
-        shaderCube.setFloat("light.constant", 1.0f);
-        shaderCube.setFloat("light.linear", 0.09f);
-        shaderCube.setFloat("light.quadratic", 0.032f);
-
-        // Definir as propriedades do material
-        shaderCube.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+        // Definir o brilho do material
         shaderCube.setFloat("material.shininess", 32.0f);
+
+        // Luz direcional
+        shaderCube.setVec3("directionalLight.direction", -0.2f, -1.0f, -0.3f);
+        shaderCube.setVec3("directionalLight.ambient", 0.05f, 0.05f, 0.05f);
+        shaderCube.setVec3("directionalLight.diffuse", 0.4f, 0.4f, 0.4f);
+        shaderCube.setVec3("directionalLight.specular", 0.5f, 0.5f, 0.5f);
 
         // Projection Matrix
         glm::mat4 projection = glm::mat4(1.0f);  
