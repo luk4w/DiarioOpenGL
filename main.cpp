@@ -31,9 +31,6 @@ float lastY = HEIGHT / 2;
 float deltaTime = 0.0f;
 float lastTime = 0.0f;
 
-// Posição da lâmpada
-glm::vec3 lampPosition(1.2f, 1.0f, 2.0f);
-
 int main()
 {
     // Inicializar biblioteca GLFW
@@ -260,6 +257,18 @@ int main()
         shaderCube.setFloat("pointLights[3].constant", 1.0f);
         shaderCube.setFloat("pointLights[3].linear", 0.09f);
         shaderCube.setFloat("pointLights[3].quadratic", 0.032f);
+
+        // Holofote
+        shaderCube.setVec3("spotLight.position", camera.position);
+        shaderCube.setVec3("spotLight.direction", camera.front);
+        shaderCube.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
+        shaderCube.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
+        shaderCube.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
+        shaderCube.setFloat("spotLight.constant", 1.0f);
+        shaderCube.setFloat("spotLight.linear", 0.09f);
+        shaderCube.setFloat("spotLight.quadratic", 0.032f);
+        shaderCube.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
+        shaderCube.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));     
 
         // Projection Matrix
         glm::mat4 projection = glm::mat4(1.0f);  
