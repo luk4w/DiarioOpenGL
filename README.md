@@ -79,7 +79,7 @@
 - Movimentar a visualização da perspectiva da câmera, através do teclado.
 - Ajustar a velocidade do movimento através do deltaTime.
 - O deltaTime pode ser definido como a diferença de tempo entre cada renderização.
-- Definir função de retorno de chamada para o mouse.
+- Definir uma função de retorno de chamada para o mouse.
 - Movimentar a visualização da perspectiva da câmera, através do mouse.
 - <img src="https://user-images.githubusercontent.com/73361955/177018740-232719dc-3e4e-4d01-8c17-92af5dc5365a.gif" width="300" height="200">
 - Criar uma função de retorno de chamada para o scroll do mouse. 
@@ -87,5 +87,5 @@
 - Mover a Projection Matrix para dentro do loop de renderização principal.
 - Aplicar zoom através do scroll do mouse.
 - <img src="https://user-images.githubusercontent.com/73361955/177022233-7adeffd6-e229-43a0-b42d-d34d1f92d209.gif" width="300" height="200">
-- Criar uma classe chamada Camera, com a finalidade de organizar o código, obter e atualizar a View Matrix, e processar os eventos de entrada do teclado e do mouse.
+- Criar uma classe chamada Camera, para organizar o código, obter e atualizar a View Matrix, e processar os eventos de entrada do teclado e do mouse.
 
