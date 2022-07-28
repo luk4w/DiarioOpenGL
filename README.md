@@ -6,7 +6,6 @@
 - Atualizar os shaders.
 - Importar um modelo de mochila.
 - Carregar o modelo.
-- <img src="https://user-images.githubusercontent.com/73361955/181652625-a6ec16f5-0007-487d-a8b3-78ad1901cc28.png" width="320" height="240">
 - Por algum motivo, na versão 5.2.0 da assimp existe um bug na leitura de malhas complexas, demora muito. (pelo menos no windows)
 - Corrigir o bug alterando o arquivo libs/assimp/code/AssetLib/Obj/ObjFileParser.cpp.
 - Desenhar a mochila.
