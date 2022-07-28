@@ -70,54 +70,8 @@ int main()
 
     Shader shaderProgram("shaders/vertex_shader.glsl", "shaders/fragment_shader.glsl");
 
-    // Definir a posição dos cubos no espaço do mundo
-    glm::vec3 cubePositions[] =
-    {
-        glm::vec3( 0.0f,  0.0f,  0.0f),
-        glm::vec3( 2.0f,  5.0f, -15.0f),
-        glm::vec3(-1.5f, -2.2f, -2.5f),
-        glm::vec3(-3.8f, -2.0f, -12.3f),
-        glm::vec3( 2.4f, -0.4f, -3.5f),
-        glm::vec3(-1.7f,  3.0f, -7.5f),
-        glm::vec3( 1.3f, -2.0f, -2.5f),
-        glm::vec3( 1.5f,  2.0f, -2.5f), 
-        glm::vec3( 1.5f,  0.2f, -1.5f), 
-        glm::vec3(-1.3f,  1.0f, -1.5f)
-    };
-    
-    // Textura
-    unsigned int texture;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
-
-    // Definir parâmetros de quebra de textura
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-    // Definir parâmetros de filtragem de textura
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
     // Inverter as texturas carregadas no eixo y
     stbi_set_flip_vertically_on_load(true);
-    
-    // Carregar textura
-    int width, height, channels;
-    unsigned char *data = stbi_load("textures/wall.jpg", &width, &height, &channels, 0);
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        cout << "Falha ao carregar textura" << endl;
-    }
-    stbi_image_free(data);
-
-    // Desvincular VBO e VAO para não modificar acidentalmente
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
 
     // Habilitar teste do buffer de profundidade
     glEnable(GL_DEPTH_TEST);
@@ -138,9 +92,6 @@ int main()
 
         // Definir qual ou quais buffers precisam ser limpos
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        // Vincular textura
-        glBindTexture(GL_TEXTURE_2D, texture);
 
         // Definir qual Shader Program o OpenGL deve usar
         shaderProgram.use();
