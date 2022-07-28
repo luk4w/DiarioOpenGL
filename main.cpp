@@ -1,12 +1,9 @@
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
-#include <stb/stb_image.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 
 #include "shader.h"
 #include "camera.h"
+#include "model.h"
 
 #include <iostream>
 using std::cout;
@@ -68,13 +65,16 @@ int main()
         return -1;
     }
 
-    Shader shaderProgram("shaders/vertex_shader.glsl", "shaders/fragment_shader.glsl");
-
     // Inverter as texturas carregadas no eixo y
     stbi_set_flip_vertically_on_load(true);
 
     // Habilitar teste do buffer de profundidade
     glEnable(GL_DEPTH_TEST);
+
+    Shader shaderModel("shaders/vertex_shader.glsl", "shaders/fragment_shader.glsl");
+
+    // Carregar o modelo da mochila
+    Model backpack("models/backpack/backpack.obj");
 
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
@@ -93,17 +93,17 @@ int main()
         // Definir qual ou quais buffers precisam ser limpos
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // Definir qual Shader Program o OpenGL deve usar
-        shaderProgram.use();
+        // Definir qual Shader Model o OpenGL deve usar
+        shaderModel.use();
 
         // Projection Matrix
         glm::mat4 projection = glm::mat4(1.0f);  
         projection = glm::perspective(glm::radians(camera.fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-        shaderProgram.setMat4("projection", projection);
+        shaderModel.setMat4("projection", projection);
 
         // View Matrix
         glm::mat4 view = camera.getViewMatrix();
-        shaderProgram.setMat4("view", view);
+        shaderModel.setMat4("view", view);
 
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
