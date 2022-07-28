@@ -1,1 +1,13 @@
 # DiarioOpenGL - Carregar Modelos
+- Importar a biblioteca assimp.
+- Remover os vertices, o VBO, VAO e as texturas, da main.cpp.
+- Criar classe Mesh, para carregar e configurar as malhas.
+- Criar classe Model, para ler o arquivo do modelo, verificar os erros, separar os dados e desenhar o modelo.
+- Atualizar os shaders.
+- Importar um modelo de mochila.
+- Carregar o modelo.
+- <img src="https://user-images.githubusercontent.com/73361955/181652625-a6ec16f5-0007-487d-a8b3-78ad1901cc28.png" width="320" height="240">
+- Por algum motivo, na versão 5.2.0 da assimp existe um bug na leitura de malhas complexas, demora muito. (pelo menos no windows)
+- Corrigir o bug alterando o arquivo libs/assimp/code/AssetLib/Obj/ObjFileParser.cpp.
+- Desenhar a mochila.
+- <img src="https://user-images.githubusercontent.com/73361955/181652822-03e8e5a7-c379-4da4-9cff-943e29ea6957.png" width="320" height="240">
