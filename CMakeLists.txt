@@ -16,7 +16,7 @@ include_directories(include)
 add_subdirectory(libs)
 
 # Definir nome do executável e o(s) arquivo(s) fonte
-add_executable(${PROJECT_NAME} main.cpp src/shader.cpp src/camera.cpp src/mesh.cpp)
+add_executable(${PROJECT_NAME} main.cpp src/shader.cpp src/camera.cpp src/mesh.cpp src/model.cpp)
 
 # Vincular a(s) biblioteca(s) ao executável
-target_link_libraries(${PROJECT_NAME} glad glfw stb glm assimp) 
+target_link_libraries(${PROJECT_NAME} glad glfw stb glm assimp)
