@@ -93,17 +93,22 @@ int main()
         // Definir qual ou quais buffers precisam ser limpos
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // Definir qual Shader Model o OpenGL deve usar
-        shaderModel.use();
-
         // Projection Matrix
-        glm::mat4 projection = glm::mat4(1.0f);  
-        projection = glm::perspective(glm::radians(camera.fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-        shaderModel.setMat4("projection", projection);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 
         // View Matrix
         glm::mat4 view = camera.getViewMatrix();
+
+        // Model Matrix
+        glm::mat4 model = glm::mat4(1.0f);
+
+        // Definir qual Shader Model o OpenGL deve usar
+        shaderModel.use();
+        shaderModel.setMat4("projection", projection);
         shaderModel.setMat4("view", view);
+        shaderModel.setMat4("model", model);
+        // Desenhar a mochila
+        backpack.draw(shaderModel);
 
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
