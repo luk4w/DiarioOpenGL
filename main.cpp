@@ -85,17 +85,12 @@ int main()
         glm::vec3(-1.3f,  1.0f, -1.5f)
     };
 
-    // Vertex Buffer Object
-    unsigned int VBO;
-    glGenBuffers(1, &VBO);
-
     // Vertex Array Object
     unsigned int VAO;
     glGenVertexArrays(1, &VAO);
 
     // Vincular VAO, VBO e EBO
     glBindVertexArray(VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
     // Atribuir ponteiros para os vertices do VBO vinculado
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
@@ -202,7 +197,6 @@ int main()
     }
 
     glDeleteVertexArrays(1, &VAO); // Opcional
-    glDeleteBuffers(1, &VBO); // Opcional
     glfwDestroyWindow(window); // Opcional
     glfwTerminate(); // Terminar biblioteca GLFW
 
