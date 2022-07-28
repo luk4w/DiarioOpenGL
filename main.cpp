@@ -84,21 +84,6 @@ int main()
         glm::vec3( 1.5f,  0.2f, -1.5f), 
         glm::vec3(-1.3f,  1.0f, -1.5f)
     };
-
-    // Vertex Array Object
-    unsigned int VAO;
-    glGenVertexArrays(1, &VAO);
-
-    // Vincular VAO, VBO e EBO
-    glBindVertexArray(VAO);
-
-    // Atribuir ponteiros para os vertices do VBO vinculado
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    // Atribuir ponteiros para as texturas do VBO vinculado
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
     
     // Textura
     unsigned int texture;
@@ -169,34 +154,12 @@ int main()
         glm::mat4 view = camera.getViewMatrix();
         shaderProgram.setMat4("view", view);
 
-        // Vincular Vertex Array Object
-        glBindVertexArray(VAO);
-
-        for(unsigned int i = 0; i < 10; i++)
-        {
-            // Model Matrix
-            glm::mat4 model = glm::mat4(1.0f);
-
-            // Transformações
-            model = glm::translate(model, cubePositions[i]);
-            float angle = 20.0f * i;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-            
-            // Enviar Model Matrix para o Vertex Shader
-            shaderProgram.setMat4("model", model);
-
-            // Desenhar triângulos a partir dos vertices
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
-
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
-
         // Processar todos os eventos pendentes
         glfwPollEvents();
     }
 
-    glDeleteVertexArrays(1, &VAO); // Opcional
     glfwDestroyWindow(window); // Opcional
     glfwTerminate(); // Terminar biblioteca GLFW
 
