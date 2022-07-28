@@ -71,7 +71,7 @@ int main()
     // Habilitar teste do buffer de profundidade
     glEnable(GL_DEPTH_TEST);
 
-    Shader shaderModel("shaders/vertex_shader.glsl", "shaders/fragment_shader.glsl");
+    Shader shaderModel("shaders/model_vertex.glsl", "shaders/model_fragment.glsl");
 
     // Carregar o modelo da mochila
     Model backpack("models/backpack/backpack.obj");
