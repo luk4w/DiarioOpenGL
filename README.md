@@ -117,3 +117,9 @@
 - Adicionar uma atenuação, que diminui a intensidade da luz no objeto com base na distância entre eles.
 - Adicionar uma iluminação de lanterna, que basicamente é uma iluminação de holofote com a posição e a direção que a câmera está apontada.
 - <img src="https://user-images.githubusercontent.com/73361955/181842380-cd75c035-5fda-4089-b51f-07919d5e030f.gif" width="320" height="240">
+- Adicionar uma configuração de luz direcional no model_fragment.glsl.
+- Adicionar uma configuração de ponto de luz no model_fragment.glsl.
+- Desenhar várias mochilas com várias lâmpadas.
+- <img src="https://user-images.githubusercontent.com/73361955/181860504-8bca7086-6739-4541-a478-bd84754f4a03.png" width="320" height="240">
+- Adicionar uma configuração de luz de holofote no model_fragment.glsl e usar como lanterna.
+
