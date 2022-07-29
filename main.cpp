@@ -78,6 +78,20 @@ int main()
     Model backpack("models/backpack/backpack.obj");
     Model cube("models/cube/cube.obj");
 
+    glm::vec3 backpackPositions[] =
+    {
+        glm::vec3( 0.0f, 0.0f, 0.0f),
+        glm::vec3( 4.0f, 10.0f, -20.0f),
+        glm::vec3(-3.0f, -4.0f, -5.0f),
+        glm::vec3(-8.0f, -4.0f, -24.0f),
+        glm::vec3( 4.0f, -1.0f, -7.0f),
+        glm::vec3(-4.0f, 6.0f, -15.0f),
+        glm::vec3( 3.0f, -4.0f, -5.5f),
+        glm::vec3( 3.5f, 4.0f, -4.5f),
+        glm::vec3( 3.5f, 0.5f, -3.5f),
+        glm::vec3(-3.3f, 2.0f, -3.5f)
+    };
+
     glm::vec3 lampPositions[] =
     {
         glm::vec3( 0.7f, 0.2f, 2.0f),
@@ -114,49 +128,88 @@ int main()
 
         // Usar o Shader Program do modelo
         shaderModel.use();
+        shaderModel.setVec3("viewPos", camera.position);
+        shaderModel.setFloat("material.shininess", 32.0f);
+
+        // Luz direcional
+        shaderModel.setVec3("directionalLight.direction", -0.2f, -1.0f, -0.3f);
+        shaderModel.setVec3("directionalLight.ambient", 0.05f, 0.05f, 0.05f);
+        shaderModel.setVec3("directionalLight.diffuse", 0.4f, 0.4f, 0.4f);
+        shaderModel.setVec3("directionalLight.specular", 0.5f, 0.5f, 0.5f);
+
+        // Lâmpada 1
+        shaderModel.setVec3("pointLights[0].position", lampPositions[0]);
+        shaderModel.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+        shaderModel.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
+        shaderModel.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+        shaderModel.setFloat("pointLights[0].constant", 1.0f);
+        shaderModel.setFloat("pointLights[0].linear", 0.09f);
+        shaderModel.setFloat("pointLights[0].quadratic", 0.032f);
+        // Lâmpada 2
+        shaderModel.setVec3("pointLights[1].position", lampPositions[1]);
+        shaderModel.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
+        shaderModel.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
+        shaderModel.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
+        shaderModel.setFloat("pointLights[1].constant", 1.0f);
+        shaderModel.setFloat("pointLights[1].linear", 0.09f);
+        shaderModel.setFloat("pointLights[1].quadratic", 0.032f);
+        // Lâmpada 3
+        shaderModel.setVec3("pointLights[2].position", lampPositions[2]);
+        shaderModel.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
+        shaderModel.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
+        shaderModel.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
+        shaderModel.setFloat("pointLights[2].constant", 1.0f);
+        shaderModel.setFloat("pointLights[2].linear", 0.09f);
+        shaderModel.setFloat("pointLights[2].quadratic", 0.032f);
+        // Lâmpada 4
+        shaderModel.setVec3("pointLights[3].position", lampPositions[3]);
+        shaderModel.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
+        shaderModel.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
+        shaderModel.setVec3("pointLights[3].specular", 1.0f, 1.0f, 1.0f);
+        shaderModel.setFloat("pointLights[3].constant", 1.0f);
+        shaderModel.setFloat("pointLights[3].linear", 0.09f);
+        shaderModel.setFloat("pointLights[3].quadratic", 0.032f);
+
+        // Holofote
+        shaderModel.setVec3("spotLight.position", camera.position);
+        shaderModel.setVec3("spotLight.direction", camera.front);
+        shaderModel.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
+        shaderModel.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
+        shaderModel.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
+        shaderModel.setFloat("spotLight.constant", 1.0f);
+        shaderModel.setFloat("spotLight.linear", 0.09f);
+        shaderModel.setFloat("spotLight.quadratic", 0.032f);
+        shaderModel.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
+        shaderModel.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
+
         shaderModel.setMat4("projection", projection);
         shaderModel.setMat4("view", view);
         shaderModel.setMat4("model", model);
-        // Atualizar a iluminação na superficie do objeto
-        shaderModel.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
-        // Definir a posição de visualização
-        shaderModel.setVec3("viewPos", camera.position);
-        // Definir as propriedades do material
-        shaderModel.setFloat("material.shininess", 32.0f);
 
-        // Definir as propriedades da iluminação
-        shaderModel.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
-        shaderModel.setVec3("light.diffuse", 0.8f, 0.8f, 0.8f);
-        shaderModel.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-        // Definir as propriedades da lanterna
-        shaderModel.setVec3("light.position", camera.position);
-        shaderModel.setVec3("light.direction", camera.front);
-        shaderModel.setFloat("light.cutOff", glm::cos(glm::radians(12.5f))); 
-        shaderModel.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
-
-        // Definir as propriedades de atenuação
-        shaderModel.setFloat("light.constant", 1.0f); 
-        shaderModel.setFloat("light.linear", 0.09f); 
-        shaderModel.setFloat("light.quadratic", 0.032f); 
+        // Desenhar as mochilas
+        for (unsigned int i = 0; i < 10; i++)
+        {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, backpackPositions[i]);
+            float angle = 20.0f * i;
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            shaderModel.setMat4("model", model);
+            shaderModel.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
+            backpack.draw(shaderModel);
+        }
         
-        // Desenhar a mochila
-        backpack.draw(shaderModel);
-
-        /*
-        // Usar o Shader Program da lâmpada
         shaderLamp.use();
         shaderLamp.setMat4("projection", projection);
         shaderLamp.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        // Mover a lâmpada ao redor da mochila ao longo do tempo
-        lampPosition.x = glm::sin(currentTime) * 4;
-        lampPosition.z = glm::cos(currentTime) * 4;
-        model = glm::translate(model, lampPosition);
-        model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-        shaderLamp.setMat4("model", model);
-        // Desenhar um cubo para mostrar a posição da fonte de luz
-        cube.draw(shaderLamp);
-        */
+        // Desenhar as lâmpadas
+        for (unsigned int i = 0; i < 4; i++)
+        {
+             model = glm::mat4(1.0f);
+             model = glm::translate(model, lampPositions[i]);
+             model = glm::scale(model, glm::vec3(0.2f));
+             shaderLamp.setMat4("model", model);
+             cube.draw(shaderLamp);
+        }
        
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
