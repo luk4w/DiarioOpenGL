@@ -127,6 +127,9 @@ int main()
         shaderLamp.setMat4("projection", projection);
         shaderLamp.setMat4("view", view);
         model = glm::mat4(1.0f);
+        // Mover a lâmpada ao redor da mochila ao longo do tempo
+        lampPosition.x = glm::sin(currentTime) * 4;
+        lampPosition.z = glm::cos(currentTime) * 4;
         model = glm::translate(model, lampPosition);
         model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
         shaderLamp.setMat4("model", model);
