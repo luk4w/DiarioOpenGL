@@ -72,10 +72,14 @@ int main()
     glEnable(GL_DEPTH_TEST);
 
     Shader shaderModel("shaders/model_vertex.glsl", "shaders/model_fragment.glsl");
+    Shader shaderLamp("shaders/lamp_vertex.glsl", "shaders/lamp_fragment.glsl");
 
     // Carregar os modelos
     Model backpack("models/backpack/backpack.obj");
     Model cube("models/cube/cube.obj");
+
+    // Definir a posição da lâmpada
+    glm::vec3 lampPosition(4.0f, 0.0f, 0.0f);
 
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
@@ -110,6 +114,16 @@ int main()
         shaderModel.setMat4("model", model);
         // Desenhar a mochila
         backpack.draw(shaderModel);
+
+        // Usar o Shader Program da lâmpada
+        shaderLamp.use();
+        shaderLamp.setMat4("projection", projection);
+        shaderLamp.setMat4("view", view);
+        model = glm::translate(model, lampPosition);
+        model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+        shaderLamp.setMat4("model", model);
+        // Desenhar um cubo para mostrar a posição da fonte de luz
+        cube.draw(shaderLamp);
 
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
