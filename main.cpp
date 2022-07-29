@@ -124,6 +124,9 @@ int main()
         shaderModel.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
         shaderModel.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
         shaderModel.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        shaderModel.setFloat("light.constant", 1.0f);
+        shaderModel.setFloat("light.linear", 0.09f);
+        shaderModel.setFloat("light.quadratic", 0.032f);
         // Desenhar a mochila
         backpack.draw(shaderModel);
 
