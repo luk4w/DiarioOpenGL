@@ -2,6 +2,7 @@
 out vec4 FragColor;
 
 in vec2 TextureUV;
+in vec3 Normal;
 
 struct Material
 {
