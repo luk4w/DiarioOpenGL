@@ -16,6 +16,10 @@ uniform Material material;
 struct Light
 {
     vec3 position;
+    vec3 direction;
+    float cutOff;
+    float outerCutOff;
+
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
@@ -44,6 +48,13 @@ void main()
     vec3 reflectDirection = reflect(-lightDirection, norm);
     float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), material.shininess);
     vec3 specular = texture(material.specular, TextureUV).rgb * spec * light.specular;
+
+    // Ponto de luz
+    float theta = dot(lightDirection, normalize(-light.direction)); 
+    float epsilon = (light.cutOff - light.outerCutOff);
+    float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+    diffuse  *= intensity;
+    specular *= intensity;
 
     // Atenuação (reduzir intensidade da luz de acordo com a distância)
     float distance = length(light.position - FragPos);
