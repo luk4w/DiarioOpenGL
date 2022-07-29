@@ -8,7 +8,7 @@ in vec3 FragPos;
 struct Material
 {
     sampler2D diffuse;
-    vec3 specular;
+    sampler2D specular;
     float shininess;
 };
 uniform Material material;
@@ -39,7 +39,7 @@ void main()
     vec3 viewDirection = normalize(viewPos - FragPos);
     vec3 reflectDirection = reflect(-lightDirection, norm);
     float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), material.shininess);
-    vec3 specular = material.specular * spec * light.specular;
+    vec3 specular = texture(material.specular, TextureUV).rgb * spec * light.specular;
 
     FragColor = vec4(ambient + diffuse + specular, 1.0);
 }
