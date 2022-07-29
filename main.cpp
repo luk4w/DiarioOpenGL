@@ -116,9 +116,16 @@ int main()
         shaderModel.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
         // Definir a posição da fonte de luz
         shaderModel.setVec3("light.position", lampPosition);
+        // Definir a posição de visualização
+        shaderModel.setVec3("viewPos", camera.position);
+        // Definir as propriedades do material
+        shaderModel.setVec3("material.diffuse", 1.0f, 0.5f, 0.5f);
+        shaderModel.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+        shaderModel.setFloat("material.shininess", 32.0f);
         // Definir as propriedades da iluminação
         shaderModel.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
         shaderModel.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+        shaderModel.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
         // Desenhar a mochila
         backpack.draw(shaderModel);
 
