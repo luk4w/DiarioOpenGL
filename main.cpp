@@ -1,12 +1,9 @@
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
-#include <stb/stb_image.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 
 #include "shader.h"
 #include "camera.h"
+#include "model.h"
 
 #include <iostream>
 using std::cout;
@@ -68,128 +65,21 @@ int main()
         return -1;
     }
 
-    Shader shaderProgram("shaders/vertex_shader.glsl", "shaders/fragment_shader.glsl");
-
-    // Vertices dos triângulos
-    float vertices[] =
-    {
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-    };
-
-    // Definir a posição dos cubos no espaço do mundo
-    glm::vec3 cubePositions[] =
-    {
-        glm::vec3( 0.0f,  0.0f,  0.0f),
-        glm::vec3( 2.0f,  5.0f, -15.0f),
-        glm::vec3(-1.5f, -2.2f, -2.5f),
-        glm::vec3(-3.8f, -2.0f, -12.3f),
-        glm::vec3( 2.4f, -0.4f, -3.5f),
-        glm::vec3(-1.7f,  3.0f, -7.5f),
-        glm::vec3( 1.3f, -2.0f, -2.5f),
-        glm::vec3( 1.5f,  2.0f, -2.5f), 
-        glm::vec3( 1.5f,  0.2f, -1.5f), 
-        glm::vec3(-1.3f,  1.0f, -1.5f)
-    };
-
-    // Vertex Buffer Object
-    unsigned int VBO;
-    glGenBuffers(1, &VBO);
-
-    // Vertex Array Object
-    unsigned int VAO;
-    glGenVertexArrays(1, &VAO);
-
-    // Vincular VAO, VBO e EBO
-    glBindVertexArray(VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-    // Copiar dados dos vertices para o VBO vinculado
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    // Atribuir ponteiros para os vertices do VBO vinculado
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    // Atribuir ponteiros para as texturas do VBO vinculado
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-    
-    // Textura
-    unsigned int texture;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
-
-    // Definir parâmetros de quebra de textura
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-    // Definir parâmetros de filtragem de textura
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
     // Inverter as texturas carregadas no eixo y
     stbi_set_flip_vertically_on_load(true);
-    
-    // Carregar textura
-    int width, height, channels;
-    unsigned char *data = stbi_load("textures/wall.jpg", &width, &height, &channels, 0);
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        cout << "Falha ao carregar textura" << endl;
-    }
-    stbi_image_free(data);
-
-    // Desvincular VBO e VAO para não modificar acidentalmente
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
 
     // Habilitar teste do buffer de profundidade
     glEnable(GL_DEPTH_TEST);
+
+    Shader shaderModel("shaders/model_vertex.glsl", "shaders/model_fragment.glsl");
+    Shader shaderLamp("shaders/lamp_vertex.glsl", "shaders/lamp_fragment.glsl");
+
+    // Carregar os modelos
+    Model backpack("models/backpack/backpack.obj");
+    Model cube("models/cube/cube.obj");
+
+    // Definir a posição da lâmpada
+    glm::vec3 lampPosition(4.0f, 0.0f, 0.0f);
 
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
@@ -208,50 +98,56 @@ int main()
         // Definir qual ou quais buffers precisam ser limpos
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // Vincular textura
-        glBindTexture(GL_TEXTURE_2D, texture);
-
-        // Definir qual Shader Program o OpenGL deve usar
-        shaderProgram.use();
-
         // Projection Matrix
-        glm::mat4 projection = glm::mat4(1.0f);  
-        projection = glm::perspective(glm::radians(camera.fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-        shaderProgram.setMat4("projection", projection);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 
         // View Matrix
         glm::mat4 view = camera.getViewMatrix();
-        shaderProgram.setMat4("view", view);
 
-        // Vincular Vertex Array Object
-        glBindVertexArray(VAO);
+        // Model Matrix
+        glm::mat4 model = glm::mat4(1.0f);
 
-        for(unsigned int i = 0; i < 10; i++)
-        {
-            // Model Matrix
-            glm::mat4 model = glm::mat4(1.0f);
+        // Usar o Shader Program do modelo
+        shaderModel.use();
+        shaderModel.setMat4("projection", projection);
+        shaderModel.setMat4("view", view);
+        shaderModel.setMat4("model", model);
+        // Atualizar a iluminação na superficie do objeto
+        shaderModel.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
+        // Definir a posição da fonte de luz
+        shaderModel.setVec3("light.position", lampPosition);
+        // Definir a posição de visualização
+        shaderModel.setVec3("viewPos", camera.position);
+        // Definir as propriedades do material
+        shaderModel.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+        shaderModel.setFloat("material.shininess", 32.0f);
+        // Definir as propriedades da iluminação
+        shaderModel.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
+        shaderModel.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+        shaderModel.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        // Desenhar a mochila
+        backpack.draw(shaderModel);
 
-            // Transformações
-            model = glm::translate(model, cubePositions[i]);
-            float angle = 20.0f * i;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-            
-            // Enviar Model Matrix para o Vertex Shader
-            shaderProgram.setMat4("model", model);
-
-            // Desenhar triângulos a partir dos vertices
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
+        // Usar o Shader Program da lâmpada
+        shaderLamp.use();
+        shaderLamp.setMat4("projection", projection);
+        shaderLamp.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        // Mover a lâmpada ao redor da mochila ao longo do tempo
+        lampPosition.x = glm::sin(currentTime) * 4;
+        lampPosition.z = glm::cos(currentTime) * 4;
+        model = glm::translate(model, lampPosition);
+        model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+        shaderLamp.setMat4("model", model);
+        // Desenhar um cubo para mostrar a posição da fonte de luz
+        cube.draw(shaderLamp);
 
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
-
         // Processar todos os eventos pendentes
         glfwPollEvents();
     }
 
-    glDeleteVertexArrays(1, &VAO); // Opcional
-    glDeleteBuffers(1, &VBO); // Opcional
     glfwDestroyWindow(window); // Opcional
     glfwTerminate(); // Terminar biblioteca GLFW
 
