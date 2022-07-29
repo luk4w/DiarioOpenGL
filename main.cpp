@@ -119,7 +119,6 @@ int main()
         // Definir a posição de visualização
         shaderModel.setVec3("viewPos", camera.position);
         // Definir as propriedades do material
-        shaderModel.setVec3("material.diffuse", 1.0f, 0.5f, 0.5f);
         shaderModel.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
         shaderModel.setFloat("material.shininess", 32.0f);
         // Definir as propriedades da iluminação
