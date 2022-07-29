@@ -112,3 +112,8 @@
 - Adicionar uma iluminação especular.
 - <img src="https://user-images.githubusercontent.com/73361955/181683984-0f8a4de9-6421-402b-90cf-de577567454f.gif" width="320" height="240">
 - Nota: alterar as propriedades do material pode ser muito interessante.
+- Adicionar um mapa de textura especular (specular map). para fazer com que determinadas partes do objeto brilhem mais ou menos que outras.
+- <img src="https://user-images.githubusercontent.com/73361955/181834180-6fedde9f-3633-4187-b349-47f2db713536.gif" width="320" height="240">
+- Adicionar uma atenuação, que diminui a intensidade da luz no objeto com base na distância entre eles.
+- Adicionar uma iluminação de lanterna, que basicamente é uma iluminação de holofote com a posição e a direção que a câmera está apontada.
+- <img src="https://user-images.githubusercontent.com/73361955/181834882-b57940dc-a4a1-4981-b187-7b32aa03844e.png" width="320" height="240">
