@@ -114,20 +114,30 @@ int main()
         shaderModel.setMat4("model", model);
         // Atualizar a iluminação na superficie do objeto
         shaderModel.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
-        // Definir a posição da fonte de luz
-        shaderModel.setVec3("light.position", lampPosition);
         // Definir a posição de visualização
         shaderModel.setVec3("viewPos", camera.position);
         // Definir as propriedades do material
-        shaderModel.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
         shaderModel.setFloat("material.shininess", 32.0f);
+
         // Definir as propriedades da iluminação
-        shaderModel.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
-        shaderModel.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+        shaderModel.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+        shaderModel.setVec3("light.diffuse", 0.8f, 0.8f, 0.8f);
         shaderModel.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        // Definir as propriedades da lanterna
+        shaderModel.setVec3("light.position", camera.position);
+        shaderModel.setVec3("light.direction", camera.front);
+        shaderModel.setFloat("light.cutOff", glm::cos(glm::radians(12.5f))); 
+        shaderModel.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
+
+        // Definir as propriedades de atenuação
+        shaderModel.setFloat("light.constant", 1.0f); 
+        shaderModel.setFloat("light.linear", 0.09f); 
+        shaderModel.setFloat("light.quadratic", 0.032f); 
+        
         // Desenhar a mochila
         backpack.draw(shaderModel);
 
+        /*
         // Usar o Shader Program da lâmpada
         shaderLamp.use();
         shaderLamp.setMat4("projection", projection);
@@ -141,7 +151,8 @@ int main()
         shaderLamp.setMat4("model", model);
         // Desenhar um cubo para mostrar a posição da fonte de luz
         cube.draw(shaderLamp);
-
+        */
+       
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
         // Processar todos os eventos pendentes
