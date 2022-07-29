@@ -9,7 +9,7 @@
 - Corrigir o bug alterando o arquivo libs/assimp/code/AssetLib/Obj/ObjFileParser.cpp.
 - Desenhar a mochila.
 - <img src="https://user-images.githubusercontent.com/73361955/181652822-03e8e5a7-c379-4da4-9cff-943e29ea6957.png" width="320" height="240">
-- Renomear shaders para model_fragment.glsl e model_vertex.glsl.
+- Renomear os shaders para model_fragment.glsl e model_vertex.glsl.
 - Importar e carregar um modelo de cubo.
 - Criar shaders para a lâmpada.
 - Usar esses shaders e desenhar uma lâmpada com formato de cubo ao lado da mochila.
@@ -18,7 +18,7 @@
 - Adicionar uma iluninação difusa na mochila.
 - Rotacionar a mochila.
 - Adicionar uma matriz normal no vertex shader para corrigir a iluminação.
-- Remover rotação da mochila.
+- Remover a rotação da mochila.
 - Mover a lâmpada ao redor da mochila ao longo do tempo.
 - Adicionar uma iluminação especular.
 - <img src="https://user-images.githubusercontent.com/73361955/181683984-0f8a4de9-6421-402b-90cf-de577567454f.gif" width="320" height="240">
