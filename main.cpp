@@ -112,8 +112,11 @@ int main()
         shaderModel.setMat4("projection", projection);
         shaderModel.setMat4("view", view);
         shaderModel.setMat4("model", model);
+        // Definir a posição da fonte de luz
+        shaderModel.setVec3("light.position", lampPosition);
         // Definir as propriedades da iluminação
         shaderModel.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
+        shaderModel.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
         // Desenhar a mochila
         backpack.draw(shaderModel);
 
