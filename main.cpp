@@ -73,8 +73,9 @@ int main()
 
     Shader shaderModel("shaders/model_vertex.glsl", "shaders/model_fragment.glsl");
 
-    // Carregar o modelo da mochila
+    // Carregar os modelos
     Model backpack("models/backpack/backpack.obj");
+    Model cube("models/cube/cube.obj");
 
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
@@ -102,7 +103,7 @@ int main()
         // Model Matrix
         glm::mat4 model = glm::mat4(1.0f);
 
-        // Definir qual Shader Model o OpenGL deve usar
+        // Usar o Shader Program do modelo
         shaderModel.use();
         shaderModel.setMat4("projection", projection);
         shaderModel.setMat4("view", view);
