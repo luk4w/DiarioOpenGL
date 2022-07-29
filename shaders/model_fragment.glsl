@@ -9,7 +9,15 @@ struct Material
 };
 uniform Material material;
 
+struct Light
+{
+    vec3 ambient;
+};
+uniform Light light;
+
 void main()
 {
-    FragColor = texture(material.diffuse, TextureUV);
+    vec3 ambient = light.ambient * texture(material.diffuse, TextureUV).rgb;
+
+    FragColor = vec4(ambient, 1.0);
 }
