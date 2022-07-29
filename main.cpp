@@ -114,6 +114,8 @@ int main()
         // Rotacionar a mochila ao longo do tempo
         model = glm::rotate(model, currentTime, glm::vec3(0.0f, 1.0f, 0.0f));
         shaderModel.setMat4("model", model);
+        // Atualizar a iluminação na superficie do objeto
+        shaderModel.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
         // Definir a posição da fonte de luz
         shaderModel.setVec3("light.position", lampPosition);
         // Definir as propriedades da iluminação
