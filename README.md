@@ -1,4 +1,4 @@
-# DiarioOpenGL - Carregar Modelos
+# DiarioOpenGL - Carregamento de Modelos
 - Importar a biblioteca assimp.
 - Remover os vertices, o VBO, VAO e as texturas, da main.cpp.
 - Criar classe Mesh, para carregar e configurar as malhas.
