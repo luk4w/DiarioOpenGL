@@ -4,4 +4,4 @@ Bem vindo ao Diário OpenGL, esse repositório é um documentário das etapas a 
 
 - <a href="https://github.com/luk4w/DiarioOpenGL/tree/634fa87879a3a8161f7e200824226e8c69cf76a7">Introdução</a>
 - <a href="https://github.com/luk4w/DiarioOpenGL/tree/lighting">Iluminação</a>
-- <a href="https://github.com/luk4w/DiarioOpenGL/tree/model-loading">Carregar modelos</a>
+- <a href="https://github.com/luk4w/DiarioOpenGL/tree/model-loading">Carregamento de modelos</a>
