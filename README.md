@@ -1,4 +1,4 @@
-# DiarioOpenGL
+# DiarioOpenGL - Introdução
 - Configurar o projeto com CMake.
 - Importar a biblioteca GLFW.
 - Criar uma janela.
