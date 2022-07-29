@@ -111,6 +111,8 @@ int main()
         shaderModel.use();
         shaderModel.setMat4("projection", projection);
         shaderModel.setMat4("view", view);
+        // Rotacionar a mochila ao longo do tempo
+        model = glm::rotate(model, currentTime, glm::vec3(0.0f, 1.0f, 0.0f));
         shaderModel.setMat4("model", model);
         // Definir a posição da fonte de luz
         shaderModel.setVec3("light.position", lampPosition);
@@ -124,6 +126,7 @@ int main()
         shaderLamp.use();
         shaderLamp.setMat4("projection", projection);
         shaderLamp.setMat4("view", view);
+        model = glm::mat4(1.0f);
         model = glm::translate(model, lampPosition);
         model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
         shaderLamp.setMat4("model", model);
