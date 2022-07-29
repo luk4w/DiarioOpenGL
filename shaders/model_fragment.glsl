@@ -30,7 +30,20 @@ struct Light
 };
 uniform Light light;
 
+struct DirectionalLight
+{
+    vec3 direction;
+  
+    vec3 ambient;
+    vec3 diffuse;
+    vec3 specular;
+};  
+uniform DirectionalLight directionalLight;
+
 uniform vec3 viewPos;
+
+// Protótipos de função
+vec3 getDirectionalLight(DirectionalLight light, vec3 normal, vec3 viewDirection);  
 
 void main()
 {
@@ -65,4 +78,19 @@ void main()
     specular *= attenuation;
 
     FragColor = vec4(ambient + diffuse + specular, 1.0);
+}
+
+// Obter uma luz direcional
+vec3 getDirectionalLight(DirectionalLight light, vec3 normal, vec3 viewDirection)
+{
+    vec3 lightDirection = normalize(-light.direction);
+    float diff = max(dot(normal, lightDirection), 0.0);
+    vec3 reflectDirection = reflect(-lightDirection, normal);
+    float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), material.shininess);
+
+    vec3 ambient = light.ambient * vec3(texture(material.diffuse, TextureUV));
+    vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse, TextureUV));
+    vec3 specular = light.specular * spec * vec3(texture(material.specular, TextureUV));
+
+    return (ambient + diffuse + specular);
 }
