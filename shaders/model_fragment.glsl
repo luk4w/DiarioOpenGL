@@ -3,6 +3,7 @@ out vec4 FragColor;
 
 in vec2 TextureUV;
 in vec3 Normal;
+in vec3 FragPos;
 
 struct Material
 {
