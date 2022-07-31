@@ -78,20 +78,6 @@ int main()
     Model backpack("models/backpack/backpack.obj");
     Model cube("models/cube/cube.obj");
 
-    glm::vec3 backpackPositions[] =
-    {
-        glm::vec3( 0.0f, 0.0f, 0.0f),
-        glm::vec3( 4.0f, 10.0f, -20.0f),
-        glm::vec3(-3.0f, -4.0f, -5.0f),
-        glm::vec3(-8.0f, -4.0f, -24.0f),
-        glm::vec3( 4.0f, -1.0f, -7.0f),
-        glm::vec3(-4.0f, 6.0f, -15.0f),
-        glm::vec3( 3.0f, -4.0f, -5.5f),
-        glm::vec3( 3.5f, 4.0f, -4.5f),
-        glm::vec3( 3.5f, 0.5f, -3.5f),
-        glm::vec3(-3.3f, 2.0f, -3.5f)
-    };
-
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
     {   
@@ -144,18 +130,6 @@ int main()
         shaderModel.setMat4("projection", projection);
         shaderModel.setMat4("view", view);
         shaderModel.setMat4("model", model);
-
-        // Desenhar as mochilas
-        for (unsigned int i = 0; i < 10; i++)
-        {
-            glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, backpackPositions[i]);
-            float angle = 20.0f * i;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-            shaderModel.setMat4("model", model);
-            shaderModel.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
-            backpack.draw(shaderModel);
-        }
        
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
