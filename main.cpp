@@ -78,6 +78,9 @@ int main()
     Model backpack("models/backpack/backpack.obj");
     Model cube("models/cube/cube.obj");
 
+    // Posição da lâmpada
+    glm::vec3 lampPosition(0.0f, 0.0f, 4.0f);
+
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
     {   
@@ -115,6 +118,15 @@ int main()
         shaderModel.setVec3("directionalLight.diffuse", 0.4f, 0.4f, 0.4f);
         shaderModel.setVec3("directionalLight.specular", 0.5f, 0.5f, 0.5f);
 
+        // Ponto de luz
+        shaderModel.setVec3("pointLight.position", lampPosition);
+        shaderModel.setVec3("pointLight.ambient", 0.05f, 0.05f, 0.05f);
+        shaderModel.setVec3("pointLight.diffuse", 1.0f, 1.0f, 1.0f);
+        shaderModel.setVec3("pointLight.specular", 1.0f, 1.0f, 1.0f);
+        shaderModel.setFloat("pointLight.constant", 1.0f);
+        shaderModel.setFloat("pointLight.linear", 0.09f);
+        shaderModel.setFloat("pointLight.quadratic", 0.032f);
+
         // Holofote
         shaderModel.setVec3("spotLight.position", camera.position);
         shaderModel.setVec3("spotLight.direction", camera.front);
@@ -133,6 +145,16 @@ int main()
         shaderModel.setMat4("model", model);
         shaderModel.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
         backpack.draw(shaderModel);
+
+        // Desenhar a lâmpada
+        shaderLamp.use();
+        shaderLamp.setMat4("projection", projection);
+        shaderLamp.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+        model = glm::translate(model, lampPosition);
+        shaderLamp.setMat4("model", model);
+        cube.draw(shaderLamp);
        
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
