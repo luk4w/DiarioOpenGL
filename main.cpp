@@ -127,9 +127,12 @@ int main()
         shaderModel.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
         shaderModel.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
 
+        // Desenhar a mochila
         shaderModel.setMat4("projection", projection);
         shaderModel.setMat4("view", view);
         shaderModel.setMat4("model", model);
+        shaderModel.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
+        backpack.draw(shaderModel);
        
         // Trazer os "back buffers" para frente
         glfwSwapBuffers(window);
