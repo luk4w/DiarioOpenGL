@@ -91,7 +91,7 @@ void main()
     result += getPointLight(pointLight, norm, FragPos, viewDirection);  
 
     // Holofote
-    //result += getSpotLight(spotLight, norm, FragPos, viewDirection);    
+    result += getSpotLight(spotLight, norm, FragPos, viewDirection);    
     
     FragColor = vec4(result, 1.0);
 }
