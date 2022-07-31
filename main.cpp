@@ -92,14 +92,6 @@ int main()
         glm::vec3(-3.3f, 2.0f, -3.5f)
     };
 
-    glm::vec3 lampPositions[] =
-    {
-        glm::vec3( 0.7f, 0.2f, 2.0f),
-        glm::vec3( 2.3f, -3.3f, -4.0f),
-        glm::vec3(-4.0f, 2.0f, -12.0f),
-        glm::vec3( 0.0f, 0.0f, -3.0f)
-    };  
-
     // Loop de renderização principal
     while (!glfwWindowShouldClose(window))
     {   
@@ -137,39 +129,6 @@ int main()
         shaderModel.setVec3("directionalLight.diffuse", 0.4f, 0.4f, 0.4f);
         shaderModel.setVec3("directionalLight.specular", 0.5f, 0.5f, 0.5f);
 
-        // Lâmpada 1
-        shaderModel.setVec3("pointLights[0].position", lampPositions[0]);
-        shaderModel.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
-        shaderModel.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
-        shaderModel.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
-        shaderModel.setFloat("pointLights[0].constant", 1.0f);
-        shaderModel.setFloat("pointLights[0].linear", 0.09f);
-        shaderModel.setFloat("pointLights[0].quadratic", 0.032f);
-        // Lâmpada 2
-        shaderModel.setVec3("pointLights[1].position", lampPositions[1]);
-        shaderModel.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
-        shaderModel.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
-        shaderModel.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
-        shaderModel.setFloat("pointLights[1].constant", 1.0f);
-        shaderModel.setFloat("pointLights[1].linear", 0.09f);
-        shaderModel.setFloat("pointLights[1].quadratic", 0.032f);
-        // Lâmpada 3
-        shaderModel.setVec3("pointLights[2].position", lampPositions[2]);
-        shaderModel.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
-        shaderModel.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
-        shaderModel.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
-        shaderModel.setFloat("pointLights[2].constant", 1.0f);
-        shaderModel.setFloat("pointLights[2].linear", 0.09f);
-        shaderModel.setFloat("pointLights[2].quadratic", 0.032f);
-        // Lâmpada 4
-        shaderModel.setVec3("pointLights[3].position", lampPositions[3]);
-        shaderModel.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
-        shaderModel.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
-        shaderModel.setVec3("pointLights[3].specular", 1.0f, 1.0f, 1.0f);
-        shaderModel.setFloat("pointLights[3].constant", 1.0f);
-        shaderModel.setFloat("pointLights[3].linear", 0.09f);
-        shaderModel.setFloat("pointLights[3].quadratic", 0.032f);
-
         // Holofote
         shaderModel.setVec3("spotLight.position", camera.position);
         shaderModel.setVec3("spotLight.direction", camera.front);
@@ -196,19 +155,6 @@ int main()
             shaderModel.setMat4("model", model);
             shaderModel.setMat3("normalMatrix", glm::transpose(glm::inverse(model)));
             backpack.draw(shaderModel);
-        }
-        
-        shaderLamp.use();
-        shaderLamp.setMat4("projection", projection);
-        shaderLamp.setMat4("view", view);
-        // Desenhar as lâmpadas
-        for (unsigned int i = 0; i < 4; i++)
-        {
-             model = glm::mat4(1.0f);
-             model = glm::translate(model, lampPositions[i]);
-             model = glm::scale(model, glm::vec3(0.2f));
-             shaderLamp.setMat4("model", model);
-             cube.draw(shaderLamp);
         }
        
         // Trazer os "back buffers" para frente

@@ -52,8 +52,7 @@ struct PointLight
     vec3 diffuse;
     vec3 specular;
 };  
-#define NR_POINT_LIGHTS 4
-uniform PointLight pointLights[NR_POINT_LIGHTS];
+uniform PointLight pointLights;
 
 struct SpotLight
 {
@@ -87,12 +86,6 @@ void main()
     
     // Iluminação directional
     vec3 result = getDirectionalLight(directionalLight, norm, ViewDirection);
-
-    // Pontos de luz
-    for(int i = 0; i < NR_POINT_LIGHTS; i++)
-    {
-        result += getPointLight(pointLights[i], norm, FragPos, ViewDirection);  
-    }
 
     // Holofote
     result += getSpotLight(spotLight, norm, FragPos, ViewDirection);    
