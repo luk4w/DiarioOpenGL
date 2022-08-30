@@ -5,12 +5,14 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-enum cameraMovement
+enum Movement
 {
     FORWARD,
     BACKWARD,
     LEFT,
-    RIGHT
+    RIGHT,
+    UPWARD,
+    DOWNWARD
 };
 
 // Valores padrões da câmera
@@ -44,7 +46,7 @@ public:
     glm::mat4 getViewMatrix();
 
     // Processar a entrada de teclado
-    void processKeyboard(cameraMovement direction, float deltaTime);
+    void processKeyboard(Movement direction, float deltaTime);
 
     // Processar a entrada de mouse, recebe os valores da direção x e y
     void processMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true);
