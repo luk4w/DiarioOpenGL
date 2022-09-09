@@ -3,8 +3,8 @@
     "tasks": [
         {
             "label": "build",
-            "command": "build",
-            "type": "cmake"
+            "type": "shell",
+            "command": "cmake --build build/.",
         }
     ]
 }
