@@ -3,8 +3,14 @@
     "tasks": [
         {
             "label": "build",
-            "type": "shell",
-            "command": "cmake --build build/.",
+            "type": "cmake",
+            "command": "build",
         }
+        // // Comando alternativo de compilação
+        // {
+        //     "label": "build",
+        //     "type": "shell",
+        //     "command": "cmake --build build/.",
+        // }
     ]
 }
