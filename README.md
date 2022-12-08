@@ -6,31 +6,31 @@
 - <a href="https://youtu.be/MvAavNh-f8w">Carregar o contexto OpenGL e mudar o fundo da janela de cor.
 - <img src="https://user-images.githubusercontent.com/73361955/175784032-04498bba-fcf5-4d32-8be9-d05b8037c5a9.png" width="300" height="200"> <a>
 - Criar uma função de retorno de chamada para o redimensionamento de janela.
-- Importar o código-fonte para Vertex e Fragment Shader.
-- Criar programas para o Vertex e Fragment Shader e compilar.
-- Criar Shader Program.
+- Importar o código-fonte para o Vertex e o Fragment Shader.
+- Criar programas para o Vertex e o Fragment Shader e compilar.
+- Criar o Shader Program.
 - Anexar os Shaders criados ao Shader Program.
 - Vincular Shader Program ao OpenGL.
-- Verificar erros de vinculação.
+- Verificar se existe algum erro de vinculação.
 - Deletar Vertex e Fragment Shader, pois foram anexados ao Shader Program e estão inutilizados.
 - Configurar os dados dos vertices do triângulo.
 - Criar VBO (Vertex Buffer Object), que de modo simplificado, armazena o buffer na memória da placa de vídeo, para melhorar o desempenho.
-- Vincular VBO ao OpenGL.
+- Vincular o VBO ao OpenGL.
 - Copiar os dados dos vertices para o VBO.
-- Criar VAO (Vertex Array Object), que de modo simplificado, tem como objetivo descrever como os vertices são armazenados no VBO.
-- Vincular VAO ao OpenGL.
+- Criar um VAO (Vertex Array Object), que de modo simplificado, descreve como os vertices são armazenados no VBO.
+- Vincular o VAO ao OpenGL.
 - Atribuir ponteiros para os vertices.
-- Desvincular VBO e VAO para não modificar acidentalmente esses objetos.
+- Desvincular o VBO e o VAO para não modificar acidentalmente esses objetos.
 - Definir qual Shader Program o OpenGL deve usar.
 - Definir a primitiva GL_TRIANGLES.
 - <a href="https://youtu.be/C2fJJhRKMl4">Desenhar um triângulo.
 - <img src="https://user-images.githubusercontent.com/73361955/175783682-888e35d1-f695-41e1-88e7-4e2a8e02f174.png" width="300" height="200"><a>
 - Atualizar e adicionar mais um vertice aos vertices, para desenhar um retângulo, a partir de dois triângulos.
-- Criar indices a partir dos vertices, para desenhar os triângulos sem repetir as coordenadas.
+- Criar indices a partir dos vertices, para desenhar os triângulos sem repetir os dados.
 - Criar EBO (Element Buffer Object), que de modo simplificado, armazena um buffer com os indices dos vertices dos elementos.
 - <a href="https://youtu.be/X_hD_ea1D_E">Desenhar um retângulo.
 - <img src="https://user-images.githubusercontent.com/73361955/175783783-35100de8-0262-4c82-b80a-c87a308bc2c4.png" width="300" height="200"><a>
-- Criar classe Shader, para ler arquivos no formato glsl.
+- Criar a classe Shader, para ler arquivos no formato glsl.
 - Criar arquivos fragment_shader.glsl e vertex_shaders.glsl.
 - Instânciar a classe criada e usar os shaders.
 - Adicionar três floats na sequência das coordenadas de cada vertice para indicar a cor.
@@ -95,7 +95,7 @@
 - Criar classe Model, para ler o arquivo do modelo, verificar os erros, separar os dados e desenhar o modelo.
 - Atualizar os shaders.
 - Importar e carregar um modelo de mochila com o formato .obj (Object File Wavefront).
-- Nota: por algum motivo, na versão 5.2.0 da assimp existe um bug na leitura de malhas complexas, demora muito. (pelo menos no windows)
+- Nota: por algum motivo, na versão 5.2.0 da assimp existe um bug que faz demorar muito a leitura de malhas complexas. (pelo menos no windows)
 - Corrigir o bug alterando o arquivo libs/assimp/code/AssetLib/Obj/ObjFileParser.cpp.
 - Desenhar a mochila.
 - <img src="https://user-images.githubusercontent.com/73361955/181652822-03e8e5a7-c379-4da4-9cff-943e29ea6957.png" width="320" height="240">
