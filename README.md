@@ -5,16 +5,16 @@
 - Importar a biblioteca GLAD.
 - <a href="https://youtu.be/MvAavNh-f8w">Carregar o contexto OpenGL e mudar o fundo da janela de cor.
 - <img src="https://user-images.githubusercontent.com/73361955/175784032-04498bba-fcf5-4d32-8be9-d05b8037c5a9.png" width="300" height="200"> <a>
-- Criar função de retorno de chamada para redimensionamento de janela.
+- Criar uma função de retorno de chamada para o redimensionamento de janela.
 - Importar o código-fonte para Vertex e Fragment Shader.
 - Criar programas para o Vertex e Fragment Shader e compilar.
 - Criar Shader Program.
-- Anexar esses Shaders criados ao Shader Program.
+- Anexar os Shaders criados ao Shader Program.
 - Vincular Shader Program ao OpenGL.
 - Verificar erros de vinculação.
 - Deletar Vertex e Fragment Shader, pois foram anexados ao Shader Program e estão inutilizados.
 - Configurar os dados dos vertices do triângulo.
-- Criar VBO (Vertex Buffer Object), que de modo simplificado, tem como objetivo armazenar o buffer na memória da placa de vídeo, para melhorar o desempenho.
+- Criar VBO (Vertex Buffer Object), que de modo simplificado, armazena o buffer na memória da placa de vídeo, para melhorar o desempenho.
 - Vincular VBO ao OpenGL.
 - Copiar os dados dos vertices para o VBO.
 - Criar VAO (Vertex Array Object), que de modo simplificado, tem como objetivo descrever como os vertices são armazenados no VBO.
@@ -22,15 +22,16 @@
 - Atribuir ponteiros para os vertices.
 - Desvincular VBO e VAO para não modificar acidentalmente esses objetos.
 - Definir qual Shader Program o OpenGL deve usar.
-- Definir primitiva GL_TRIANGLES.
+- Definir a primitiva GL_TRIANGLES.
 - <a href="https://youtu.be/C2fJJhRKMl4">Desenhar um triângulo.
 - <img src="https://user-images.githubusercontent.com/73361955/175783682-888e35d1-f695-41e1-88e7-4e2a8e02f174.png" width="300" height="200"><a>
 - Atualizar e adicionar mais um vertice aos vertices, para desenhar um retângulo, a partir de dois triângulos.
 - Criar indices a partir dos vertices, para desenhar os triângulos sem repetir as coordenadas.
-- Criar EBO (Element Buffer Object), que de modo simplificado, tem como objetivo armazenar um buffer com os indices dos vertices dos elementos.
+- Criar EBO (Element Buffer Object), que de modo simplificado, armazena um buffer com os indices dos vertices dos elementos.
 - <a href="https://youtu.be/X_hD_ea1D_E">Desenhar um retângulo.
 - <img src="https://user-images.githubusercontent.com/73361955/175783783-35100de8-0262-4c82-b80a-c87a308bc2c4.png" width="300" height="200"><a>
-- Criar classe Shader, e a partir disso, criar arquivos fragment_shader.glsl e vertex_shaders.glsl para serem lidos por essa classe.
+- Criar classe Shader, para ler arquivos no formato glsl.
+- Criar arquivos fragment_shader.glsl e vertex_shaders.glsl.
 - Instânciar a classe criada e usar os shaders.
 - Adicionar três floats na sequência das coordenadas de cada vertice para indicar a cor.
 - Configurar os ponteiros de vertices e cores para um tamanho de seis floats, pois os três primeiros indicam o vertice, e os três últimos indicam a cor.
@@ -38,7 +39,7 @@
 - Importar imagem wall.jpg para servir de textura.
 - Importar biblioteca stb_image para carregar o arquivo de imagem da textura.
 - Adicionar coordenadas de textura para cada vertice.
-- Configurar os ponteiros de vertices, cores e texturas, para um tamanho de oito floats, pois os três primeiros indicam o vertice, os três consequentes indicam a cor, e os dois últimos, a coordenada da textura.
+- Configurar os ponteiros de vertices, cores e texturas, para um tamanho de oito floats, pois os três primeiros indicam o vertice, os três consequentes, indicam a cor, e os dois últimos, a coordenada da textura.
 - Alterar variável ID da classe Shader para public.
 - Configurar as texturas nos shaders, ou seja, nos arquivos de código-fonte GLSL.
 - Configurar a textura na main.cpp.
