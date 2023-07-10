@@ -3,8 +3,8 @@
 - Importar a biblioteca GLFW.
 - Criar uma janela.
 - Importar a biblioteca GLAD.
-- <a href="https://youtu.be/MvAavNh-f8w">Carregar o contexto OpenGL e mudar o fundo da janela de cor.
-- <img src="https://user-images.githubusercontent.com/73361955/175784032-04498bba-fcf5-4d32-8be9-d05b8037c5a9.png" width="300" height="200"> <a>
+- Carregar o contexto OpenGL e mudar o fundo da janela de cor.
+- <img src="https://user-images.githubusercontent.com/73361955/175784032-04498bba-fcf5-4d32-8be9-d05b8037c5a9.png" width="300" height="200"> 
 - Criar uma função de retorno de chamada para o redimensionamento de janela.
 - Importar o código-fonte para o Vertex e o Fragment Shader.
 - Criar programas para o Vertex e o Fragment Shader e compilar.
@@ -23,19 +23,19 @@
 - Desvincular o VBO e o VAO para não modificar acidentalmente esses objetos.
 - Definir qual Shader Program o OpenGL deve usar.
 - Definir a primitiva GL_TRIANGLES.
-- <a href="https://youtu.be/C2fJJhRKMl4">Desenhar um triângulo.
-- <img src="https://user-images.githubusercontent.com/73361955/175783682-888e35d1-f695-41e1-88e7-4e2a8e02f174.png" width="300" height="200"><a>
+- Desenhar um triângulo.
+- <img src="https://user-images.githubusercontent.com/73361955/175783682-888e35d1-f695-41e1-88e7-4e2a8e02f174.png" width="300" height="200">
 - Atualizar e adicionar mais um vertice aos vertices, para desenhar um retângulo, a partir de dois triângulos.
 - Criar indices a partir dos vertices, para desenhar os triângulos sem repetir os dados.
 - Criar EBO (Element Buffer Object), que de modo simplificado, armazena um buffer com os indices dos vertices dos elementos.
-- <a href="https://youtu.be/X_hD_ea1D_E">Desenhar um retângulo.
-- <img src="https://user-images.githubusercontent.com/73361955/175783783-35100de8-0262-4c82-b80a-c87a308bc2c4.png" width="300" height="200"><a>
+- <Desenhar um retângulo.
+- <img src="https://user-images.githubusercontent.com/73361955/175783783-35100de8-0262-4c82-b80a-c87a308bc2c4.png" width="300" height="200">
 - Criar a classe Shader, para ler arquivos no formato glsl.
 - Criar arquivos fragment_shader.glsl e vertex_shaders.glsl.
 - Instânciar a classe criada e usar os shaders.
 - Adicionar três floats na sequência das coordenadas de cada vertice para indicar a cor.
 - Configurar os ponteiros de vertices e cores para um tamanho de seis floats, pois os três primeiros indicam o vertice, e os três últimos indicam a cor.
-- <a href="https://youtu.be/RmLedWWnYO4"><img src="https://user-images.githubusercontent.com/73361955/175819855-e7b0cd66-cbdf-46e7-833f-721cad542178.png" width="300" height="200"><a>
+- <img src="https://user-images.githubusercontent.com/73361955/175819855-e7b0cd66-cbdf-46e7-833f-721cad542178.png" width="300" height="200">
 - Importar imagem wall.jpg para servir de textura.
 - Importar biblioteca stb_image para carregar o arquivo de imagem da textura.
 - Adicionar coordenadas de textura para cada vertice.
