@@ -12,7 +12,8 @@ const unsigned int WIDTH = 800;
 const unsigned int HEIGHT = 600;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
-InputManager input(&camera);
+RendererManager renderer(&camera, WIDTH, HEIGHT);
+InputManager input(&camera, &renderer);
 
 // Temporizador
 float deltaTime = 0.0f;
@@ -24,7 +25,6 @@ int main()
     if (!windowManager.initialize())
         return -1;
 
-    RendererManager renderer(&camera, WIDTH, HEIGHT);
     renderer.initialize();
 
     glfwSetCursorPosCallback(windowManager.getWindow(), [](GLFWwindow *window, double xpos, double ypos) { input.mouseCallback(window, xpos, ypos); });

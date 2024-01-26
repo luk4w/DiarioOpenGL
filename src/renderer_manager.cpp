@@ -1,8 +1,6 @@
 #include "renderer_manager.h"
 #include <iostream>
 
-// #define POINT_LIGHT_TEST
-
 RendererManager::RendererManager(Camera *cam, float w, float h)
     : camera(cam), width(w), height(h) {}
 
@@ -106,6 +104,7 @@ void RendererManager::setLighting(glm::vec3 lightPosition)
     // #endif
 
     // Holofote
+    shaderModel.setBool("spotlightOn", spotlightState);
     shaderModel.setVec3("spotLight.position", camera->position);
     shaderModel.setVec3("spotLight.direction", camera->front);
     shaderModel.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
@@ -116,4 +115,9 @@ void RendererManager::setLighting(glm::vec3 lightPosition)
     shaderModel.setFloat("spotLight.quadratic", 0.032f);
     shaderModel.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
     shaderModel.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
+}
+
+void RendererManager::toggleSpotlight()
+{
+    spotlightState = !spotlightState;
 }

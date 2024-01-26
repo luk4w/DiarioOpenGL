@@ -81,6 +81,8 @@ vec3 getDirectionalLight(DirectionalLight light, vec3 normal, vec3 viewDirection
 vec3 getPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDirection);  
 vec3 getSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDirection);
 
+uniform bool spotlightOn;
+
 void main()
 {
     // Iluminação difusa
@@ -99,8 +101,9 @@ void main()
     // Ponto de luz
     result += getPointLight(pointLight, norm, FragPos, viewDirection);  
 
-    // Holofote
-    result += getSpotLight(spotLight, norm, FragPos, viewDirection);    
+    if(spotlightOn)
+        // Holofote
+        result += getSpotLight(spotLight, norm, FragPos, viewDirection);    
     
     FragColor = vec4(result, 1.0);
 }

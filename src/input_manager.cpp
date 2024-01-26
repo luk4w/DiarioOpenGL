@@ -19,6 +19,15 @@ void InputManager::processInput(GLFWwindow *window, float deltaTime)
             camera->processKeyboard(UPWARD, deltaTime);
         if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
             camera->processKeyboard(DOWNWARD, deltaTime);
+        if(glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
+        {
+            double currentTime = glfwGetTime();
+            if (currentTime - lastToggleTime >= toggleDelay)
+            {
+                renderer->toggleSpotlight();
+                lastToggleTime = currentTime;
+            }
+        }
     }
 }
 
