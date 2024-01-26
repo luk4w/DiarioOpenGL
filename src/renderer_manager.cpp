@@ -1,5 +1,4 @@
 #include "renderer_manager.h"
-#include "shader_type.h"
 #include <iostream>
 
 RendererManager::RendererManager(Camera *cam, float w, float h)

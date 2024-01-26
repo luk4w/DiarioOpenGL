@@ -18,7 +18,11 @@ using std::string;
 #include <vector>
 using std::vector;
 
-#include "shader_type.h"
+enum ShaderType
+{
+    BASIC_SHADER,
+    LAMP_SHADER,
+};
 
 class Model
 {

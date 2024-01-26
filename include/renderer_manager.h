@@ -3,9 +3,8 @@
 
 #include <GLAD/glad.h>
 #include "camera.h"
-
-// Inclua outros cabeçalhos necessários, como glm para matemática de gráficos
 #include "model.h"
+
 
 class RendererManager
 {
@@ -18,7 +17,6 @@ private:
     void RendererManager::configureLighting(Shader& shader);
     Camera* camera;
     float width, height;
-    // Métodos e variáveis privadas conforme necessário
     std::vector<Model> models;
     Shader shaderModel;
     Shader shaderLamp;
