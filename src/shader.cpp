@@ -10,7 +10,11 @@ using std::stringstream;
 using std::cout;
 using std::endl;
 
-Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath)
+Shader::Shader()
+{
+}
+
+Shader::Shader(const char *vertexPath, const char *fragmentPath, const char *geometryPath)
 {
     // Recuperar o código-fonte dos arquivos
     string vertexCode;
@@ -20,10 +24,10 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
     ifstream fShaderFile;
     ifstream gShaderFile;
     // Verificar se os objetos ifstream podem lançar exceções
-    vShaderFile.exceptions (ifstream::failbit | ifstream::badbit);
-    fShaderFile.exceptions (ifstream::failbit | ifstream::badbit);
-    gShaderFile.exceptions (ifstream::failbit | ifstream::badbit);
-    try 
+    vShaderFile.exceptions(ifstream::failbit | ifstream::badbit);
+    fShaderFile.exceptions(ifstream::failbit | ifstream::badbit);
+    gShaderFile.exceptions(ifstream::failbit | ifstream::badbit);
+    try
     {
         // Abrir arquivos
         vShaderFile.open(vertexPath);
@@ -40,10 +44,10 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 
         // Transformar stream em string
         vertexCode = vShaderStream.str();
-        fragmentCode = fShaderStream.str();	
-        		
+        fragmentCode = fShaderStream.str();
+
         // Carregar Geometry Shader se != nullptr
-        if(geometryPath != nullptr)
+        if (geometryPath != nullptr)
         {
             gShaderFile.open(geometryPath);
             stringstream gShaderStream;
@@ -52,12 +56,13 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
             geometryCode = gShaderStream.str();
         }
     }
-    catch (ifstream::failure& e)
+    catch (ifstream::failure &e)
     {
-        cout << "Falha ao ler arquivo de codigo-fonte GLSL " << endl << e.what() << endl;
+        cout << "Falha ao ler arquivo de codigo-fonte GLSL " << endl
+             << e.what() << endl;
     }
-    const char* vShaderCode = vertexCode.c_str();
-    const char * fShaderCode = fragmentCode.c_str();
+    const char *vShaderCode = vertexCode.c_str();
+    const char *fShaderCode = fragmentCode.c_str();
 
     // Vertex Shader
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -72,9 +77,9 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
     checkCompileErrors(fragmentShader, "Fragment Shader");
 
     unsigned int geometryShader;
-    if(geometryPath != nullptr)
+    if (geometryPath != nullptr)
     {
-        const char * gShaderCode = geometryCode.c_str();
+        const char *gShaderCode = geometryCode.c_str();
         geometryShader = glCreateShader(GL_GEOMETRY_SHADER);
         glShaderSource(geometryShader, 1, &gShaderCode, NULL);
         glCompileShader(geometryShader);
@@ -85,7 +90,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
     ID = glCreateProgram();
     glAttachShader(ID, vertexShader);
     glAttachShader(ID, fragmentShader);
-    if(geometryPath != nullptr)
+    if (geometryPath != nullptr)
         glAttachShader(ID, geometryShader);
     glLinkProgram(ID);
     checkCompileErrors(ID, "Shader Program");
@@ -93,13 +98,13 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
     // Deletar shaders inutilizados
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
-    if(geometryPath != nullptr)
+    if (geometryPath != nullptr)
         glDeleteShader(geometryShader);
 }
 
 void Shader::use()
 {
-    glUseProgram(ID); 
+    glUseProgram(ID);
 }
 
 // Verificar erros de compilação e vinculação
@@ -107,23 +112,24 @@ void Shader::checkCompileErrors(unsigned int shader, string type)
 {
     int success;
     char infoLog[1024];
-    if(type != "Shader Program")
+    if (type != "Shader Program")
     {
         glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-        if(!success)
+        if (!success)
         {
             glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-            cout << "Erro ao vincular " << type << endl << infoLog << endl;
+            cout << "Erro ao vincular " << type << endl
+                 << infoLog << endl;
         }
     }
     else
     {
         glGetProgramiv(shader, GL_LINK_STATUS, &success);
-        if(!success)
+        if (!success)
         {
             glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-            cout << "Erro ao vincular " << type << endl << infoLog << endl;
+            cout << "Erro ao vincular " << type << endl
+                 << infoLog << endl;
         }
     }
 }
-    

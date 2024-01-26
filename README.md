@@ -124,3 +124,5 @@
 - <img src="https://user-images.githubusercontent.com/73361955/181860504-8bca7086-6739-4541-a478-bd84754f4a03.png" width="320" height="240">
 - Adicionar uma configuração de luz de holofote no model_fragment.glsl e usar como lanterna.
 - Remover as lâmpadas e as mochilas, e desenhar apenas uma mochila e uma lâmpada.
+- Criar classe Window Manager, refatoração para as funções de inicialização de GLFWwindow, callbacks e destruição.
+- Criar classe Renderer Manager, refatoração para as configurações de buffer do OpenGL e a lógica de renderização dos modelos.
