@@ -126,3 +126,4 @@
 - Remover as lâmpadas e as mochilas, e desenhar apenas uma mochila e uma lâmpada.
 - Criar classe Window Manager, refatoração para as funções de inicialização de GLFWwindow, callbacks e destruição.
 - Criar classe Renderer Manager, refatoração para as configurações de buffer do OpenGL e a lógica de renderização dos modelos.
+- Criar classes Input Manager, refatoração para gerenciar as entradas de mouse e teclado.
