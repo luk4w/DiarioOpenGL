@@ -1,38 +1,35 @@
 #include "scene.h"
-
 #include <iostream>
 
 Scene::Scene()
 {
+    objectManager.loadModels();
 }
 
-void Scene::loadModels()
+void Scene::addObject(const std::string &name,
+    ShaderType shaderType, const glm::vec3 &position,
+    const glm::vec3 &scale,const glm::vec3 &rotation)
 {
-    // Carregar os modelos
-    Model bp("models/backpack/backpack.obj");
-    bp.setShaderType(BASIC_SHADER);
-    addObject(bp);
-
-    bp.setPosition(glm::vec3(0.0f, 4.0f, 0.0f));
-    addObject(bp);
-
-    bp.setPosition(glm::vec3(0.0f, 8.0f, 0.0f));
-    addObject(bp);
-
-    Model cube("models/cube/cube.obj");
-    cube.setShaderType(LAMP_SHADER);
-    cube.setPosition(glm::vec3(0.0f, 0.0f, 4.0f));
-    cube.setScale(glm::vec3(0.2f, 0.2f, 0.2f));
-    addObject(cube);
-   
+    Model *model = objectManager.getModel(name);
+    if (model == nullptr)
+    {
+        std::cerr << "Erro ao adicionar model '" << name << "'." << std::endl;
+        return;
+    }
+    else
+    {
+        Object obj(objectManager.getModel(name), shaderType, position, scale, rotation);
+        objects.push_back(obj);
+    }
 }
 
-void Scene::addObject(const Model &model)
+void Scene::addObject(const std::string &name)
 {
-    models.push_back(model);
+    Object obj(objectManager.getModel(name));
+    objects.push_back(obj);
 }
 
-void Scene::removeObject(const Model &model)
+void Scene::removeObject(const Object &obj)
 {
     
 }
@@ -44,5 +41,5 @@ void Scene::update()
 
 void Scene::draw(RendererManager &renderer, glm::vec3 lightPosition)
 {
-    renderer.render(&models, lightPosition);
+    renderer.render(&objects, lightPosition);
 }

@@ -19,7 +19,7 @@ void RendererManager::initialize()
     shaderLamp = Shader("shaders/lamp_vertex.glsl", "shaders/lamp_fragment.glsl");
 }
 
-void RendererManager::render(std::vector<Model> *models, glm::vec3 lightPos)
+void RendererManager::render(std::vector<Object> *objects, glm::vec3 lightPos)
 {
     // Limpar os buffers
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -29,12 +29,12 @@ void RendererManager::render(std::vector<Model> *models, glm::vec3 lightPos)
     glm::mat4 projection = glm::perspective(glm::radians(camera->fov), (float)width / (float)height, 0.1f, 100.0f);
     glm::mat4 view = camera->getViewMatrix();
 
-    for (auto &model : *models)
+    for (auto &obj : *objects)
     {
-        Shader *shader = model.getShaderType() == BASIC_SHADER ? &shaderModel : &shaderLamp;
+        Shader *shader = obj.getShaderType() == BASIC_SHADER ? &shaderModel : &shaderLamp;
         shader->use();
 
-        if (model.getShaderType() == BASIC_SHADER)
+        if (obj.getShaderType() == BASIC_SHADER)
             setLighting(lightPos);
 
         shader->setVec3("viewPos", camera->position);
@@ -43,12 +43,12 @@ void RendererManager::render(std::vector<Model> *models, glm::vec3 lightPos)
 
         // Configuração da matriz de modelo específica para cada objeto
         glm::mat4 modelMatrix = glm::mat4(1.0f);
-        modelMatrix = glm::translate(modelMatrix, model.getPosition());
-        modelMatrix = glm::scale(modelMatrix, model.getScale());
+        modelMatrix = glm::translate(modelMatrix, obj.getPosition());
+        modelMatrix = glm::scale(modelMatrix, obj.getScale());
         shader->setMat4("model", modelMatrix);
         shader->setMat3("normalMatrix", glm::transpose(glm::inverse(modelMatrix)));
 
-        model.draw(*shader);
+        obj.model->draw(*shader);
     }
 }
 

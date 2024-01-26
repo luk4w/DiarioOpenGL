@@ -32,9 +32,10 @@ int main()
     glfwSetInputMode(windowManager.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     Scene scene;
-    scene.loadModels();
-
+    scene.addObject("backpack");
+    
     glm::vec3 lampPosition =glm::vec3(0.0f, 1.0f, 0.0f);
+    scene.addObject("cube", LAMP_SHADER, lampPosition, glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.0f, 0.0f, 0.0f));
 
     while (!glfwWindowShouldClose(windowManager.getWindow()))
     {
@@ -45,11 +46,10 @@ int main()
         // Mover a iluminacao da lâmpada ao redor das mochilas ao longo do tempo
         lampPosition.x = glm::sin(currentTime) * 4;
         lampPosition.z = glm::cos(currentTime) * 4;
+
         // Atualizar posicao do modelo na cena
-        scene.models[3].setPosition(lampPosition); // Criar classe Object ?
-
+        scene.objects[1].setPosition(lampPosition);
         input.processInput(windowManager.getWindow(), deltaTime);
-
         scene.draw(renderer, lampPosition);
 
         windowManager.swapBuffers();
