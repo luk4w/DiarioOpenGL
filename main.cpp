@@ -34,15 +34,23 @@ int main()
     Scene scene;
     scene.loadModels();
 
+    glm::vec3 lampPosition =glm::vec3(0.0f, 1.0f, 0.0f);
+
     while (!glfwWindowShouldClose(windowManager.getWindow()))
     {
         float currentTime = static_cast<float>(glfwGetTime());
         deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
+        // Mover a iluminacao da lâmpada ao redor das mochilas ao longo do tempo
+        lampPosition.x = glm::sin(currentTime) * 4;
+        lampPosition.z = glm::cos(currentTime) * 4;
+        // Atualizar posicao do modelo na cena
+        scene.models[3].setPosition(lampPosition); // Criar classe Object ?
+
         input.processInput(windowManager.getWindow(), deltaTime);
 
-        scene.drawModels(renderer);
+        scene.draw(renderer, lampPosition);
 
         windowManager.swapBuffers();
         windowManager.pollEvents();

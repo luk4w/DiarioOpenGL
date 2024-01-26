@@ -1,7 +1,6 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-
 #include "renderer_manager.h"
 
 class Scene
@@ -10,11 +9,9 @@ public:
     Scene();
     void addObject(const Model &model);
     void removeObject(const Model &model);
-    void update(float deltaTime);
-    void drawModels(RendererManager &renderer);
+    void draw(RendererManager &renderer, glm::vec3 lightPosition);
+    void update();
     void loadModels();
-
-private:
     std::vector<Model> models;
 };
 

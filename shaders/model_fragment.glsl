@@ -54,6 +54,9 @@ struct PointLight
 };  
 uniform PointLight pointLight;
 
+// #define NR_POINT_LIGHTS 4
+// uniform PointLight pointLights[NR_POINT_LIGHTS];
+
 struct SpotLight
 {
     vec3 position;
@@ -86,6 +89,12 @@ void main()
     
     // Iluminação directional
     vec3 result = getDirectionalLight(directionalLight, norm, viewDirection);
+
+    // // Para renderizar mais que uma lampada
+    // for(int i = 0; i < NR_POINT_LIGHTS; i++)
+    // {
+    //     result += getPointLight(pointLights[i], norm, FragPos, ViewDirection);  
+    // }
 
     // Ponto de luz
     result += getPointLight(pointLight, norm, FragPos, viewDirection);  
