@@ -5,7 +5,6 @@
 #include "camera.h"
 #include "model.h"
 
-
 class RendererManager
 {
 public:
