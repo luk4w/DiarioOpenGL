@@ -15,21 +15,13 @@ void RendererManager::initialize()
     // Inicialização de Shaders
     shaderModel = Shader("shaders/model_vertex.glsl", "shaders/model_fragment.glsl");
     shaderLamp = Shader("shaders/lamp_vertex.glsl", "shaders/lamp_fragment.glsl");
-
-    // Carregar os modelos
-    Model bp("models/backpack/backpack.obj");
-    bp.setShaderType(BASIC_SHADER);
-    models.push_back(bp);
-
-    Model cube("models/cube/cube.obj");
-    cube.setShaderType(LAMP_SHADER);
-    cube.setPosition(lampPosition);
-    cube.setScale(glm::vec3(0.2f, 0.2f, 0.2f));
-    models.push_back(cube);
+    
 }
 
-void RendererManager::render()
+void RendererManager::render(std::vector<Model>* models)
 {
+    glm::vec3 lampPosition = glm::vec3(0.0f, 0.0f, 4.0f);
+
     // Limpar os buffers
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -38,13 +30,13 @@ void RendererManager::render()
     glm::mat4 projection = glm::perspective(glm::radians(camera->fov), (float)width / (float)height, 0.1f, 100.0f);
     glm::mat4 view = camera->getViewMatrix();
 
-    for (auto &model : models)
+    for (auto &model : *models)
     {
         Shader *shader = model.getShaderType() == BASIC_SHADER ? &shaderModel : &shaderLamp;
         shader->use();
 
         if (model.getShaderType() == BASIC_SHADER)
-            configureLighting(*shader);
+            configureLighting(lampPosition);
 
         shader->setVec3("viewPos", camera->position);
         shader->setMat4("view", view);
@@ -61,8 +53,8 @@ void RendererManager::render()
     }
 }
 
-void RendererManager::configureLighting(Shader &shader)
-{
+void RendererManager::configureLighting(glm::vec3 lampPosition)
+{    
     shaderModel.setFloat("material.shininess", 32.0f);
 
     // Luz direcional

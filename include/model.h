@@ -37,7 +37,7 @@ public:
     // Desenhar o modelo
     void draw(Shader &shader);
 
-    void setShaderType(ShaderType type) { shaderType = type; }
+    void setShaderType(ShaderType type = BASIC_SHADER) { shaderType = type; }
     ShaderType getShaderType() const { return shaderType; }
 
     void setPosition(const glm::vec3 &pos) { position = pos; }

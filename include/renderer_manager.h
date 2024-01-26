@@ -10,18 +10,14 @@ class RendererManager
 public:
     RendererManager(Camera* camera, float width, float height);
     void initialize();
-    void render();
+    void render(std::vector<Model>* models);
 
 private:
-    void RendererManager::configureLighting(Shader& shader);
+    void configureLighting(glm::vec3 lampPosition);
     Camera* camera;
     float width, height;
-    std::vector<Model> models;
     Shader shaderModel;
     Shader shaderLamp;
-
-    // Posição da lâmpada
-    glm::vec3 lampPosition = glm::vec3(0.0f, 0.0f, 4.0f);
 };
 
 #endif

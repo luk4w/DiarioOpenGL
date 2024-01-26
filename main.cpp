@@ -2,6 +2,7 @@
 #include "renderer_manager.h"
 #include "camera.h"
 #include "input_manager.h"
+#include "scene.h"
 
 #include <iostream>
 using std::cout;
@@ -11,7 +12,7 @@ const unsigned int WIDTH = 800;
 const unsigned int HEIGHT = 600;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
-InputManager inputManager(&camera);
+InputManager input(&camera);
 
 // Temporizador
 float deltaTime = 0.0f;
@@ -26,9 +27,12 @@ int main()
     RendererManager renderer(&camera, WIDTH, HEIGHT);
     renderer.initialize();
 
-    glfwSetCursorPosCallback(windowManager.getWindow(), [](GLFWwindow *window, double xpos, double ypos) { inputManager.mouseCallback(window, xpos, ypos); });
-    glfwSetScrollCallback(windowManager.getWindow(), [](GLFWwindow *window, double xoffset, double yoffset) { inputManager.scrollCallback(window, xoffset, yoffset); });
+    glfwSetCursorPosCallback(windowManager.getWindow(), [](GLFWwindow *window, double xpos, double ypos) { input.mouseCallback(window, xpos, ypos); });
+    glfwSetScrollCallback(windowManager.getWindow(), [](GLFWwindow *window, double xoffset, double yoffset) { input.scrollCallback(window, xoffset, yoffset); });
     glfwSetInputMode(windowManager.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+    Scene scene;
+    scene.loadModels();
 
     while (!glfwWindowShouldClose(windowManager.getWindow()))
     {
@@ -36,9 +40,9 @@ int main()
         deltaTime = currentTime - lastTime;
         lastTime = currentTime;
 
-        inputManager.processInput(windowManager.getWindow(), deltaTime);
+        input.processInput(windowManager.getWindow(), deltaTime);
 
-        renderer.render();
+        scene.drawModels(renderer);
 
         windowManager.swapBuffers();
         windowManager.pollEvents();
