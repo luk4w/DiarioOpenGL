@@ -1,10 +1,10 @@
-#include "renderer_manager.h"
+#include "renderer.h"
 #include <iostream>
 
-RendererManager::RendererManager(Camera *cam, float w, float h)
+Renderer::Renderer(Camera *cam, float w, float h)
     : camera(cam), width(w), height(h) {}
 
-void RendererManager::initialize()
+void Renderer::initialize()
 {
     // Inverter as texturas carregadas no eixo y
     stbi_set_flip_vertically_on_load(true);
@@ -17,7 +17,7 @@ void RendererManager::initialize()
     shaderLamp = Shader("shaders/lamp_vertex.glsl", "shaders/lamp_fragment.glsl");
 }
 
-void RendererManager::render(std::vector<Object> *objects, glm::vec3 lightPos)
+void Renderer::render(std::vector<Object> *objects, glm::vec3 lightPos)
 {
     // Limpar os buffers
     glClearColor(0.05f, 0.1f, 0.1f, 1.0f);
@@ -50,7 +50,7 @@ void RendererManager::render(std::vector<Object> *objects, glm::vec3 lightPos)
     }
 }
 
-void RendererManager::setLighting(glm::vec3 lightPosition)
+void Renderer::setLighting(glm::vec3 lightPosition)
 {
     shaderModel.setFloat("material.shininess", 32.0f);
 
@@ -117,7 +117,7 @@ void RendererManager::setLighting(glm::vec3 lightPosition)
     shaderModel.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
 }
 
-void RendererManager::toggleSpotlight()
+void Renderer::toggleSpotlight()
 {
     spotlightState = !spotlightState;
 }

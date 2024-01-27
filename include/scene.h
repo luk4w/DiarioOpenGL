@@ -1,7 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include "renderer_manager.h"
+#include "renderer.h"
 #include "object_manager.h"
 #include "object.h"
 
@@ -16,7 +16,7 @@ public:
     const glm::vec3 &rotation = glm::vec3(0.0f, 0.0f, 0.0f), ShaderType shaderType = BASIC_SHADER);
     void addObject(const std::string &name);
     void removeObject(const Object &obj);
-    void draw(RendererManager &renderer, glm::vec3 lightPosition);
+    void draw(Renderer &renderer, glm::vec3 lightPosition);
     void update();
     std::vector<Object> objects;
 };

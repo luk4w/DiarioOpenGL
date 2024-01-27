@@ -38,7 +38,7 @@ void Scene::update()
    
 }
 
-void Scene::draw(RendererManager &renderer, glm::vec3 lightPosition)
+void Scene::draw(Renderer &renderer, glm::vec3 lightPosition)
 {
     renderer.render(&objects, lightPosition);
 }

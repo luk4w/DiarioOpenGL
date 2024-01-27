@@ -1,15 +1,15 @@
-#ifndef RENDERER_MANAGER_H
-#define RENDERER_MANAGER_H
+#ifndef RENDERER_H
+#define RENDERER_H
 
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
 #include "camera.h"
 #include "object.h"
 
-class RendererManager
+class Renderer
 {
 public:
-    RendererManager(Camera* camera, float width, float height);
+    Renderer(Camera* camera, float width, float height);
     void initialize();
     void render(std::vector<Object>* objs, glm::vec3 lightPos);
     void toggleSpotlight();

@@ -1,5 +1,5 @@
 #include "window_manager.h"
-#include "renderer_manager.h"
+#include "renderer.h"
 #include "camera.h"
 #include "input_manager.h"
 #include "scene.h"
@@ -12,7 +12,7 @@ const unsigned int WIDTH = 1280;
 const unsigned int HEIGHT = 720;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
-RendererManager renderer(&camera, WIDTH, HEIGHT);
+Renderer renderer(&camera, WIDTH, HEIGHT);
 InputManager input(&camera, &renderer);
 
 // Temporizador
