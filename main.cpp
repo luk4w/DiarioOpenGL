@@ -8,28 +8,23 @@
 using std::cout;
 using std::endl;
 
-const unsigned int WIDTH = 1280;
-const unsigned int HEIGHT = 720;
-
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
-Renderer renderer(&camera, WIDTH, HEIGHT);
-InputManager input(&camera, &renderer);
-
 // Temporizador
 float deltaTime = 0.0f;
 float lastTime = 0.0f;
 
 int main()
 {
-    WindowManager windowManager("DiarioOpenGL", WIDTH, HEIGHT);
-    if (!windowManager.initialize())
+    Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+
+    WindowManager wm("DiarioOpenGL", 1280, 720);
+    if (!wm.initialize())
         return -1;
 
+    Renderer renderer(&camera, wm.getWidth(), wm.getHeight());
     renderer.initialize();
 
-    glfwSetCursorPosCallback(windowManager.getWindow(), [](GLFWwindow *window, double xpos, double ypos) { input.mouseCallback(window, xpos, ypos); });
-    glfwSetScrollCallback(windowManager.getWindow(), [](GLFWwindow *window, double xoffset, double yoffset) { input.scrollCallback(window, xoffset, yoffset); });
-    glfwSetInputMode(windowManager.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    InputManager input(&camera, &renderer);
+    input.configureCallbacks(wm.getWindow());
 
     Scene scene;
     scene.addObject("backpack");
@@ -39,7 +34,7 @@ int main()
     glm::vec3 lampPosition =glm::vec3(0.0f, 1.0f, 0.0f);
     scene.addObject("cube", lampPosition, glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.0f, 0.0f, 0.0f), LAMP_SHADER);
 
-    while (!glfwWindowShouldClose(windowManager.getWindow()))
+    while (!glfwWindowShouldClose(wm.getWindow()))
     {
         float currentTime = static_cast<float>(glfwGetTime());
         deltaTime = currentTime - lastTime;
@@ -51,11 +46,11 @@ int main()
 
         // Atualizar posicao do modelo na cena
         scene.objects[3].setPosition(lampPosition);
-        input.processInput(windowManager.getWindow(), deltaTime);
+        input.processInput(wm.getWindow(), deltaTime);
         scene.draw(renderer, lampPosition);
 
-        windowManager.swapBuffers();
-        windowManager.pollEvents();
+        wm.swapBuffers();
+        wm.pollEvents();
     }
 
     return 0;

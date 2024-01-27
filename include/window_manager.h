@@ -17,6 +17,8 @@ public:
     bool shouldClose() const;
     void swapBuffers();
     void pollEvents();
+    int getWidth() const { return width; }
+    int getHeight() const { return height; }
 
 private:
     GLFWwindow *window;

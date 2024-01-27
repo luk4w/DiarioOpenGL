@@ -3,6 +3,7 @@
 
 #include "camera.h"
 #include "renderer.h"
+#include "window_manager.h"
 #include <GLFW/glfw3.h>
 
 class InputManager
@@ -12,13 +13,14 @@ public:
     void processInput(GLFWwindow *window, float deltaTime);
     void mouseCallback(GLFWwindow *window, double xpos, double ypos);
     void scrollCallback(GLFWwindow *window, double xoffset, double yoffset);
+    void configureCallbacks(GLFWwindow* window);
 
 private:
     Camera *camera;
     Renderer *renderer;
     bool firstMouse;
     float lastX, lastY;
-    
+
     // Temporizador da lanterna
     double lastToggleSpotlightTime;
     const double toggleSpotlightDelay = 0.5;

@@ -1,5 +1,8 @@
 #include "input_manager.h"
 
+static void mouseCallbackInternal(GLFWwindow *window, double xpos, double ypos);
+static void scrollCallbackInternal(GLFWwindow *window, double xoffset, double yoffset);
+
 void InputManager::processInput(GLFWwindow *window, float deltaTime)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -19,7 +22,7 @@ void InputManager::processInput(GLFWwindow *window, float deltaTime)
             camera->processKeyboard(UPWARD, deltaTime);
         if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
             camera->processKeyboard(DOWNWARD, deltaTime);
-        if(glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
+        if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
         {
             double currentTime = glfwGetTime();
             if (currentTime - lastToggleSpotlightTime >= toggleSpotlightDelay)
@@ -48,7 +51,6 @@ void InputManager::mouseCallback(GLFWwindow *window, double xposIn, double yposI
     lastX = xpos;
     lastY = ypos;
 
-
     if (camera)
         camera->processMouseMovement(xoffset, yoffset);
 }
@@ -57,4 +59,25 @@ void InputManager::scrollCallback(GLFWwindow *window, double xoffset, double yof
 {
     if (camera)
         camera->processMouseScroll(static_cast<float>(yoffset));
+}
+
+
+void InputManager::configureCallbacks(GLFWwindow* window)
+{
+        glfwSetWindowUserPointer(window, this);
+        glfwSetCursorPosCallback(window, mouseCallbackInternal);
+        glfwSetScrollCallback(window, scrollCallbackInternal);
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+}
+
+static void mouseCallbackInternal(GLFWwindow *window, double xpos, double ypos)
+{
+    auto inputManager = static_cast<InputManager *>(glfwGetWindowUserPointer(window));
+    inputManager->mouseCallback(window, xpos, ypos); 
+}
+
+static void scrollCallbackInternal(GLFWwindow *window, double xoffset, double yoffset)
+{
+    auto inputManager = static_cast<InputManager *>(glfwGetWindowUserPointer(window));
+    inputManager->scrollCallback(window, xoffset, yoffset);
 }

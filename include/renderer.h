@@ -9,7 +9,7 @@
 class Renderer
 {
 public:
-    Renderer(Camera* camera, float width, float height);
+    Renderer(Camera* camera, int width, int height);
     void initialize();
     void render(std::vector<Object>* objs, glm::vec3 lightPos);
     void toggleSpotlight();
@@ -18,7 +18,7 @@ private:
     void setLighting(glm::vec3 lightPosition);
     Camera* camera;
     bool spotlightState = false;
-    float width, height;
+    int width, height;
     Shader shaderModel;
     Shader shaderLamp;
 

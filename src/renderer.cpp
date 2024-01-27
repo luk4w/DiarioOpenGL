@@ -1,7 +1,7 @@
 #include "renderer.h"
 #include <iostream>
 
-Renderer::Renderer(Camera *cam, float w, float h)
+Renderer::Renderer(Camera *cam, int w, int h)
     : camera(cam), width(w), height(h) {}
 
 void Renderer::initialize()
