@@ -2,7 +2,7 @@
 
 int main()
 {
-    Engine engine;
+    Engine engine("DiarioOpenGL", 1280, 720);
     if (engine.initialize())
         engine.run();
 

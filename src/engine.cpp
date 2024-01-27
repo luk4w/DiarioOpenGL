@@ -1,10 +1,10 @@
 #include "engine.h"
 #include <iostream>
 
-Engine::Engine() : camera(glm::vec3(0.0f, 0.0f, 8.0f)),
-                   windowManager("DiarioOpenGL", 1280, 720),
-                   renderer(&camera, windowManager.getWidth(), windowManager.getHeight()),
-                   inputManager(&camera, &renderer)
+Engine::Engine(const std::string name, int width, int height)
+    : camera(glm::vec3(0.0f, 0.0f, 8.0f)), windowManager(name, width, height),
+      renderer(&camera, windowManager.getWidth(), windowManager.getHeight()),
+      inputManager(&camera, &renderer)
 {
 }
 
@@ -48,7 +48,7 @@ void Engine::run()
 void Engine::update(float deltaTime)
 {
     // Variavel para mover objetos indepentente da taxa de atualização
-    accumulatedTime += deltaTime; 
+    accumulatedTime += deltaTime;
     // Gerenciar a entrada de mouse e teclado
     inputManager.processInput(windowManager.getWindow(), deltaTime);
 
@@ -60,7 +60,7 @@ void Engine::update(float deltaTime)
 void Engine::render(glm::vec3 lampPosition)
 {
     // Atualizar posicao do modelo na cena
-    scene.objects[3].setPosition(lampPosition);// Criar classe para gerenciar a iluminação
+    scene.objects[3].setPosition(lampPosition); // Criar classe para gerenciar a iluminação
     scene.draw(renderer, lampPosition);
 
     windowManager.swapBuffers();

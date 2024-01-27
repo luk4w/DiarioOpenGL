@@ -10,7 +10,7 @@
 class Engine
 {
 public:
-    Engine();
+    Engine(const std::string name, int width, int height);
     bool initialize();
     void run();
 
