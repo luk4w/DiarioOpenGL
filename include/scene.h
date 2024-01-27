@@ -18,6 +18,7 @@ public:
     void removeObject(const Object &obj);
     void draw(Renderer &renderer, glm::vec3 lightPosition);
     void update();
+    void initialize();
     std::vector<Object> objects;
 };
 

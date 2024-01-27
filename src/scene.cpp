@@ -3,6 +3,10 @@
 
 Scene::Scene()
 {
+}
+
+void Scene::initialize()
+{
     objectManager.loadModels();
 }
 
