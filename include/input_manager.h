@@ -18,8 +18,10 @@ private:
     RendererManager *renderer;
     bool firstMouse;
     float lastX, lastY;
-    double lastToggleTime;
-    const double toggleDelay = 0.5;
+    
+    // Temporizador da lanterna
+    double lastToggleSpotlightTime;
+    const double toggleSpotlightDelay = 0.5;
 };
 
 #endif

@@ -22,10 +22,10 @@ void InputManager::processInput(GLFWwindow *window, float deltaTime)
         if(glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
         {
             double currentTime = glfwGetTime();
-            if (currentTime - lastToggleTime >= toggleDelay)
+            if (currentTime - lastToggleSpotlightTime >= toggleSpotlightDelay)
             {
                 renderer->toggleSpotlight();
-                lastToggleTime = currentTime;
+                lastToggleSpotlightTime = currentTime;
             }
         }
     }

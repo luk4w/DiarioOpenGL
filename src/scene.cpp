@@ -6,9 +6,8 @@ Scene::Scene()
     objectManager.loadModels();
 }
 
-void Scene::addObject(const std::string &name,
-    ShaderType shaderType, const glm::vec3 &position,
-    const glm::vec3 &scale,const glm::vec3 &rotation)
+void Scene::addObject(const std::string &name, const glm::vec3 &position,
+    const glm::vec3 &scale,const glm::vec3 &rotation,ShaderType shaderType)
 {
     Model *model = objectManager.getModel(name);
     if (model == nullptr)

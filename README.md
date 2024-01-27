@@ -130,3 +130,4 @@
 - Criar classe Scene, refatoração para carregar os modelos em uma cena, adicionar, remover ou atualizar eles, a partir de RendererManager.
 - Atualizar a posição do modelo da lâmpada na renderização, assim como sua posição no shader dos outros objetos, a partir da classe Scene e RendererManager.
 - Criar classes Object e Object Manager, refatoração para salvar as informações dos objetos, como o tipo do shader, posição, rotação, escala, assim como carregar os modelos em uma classe separada, para facilitar a reutilização com ponteiros.
+- Adicionar opção para alternar a luz da lanterna na tecla F, com um pequeno atraso na hora de ligar e desligar.

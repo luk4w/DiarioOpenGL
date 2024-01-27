@@ -20,7 +20,7 @@ void RendererManager::initialize()
 void RendererManager::render(std::vector<Object> *objects, glm::vec3 lightPos)
 {
     // Limpar os buffers
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClearColor(0.05f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // Definir as matrizes comuns a ambos os shaders

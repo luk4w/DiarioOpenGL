@@ -8,8 +8,8 @@
 using std::cout;
 using std::endl;
 
-const unsigned int WIDTH = 800;
-const unsigned int HEIGHT = 600;
+const unsigned int WIDTH = 1980;
+const unsigned int HEIGHT = 1080;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 RendererManager renderer(&camera, WIDTH, HEIGHT);
@@ -33,9 +33,11 @@ int main()
 
     Scene scene;
     scene.addObject("backpack");
+    scene.addObject("backpack", glm::vec3(-8.0f, 0.0f, 0.0f));
+    scene.addObject("backpack", glm::vec3(8.0f, 0.0f, 0.0f));
     
     glm::vec3 lampPosition =glm::vec3(0.0f, 1.0f, 0.0f);
-    scene.addObject("cube", LAMP_SHADER, lampPosition, glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.0f, 0.0f, 0.0f));
+    scene.addObject("cube", lampPosition, glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.0f, 0.0f, 0.0f), LAMP_SHADER);
 
     while (!glfwWindowShouldClose(windowManager.getWindow()))
     {
@@ -48,7 +50,7 @@ int main()
         lampPosition.z = glm::cos(currentTime) * 4;
 
         // Atualizar posicao do modelo na cena
-        scene.objects[1].setPosition(lampPosition);
+        scene.objects[3].setPosition(lampPosition);
         input.processInput(windowManager.getWindow(), deltaTime);
         scene.draw(renderer, lampPosition);
 
