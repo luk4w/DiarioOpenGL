@@ -8,8 +8,8 @@
 using std::cout;
 using std::endl;
 
-const unsigned int WIDTH = 1980;
-const unsigned int HEIGHT = 1080;
+const unsigned int WIDTH = 1280;
+const unsigned int HEIGHT = 720;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 RendererManager renderer(&camera, WIDTH, HEIGHT);
