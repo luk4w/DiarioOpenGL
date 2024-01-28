@@ -17,23 +17,34 @@ void Renderer::initialize()
     shaderLamp = Shader("shaders/lamp_vertex.glsl", "shaders/lamp_fragment.glsl");
 }
 
-void Renderer::render(std::vector<Object> *objects, glm::vec3 lightPos)
+void Renderer::drawScene(const Scene& scene)
 {
     // Limpar os buffers
     glClearColor(0.05f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    // Obter apenas a leitura dos objetos e as luzes da cena 
+    const std::vector<Object> & objects = scene.getObjects();
+    const std::vector<LightObject> lights = scene.getLights();
+
     // Definir as matrizes comuns a ambos os shaders
     glm::mat4 projection = glm::perspective(glm::radians(camera->fov), (float)width / (float)height, 0.1f, 100.0f);
     glm::mat4 view = camera->getViewMatrix();
 
-    for (auto &obj : *objects)
+    // Logica das luzes
+    // ...
+
+    // Logica de renderização dos objetos normais
+    for (const auto& obj : objects)
     {
         Shader *shader = obj.getShaderType() == BASIC_SHADER ? &shaderModel : &shaderLamp;
         shader->use();
 
         if (obj.getShaderType() == BASIC_SHADER)
-            setLighting(lightPos);
+        {
+            // Luz estatica, arrumar com uma classe que gerencia a iluminacao
+            setLighting(glm::vec3(0.0f, 0.0f, 0.0f));
+        }
 
         shader->setVec3("viewPos", camera->position);
         shader->setMat4("view", view);

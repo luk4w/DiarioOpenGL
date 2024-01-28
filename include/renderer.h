@@ -4,14 +4,14 @@
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
 #include "camera.h"
-#include "object.h"
+#include "scene.h"
 
 class Renderer
 {
 public:
     Renderer(Camera* camera, int width, int height);
     void initialize();
-    void render(std::vector<Object>* objs, glm::vec3 lightPos);
+    void drawScene(const Scene& scene);
     void toggleSpotlight();
 
 private:

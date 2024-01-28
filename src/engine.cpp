@@ -60,8 +60,8 @@ void Engine::update(float deltaTime)
 void Engine::render(glm::vec3 lampPosition)
 {
     // Atualizar posicao do modelo na cena
-    scene.objects[3].setPosition(lampPosition); // Criar classe para gerenciar a iluminação
-    scene.draw(renderer, lampPosition);
+    //  scene.objects[3].setPosition(lampPosition); // Criar classe para gerenciar a iluminação
+    renderer.drawScene(scene);
 
     windowManager.swapBuffers();
     windowManager.pollEvents();
