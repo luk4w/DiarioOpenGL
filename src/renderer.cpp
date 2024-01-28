@@ -34,7 +34,7 @@ void Renderer::drawScene(const Scene &scene)
     // Logica das luzes
     for (const std::vector<LightObject>::const_iterator::value_type light : lights)
     {
-        Shader *shader = light.getShaderType() == BASIC_SHADER ? &shaderModel : &shaderLamp;
+        Shader *shader = &shaderLamp;
         shader->use();
 
         shader->setVec3("viewPos", camera->position);
@@ -54,14 +54,11 @@ void Renderer::drawScene(const Scene &scene)
     // Logica de renderização dos objetos normais
     for (const std::vector<Object>::const_iterator::value_type obj : objects)
     {
-        Shader *shader = obj.getShaderType() == BASIC_SHADER ? &shaderModel : &shaderLamp;
+        Shader *shader = &shaderModel;
         shader->use();
 
-        if (obj.getShaderType() == BASIC_SHADER)
-        {
-            // Luz estatica, arrumar com uma classe que gerencia a iluminacao
-            setLighting(glm::vec3(0.0f, 0.0f, 0.0f));
-        }
+        // Luz estatica, arrumar com uma classe que gerencia a iluminacao
+        setLighting(glm::vec3(0.0f, 1.0f, 0.0f));
 
         shader->setVec3("viewPos", camera->position);
         shader->setMat4("view", view);

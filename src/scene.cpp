@@ -10,8 +10,8 @@ void Scene::initialize()
     objectManager.loadModels();
 }
 
-void Scene::addObject(const std::string &name, const glm::vec3 &position,
-    const glm::vec3 &scale,const glm::vec3 &rotation,ShaderType shaderType)
+void Scene:: addObject(const std::string &name, const glm::vec3 &position,
+    const glm::vec3 &scale,const glm::vec3 &rotation)
 {
     Model *model = objectManager.getModel(name);
     if (model == nullptr)
@@ -21,7 +21,7 @@ void Scene::addObject(const std::string &name, const glm::vec3 &position,
     }
     else
     {
-        Object obj(objectManager.getModel(name), shaderType, position, scale, rotation);
+        Object obj(objectManager.getModel(name), position, scale, rotation);
         objects.push_back(obj);
     }
 }
@@ -33,7 +33,7 @@ void Scene::addObject(const std::string &name)
 }
 
 void Scene::addLight(const std::string &name, const glm::vec3 &position,
-    const glm::vec3 &scale,const glm::vec3 &rotation,ShaderType shaderType,bool isOn)
+    const glm::vec3 &scale,const glm::vec3 &rotation,bool isOn)
 {
     Model *model = objectManager.getModel(name);
     if (model == nullptr)
@@ -43,7 +43,7 @@ void Scene::addLight(const std::string &name, const glm::vec3 &position,
     }
     else
     {
-        LightObject obj(objectManager.getModel(name), shaderType, position, scale, rotation, isOn);
+        LightObject obj(objectManager.getModel(name), position, scale, rotation, isOn);
         lights.push_back(obj);
     }
 }

@@ -135,3 +135,4 @@
 - Criar classe LightObject, que herda as caracteristicas de Object, para gerenciar os objetos que possuem luz. Além disso, adicionar um vetor para guardar esses objetos iluminados dentro da classe Scene.
 - Mover metodo draw da classe Scene para Renderer com o nome de rendererScene. Refatoração que visa organizar a resposabilidade das classes.
 - Adicionar lógica para renderizar os objetos com luz na classe Renderer.
+- Remover enum ShaderType. A classificação de objetos em LightObject e Object, melhora a aplicação de seus respectivos shaders.
