@@ -1,7 +1,10 @@
 #include "light_object.h"
 
-LightObject::LightObject(Model *model, glm::vec3 pos, glm::vec3 sc, glm::vec3 rot, bool isOn)
-    : Object(model, pos, sc, rot), lightState(isOn) {}
+LightObject::LightObject(Model *model, glm::vec3 pos,
+                         glm::vec3 sc, Rotation rot, bool isOn)
+    : Object(model, pos, sc, rot), lightState(isOn)
+{
+}
 
 void LightObject::toggle()
 {

@@ -11,7 +11,7 @@ void Scene::initialize()
 }
 
 void Scene:: addObject(const std::string &name, const glm::vec3 &position,
-    const glm::vec3 &scale,const glm::vec3 &rotation)
+    const glm::vec3 &scale,const Rotation &rotation)
 {
     Model *model = objectManager.getModel(name);
     if (model == nullptr)
@@ -33,7 +33,7 @@ void Scene::addObject(const std::string &name)
 }
 
 void Scene::addLight(const std::string &name, const glm::vec3 &position,
-    const glm::vec3 &scale,const glm::vec3 &rotation,bool isOn)
+    const glm::vec3 &scale,const Rotation &rotation, bool isOn)
 {
     Model *model = objectManager.getModel(name);
     if (model == nullptr)

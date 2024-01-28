@@ -43,8 +43,14 @@ void Renderer::drawScene(const Scene &scene)
 
         // Configuração da matriz de modelo específica para cada objeto
         glm::mat4 modelMatrix = glm::mat4(1.0f);
+
         modelMatrix = glm::translate(modelMatrix, light.getPosition());
+
+        if(light.getRotation().angle != 0.0f)
+            modelMatrix = glm::rotate(modelMatrix, glm::radians(light.getRotation().angle), light.getRotation().axis);
+
         modelMatrix = glm::scale(modelMatrix, light.getScale());
+
         shader->setMat4("model", modelMatrix);
         shader->setMat3("normalMatrix", glm::transpose(glm::inverse(modelMatrix)));
 
@@ -66,8 +72,14 @@ void Renderer::drawScene(const Scene &scene)
 
         // Configuração da matriz de modelo específica para cada objeto
         glm::mat4 modelMatrix = glm::mat4(1.0f);
+
         modelMatrix = glm::translate(modelMatrix, obj.getPosition());
+
+        if(obj.getRotation().angle != 0.0f)
+            modelMatrix = glm::rotate(modelMatrix, glm::radians(obj.getRotation().angle), obj.getRotation().axis);
+        
         modelMatrix = glm::scale(modelMatrix, obj.getScale());
+
         shader->setMat4("model", modelMatrix);
         shader->setMat3("normalMatrix", glm::transpose(glm::inverse(modelMatrix)));
 

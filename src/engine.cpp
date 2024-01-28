@@ -18,12 +18,14 @@ bool Engine::initialize()
     scene.initialize();
 
     // Inserir objetos na cena
-    // scene.addObject("backpack");
-    scene.addObject("backpack", glm::vec3(-4.0f, 0.0f, 0.0f),glm::vec3(1.0f));
-    scene.addObject("backpack", glm::vec3(0.0f, 0.0f, -4.0f));
+    Rotation test = {90.0f, glm::vec3(0.0f, 1.0f, 0.0f)};
+    scene.addObject("backpack", glm::vec3(-4.0f, 0.0f, 0.0f),
+    glm::vec3(1.0f), test);
+
+    scene.addObject("backpack", glm::vec3(0.0f, 2.0f, -4.0f));
 
     lampPosition = glm::vec3(0.0f, 1.0f, 0.0f);
-    scene.addLight("cube", lampPosition, glm::vec3(0.2f), glm::vec3(0.0f));
+    scene.addLight("cube", lampPosition, glm::vec3(0.2f));
 
     return true;
 }
