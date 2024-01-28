@@ -17,25 +17,42 @@ void Renderer::initialize()
     shaderLamp = Shader("shaders/lamp_vertex.glsl", "shaders/lamp_fragment.glsl");
 }
 
-void Renderer::drawScene(const Scene& scene)
+void Renderer::drawScene(const Scene &scene)
 {
     // Limpar os buffers
     glClearColor(0.05f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Obter apenas a leitura dos objetos e as luzes da cena 
-    const std::vector<Object> & objects = scene.getObjects();
-    const std::vector<LightObject> lights = scene.getLights();
-
     // Definir as matrizes comuns a ambos os shaders
     glm::mat4 projection = glm::perspective(glm::radians(camera->fov), (float)width / (float)height, 0.1f, 100.0f);
     glm::mat4 view = camera->getViewMatrix();
 
+    // Obter apenas a leitura dos objetos e as luzes da cena
+    const std::vector<Object> &objects = scene.getObjects();
+    const std::vector<LightObject> &lights = scene.getLights();
+
     // Logica das luzes
-    // ...
+    for (const std::vector<LightObject>::const_iterator::value_type light : lights)
+    {
+        Shader *shader = light.getShaderType() == BASIC_SHADER ? &shaderModel : &shaderLamp;
+        shader->use();
+
+        shader->setVec3("viewPos", camera->position);
+        shader->setMat4("view", view);
+        shader->setMat4("projection", projection);
+
+        // Configuração da matriz de modelo específica para cada objeto
+        glm::mat4 modelMatrix = glm::mat4(1.0f);
+        modelMatrix = glm::translate(modelMatrix, light.getPosition());
+        modelMatrix = glm::scale(modelMatrix, light.getScale());
+        shader->setMat4("model", modelMatrix);
+        shader->setMat3("normalMatrix", glm::transpose(glm::inverse(modelMatrix)));
+
+        light.model->draw(*shader);
+    }
 
     // Logica de renderização dos objetos normais
-    for (const auto& obj : objects)
+    for (const std::vector<Object>::const_iterator::value_type obj : objects)
     {
         Shader *shader = obj.getShaderType() == BASIC_SHADER ? &shaderModel : &shaderLamp;
         shader->use();

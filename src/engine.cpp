@@ -18,12 +18,12 @@ bool Engine::initialize()
     scene.initialize();
 
     // Inserir objetos na cena
-    scene.addObject("backpack");
+    // scene.addObject("backpack");
     scene.addObject("backpack", glm::vec3(-8.0f, 0.0f, 0.0f));
     scene.addObject("backpack", glm::vec3(8.0f, 0.0f, 0.0f));
 
     lampPosition = glm::vec3(0.0f, 1.0f, 0.0f);
-    scene.addObject("cube", lampPosition, glm::vec3(0.2f, 0.2f, 0.2f), glm::vec3(0.0f, 0.0f, 0.0f), LAMP_SHADER);
+    scene.addLight("cube");
 
     return true;
 }

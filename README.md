@@ -125,12 +125,13 @@
 - Adicionar uma configuração de luz de holofote no model_fragment.glsl e usar como lanterna.
 - Remover as lâmpadas e as mochilas, e desenhar apenas uma mochila e uma lâmpada.
 - Criar classe WindowManager, refatoração para as funções de inicialização de GLFWwindow e callbacks.
-- Criar classe RendererManager, refatoração para as configurações de buffer do OpenGL e a lógica de renderização dos modelos.
+- Criar classe Renderer, refatoração para as configurações de buffer do OpenGL e a lógica de renderização dos modelos.
 - Criar classe InputManager, refatoração para gerenciar as entradas de mouse e teclado.
-- Criar classe Scene, refatoração para carregar os modelos em uma cena, adicionar, remover ou atualizar eles, a partir de RendererManager.
-- Atualizar a posição do modelo da lâmpada na renderização, assim como sua posição no shader dos outros objetos, a partir da classe Scene e RendererManager.
+- Criar classe Scene, refatoração para carregar os modelos em uma cena, adicionar, remover ou atualizar eles, a partir de Renderer.
+- Atualizar a posição do modelo da lâmpada na renderização, assim como sua posição no shader dos outros objetos, a partir da classe Scene e Renderer.
 - Criar classes Object e ObjectManager, refatoração para salvar as informações dos objetos, como o tipo do shader, posição, rotação, escala, assim como carregar os modelos em uma classe separada, para facilitar a reutilização com ponteiros.
 - Adicionar opção para alternar a luz da lanterna na tecla F, com um pequeno atraso na hora de ligar e desligar.
 - Criar classe Engine, refatoração que visa centralizar o código para simplificar futuras implementações.
 - Criar classe LightObject, que herda as caracteristicas de Object, para gerenciar os objetos que possuem luz. Além disso, adicionar um vetor para guardar esses objetos iluminados dentro da classe Scene.
 - Mover metodo draw da classe Scene para Renderer com o nome de rendererScene. Refatoração que visa organizar a resposabilidade das classes.
+- Adicionar lógica para renderizar os objetos com luz na classe Renderer.

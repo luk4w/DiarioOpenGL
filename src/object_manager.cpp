@@ -21,8 +21,9 @@ ObjectManager::~ObjectManager()
 
 Model *ObjectManager::getModel(const std::string &name)
 {
-    if(models[name])
-        return models[name];
+    auto it = models.find(name);
+    if (it != models.end())
+        return it->second;
     else
         return nullptr;
 }
