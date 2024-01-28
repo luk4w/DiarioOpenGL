@@ -21,7 +21,7 @@ public:
     void addObject(const std::string &name);
 
     void addLight(const std::string &name, const glm::vec3 &position, const glm::vec3 &scale = glm::vec3(1.0f, 1.0f, 1.0f), 
-    const glm::vec3 &rotation = glm::vec3(0.0f, 0.0f, 0.0f), ShaderType shaderType = BASIC_SHADER, bool isOn = true);
+    const glm::vec3 &rotation = glm::vec3(0.0f, 0.0f, 0.0f), ShaderType shaderType = LAMP_SHADER, bool isOn = true);
     void addLight(const std::string &name);
 
     void remove(const Object &obj);

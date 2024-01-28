@@ -23,7 +23,7 @@ bool Engine::initialize()
     scene.addObject("backpack", glm::vec3(8.0f, 0.0f, 0.0f));
 
     lampPosition = glm::vec3(0.0f, 1.0f, 0.0f);
-    scene.addLight("cube");
+    scene.addLight("cube", lampPosition, glm::vec3(0.2f), glm::vec3(0.0f));
 
     return true;
 }
