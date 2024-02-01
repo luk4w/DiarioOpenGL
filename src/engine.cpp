@@ -18,11 +18,11 @@ bool Engine::initialize()
     scene.initialize();
 
     // Inserir objetos na cena
-    Rotation test = {90.0f, glm::vec3(0.0f, 1.0f, 0.0f)};
-    scene.addObject("backpack", glm::vec3(-4.0f, 0.0f, 0.0f),
-    glm::vec3(1.0f), test);
+    Rotation rot = {90.0f, glm::vec3(0.0f, 1.0f, 0.0f)};
+    scene.addObject("backpack", glm::vec3(-6.0f, 0.0f, 0.0f),
+    glm::vec3(1.0f), rot);
 
-    scene.addObject("backpack", glm::vec3(0.0f, 2.0f, -4.0f));
+    scene.addObject("backpack", glm::vec3(0.0f, 2.0f, -6.0f));
 
     lampPosition = glm::vec3(0.0f, 1.0f, 0.0f);
     scene.addLight("cube", lampPosition, glm::vec3(0.2f));
@@ -57,12 +57,14 @@ void Engine::update(float deltaTime)
     // Mover a iluminacao da lâmpada ao redor das mochilas ao longo do tempo
     lampPosition.x = glm::sin(accumulatedTime) * 4;
     lampPosition.z = glm::cos(accumulatedTime) * 4;
+
+    // Atualizar a posicao da lampada
+    scene.update(scene.getLights()[0], lampPosition);
 }
 
 void Engine::render(glm::vec3 lampPosition)
 {
     // Atualizar posicao do modelo na cena
-    //  scene.objects[3].setPosition(lampPosition); // Criar classe para gerenciar a iluminação
     renderer.drawScene(scene);
 
     windowManager.swapBuffers();

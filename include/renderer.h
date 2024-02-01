@@ -11,7 +11,7 @@ class Renderer
 public:
     Renderer(Camera* camera, int width, int height);
     void initialize();
-    void drawScene(const Scene& scene);
+    void drawScene(Scene& scene);
     void toggleSpotlight();
 
 private:

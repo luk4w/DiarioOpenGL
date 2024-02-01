@@ -56,10 +56,9 @@ void Scene::addLight(const std::string &name)
 
 void Scene::remove(const Object &obj)
 {
-    
 }
 
-void Scene::update()
+void Scene::update(LightObject &light, glm::vec3 position)
 {
-   
+    light.setPosition(position);
 }

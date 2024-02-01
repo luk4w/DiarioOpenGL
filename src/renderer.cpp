@@ -17,7 +17,7 @@ void Renderer::initialize()
     shaderLamp = Shader("shaders/lamp_vertex.glsl", "shaders/lamp_fragment.glsl");
 }
 
-void Renderer::drawScene(const Scene &scene)
+void Renderer::drawScene(Scene &scene)
 {
     // Limpar os buffers
     glClearColor(0.05f, 0.1f, 0.1f, 1.0f);
@@ -63,8 +63,8 @@ void Renderer::drawScene(const Scene &scene)
         Shader *shader = &shaderModel;
         shader->use();
 
-        // Luz estatica, arrumar com uma classe que gerencia a iluminacao
-        setLighting(glm::vec3(0.0f, 1.0f, 0.0f));
+        // Luz estatica
+        setLighting(lights[0].getPosition());
 
         shader->setVec3("viewPos", camera->position);
         shader->setMat4("view", view);

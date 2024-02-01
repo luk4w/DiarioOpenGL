@@ -25,10 +25,10 @@ public:
     void addLight(const std::string &name);
 
     void remove(const Object &obj);
-    void update();
+    void update(LightObject &light, glm::vec3 position);
 
-    const std::vector<Object>& getObjects() const { return objects; }
-    const std::vector<LightObject>& getLights() const { return lights; }
+    std::vector<Object>& getObjects() { return objects; }
+    std::vector<LightObject>& getLights() { return lights; }
 };
 
 #endif // SCENE_H
