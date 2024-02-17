@@ -19,8 +19,8 @@ include_directories(include)
 add_subdirectory(libs)
 
 # Definir nome do executável e o(s) arquivo(s) fonte
-add_executable(${PROJECT_NAME} main.cpp src/shader.cpp src/camera.cpp src/mesh.cpp src/model.cpp src/window_manager.cpp 
-src/renderer.cpp src/input_manager.cpp src/scene.cpp src/object.cpp src/object_manager.cpp src/engine.cpp src/light_object.cpp)
+file(GLOB SOURCES src/*.cpp)
+add_executable(${PROJECT_NAME} main.cpp ${SOURCES})
 
 # Vincular a(s) biblioteca(s) ao executável
 target_link_libraries(${PROJECT_NAME} glad glfw stb glm assimp)
