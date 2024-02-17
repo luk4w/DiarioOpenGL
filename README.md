@@ -136,3 +136,4 @@
 - Mover metodo draw da classe Scene para Renderer com o nome de rendererScene. Refatoração que visa organizar a resposabilidade das classes.
 - Adicionar lógica para renderizar os objetos com luz na classe Renderer.
 - Remover enum ShaderType. A classificação de objetos em LightObject e Object, melhora a aplicação de seus respectivos shaders.
+- Adicionar contador de FPS.

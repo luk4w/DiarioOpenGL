@@ -19,6 +19,7 @@ public:
     void pollEvents();
     int getWidth() const { return width; }
     int getHeight() const { return height; }
+    std::string getTitle() const { return title; }
 
 private:
     GLFWwindow *window;

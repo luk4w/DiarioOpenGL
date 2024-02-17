@@ -1,5 +1,6 @@
 #include "engine.h"
 #include <iostream>
+#include <sstream>
 
 Engine::Engine(const std::string name, int width, int height)
     : camera(glm::vec3(0.0f, 0.0f, 8.0f)), windowManager(name, width, height),
@@ -20,7 +21,7 @@ bool Engine::initialize()
     // Inserir objetos na cena
     Rotation rot = {90.0f, glm::vec3(0.0f, 1.0f, 0.0f)};
     scene.addObject("backpack", glm::vec3(-6.0f, 0.0f, 0.0f),
-    glm::vec3(1.0f), rot);
+                    glm::vec3(1.0f), rot);
 
     scene.addObject("backpack", glm::vec3(0.0f, 2.0f, -6.0f));
 
@@ -35,11 +36,29 @@ void Engine::run()
     float deltaTime = 0.0f;
     float lastTime = 0.0f;
 
+    int framesSinceLastFPS = 0;
+    float timeSinceLastFPS = 0.0f;
+
     while (!windowManager.shouldClose())
     {
         float currentTime = static_cast<float>(glfwGetTime());
         deltaTime = currentTime - lastTime;
         deltaTime = std::min(deltaTime, 0.05f);
+
+        framesSinceLastFPS++;
+        timeSinceLastFPS += deltaTime;
+
+        // Calcular o FPS a cada segundo
+        if (timeSinceLastFPS >= 1.0f)
+        {
+            int fps = int(framesSinceLastFPS) / timeSinceLastFPS;
+            std::stringstream ss;
+            ss << windowManager.getTitle() << " " << fps << " FPS";
+            glfwSetWindowTitle(windowManager.getWindow(), ss.str().c_str());
+
+            framesSinceLastFPS = 0;
+            timeSinceLastFPS = 0.0f;
+        }
         lastTime = currentTime;
 
         update(deltaTime);
