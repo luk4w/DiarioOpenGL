@@ -54,8 +54,13 @@ void Scene::addLight(const std::string &name)
     lights.push_back(obj);
 }
 
-void Scene::remove(const Object &obj)
+void Scene::remove(unsigned int id)
 {
+    objects.erase(objects.begin() + id);
+    for (unsigned int i = id; i < objects.size(); i++)
+    {
+        objects[i].setId(i);
+    }
 }
 
 void Scene::update(LightObject &light, glm::vec3 position)

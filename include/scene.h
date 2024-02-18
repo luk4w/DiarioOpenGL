@@ -24,7 +24,7 @@ public:
     const Rotation &rotation = {0.0f, glm::vec3(0.0f, 0.0f, 0.0f)}, bool isOn = true);
     void addLight(const std::string &name);
 
-    void remove(const Object &obj);
+    void remove(unsigned int id);
     void update(LightObject &light, glm::vec3 position);
 
     std::vector<Object>& getObjects() { return objects; }
