@@ -15,7 +15,7 @@ public:
     void toggleSpotlight();
 
 private:
-    void setLighting(glm::vec3 lightPosition);
+    void setLighting(std::vector<glm::vec3> & lightPositions);
     Camera* camera;
     bool spotlightState = false;
     int width, height;

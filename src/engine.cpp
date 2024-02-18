@@ -29,6 +29,9 @@ bool Engine::initialize()
     lampPosition = glm::vec3(0.0f, 1.0f, 0.0f);
     scene.addLight("cube", lampPosition, glm::vec3(0.2f));
 
+    glm::vec3 lampPosition2 = glm::vec3(-10.0f, 0.0f, 0.0f);
+    scene.addLight("cube", lampPosition2, glm::vec3(0.2f));
+
     // Remover objeto
     scene.remove(0);
 
@@ -66,7 +69,7 @@ void Engine::run()
         lastTime = currentTime;
 
         update(deltaTime);
-        render(lampPosition);
+        render();
     }
 }
 
@@ -77,15 +80,15 @@ void Engine::update(float deltaTime)
     // Gerenciar a entrada de mouse e teclado
     inputManager.processInput(windowManager.getWindow(), deltaTime);
 
-    // Mover a iluminacao da lâmpada ao redor das mochilas ao longo do tempo
+    // Mover a lâmpada ao redor das mochilas ao longo do tempo
     lampPosition.x = glm::sin(accumulatedTime) * 4;
     lampPosition.z = glm::cos(accumulatedTime) * 4;
 
     // Atualizar a posicao da lampada
-    scene.update(scene.getLights()[0], lampPosition);
+    scene.updateLight(0, lampPosition);
 }
 
-void Engine::render(glm::vec3 lampPosition)
+void Engine::render()
 {
     // Atualizar posicao do modelo na cena
     renderer.drawScene(scene);

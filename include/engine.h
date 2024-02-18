@@ -16,7 +16,7 @@ public:
 
 private:
     void update(float deltaTime);
-    void render(glm::vec3 lampPosition);
+    void render();
 
     Camera camera;
     WindowManager windowManager;

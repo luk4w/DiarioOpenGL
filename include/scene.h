@@ -25,7 +25,7 @@ public:
     void addLight(const std::string &name);
 
     void remove(unsigned int id);
-    void update(LightObject &light, glm::vec3 position);
+    void updateLight(unsigned int id, glm::vec3 position);
 
     std::vector<Object>& getObjects() { return objects; }
     std::vector<LightObject>& getLights() { return lights; }

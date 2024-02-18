@@ -63,8 +63,13 @@ void Renderer::drawScene(Scene &scene)
         Shader *shader = &shaderModel;
         shader->use();
 
-        // Luz estatica
-        setLighting(lights[0].getPosition());
+        // Luzes
+        std::vector<glm::vec3> lightPositions;
+        for (const std::vector<LightObject>::const_iterator::value_type light : lights)
+        {
+            lightPositions.push_back(light.getPosition());
+        }
+        setLighting(lightPositions);
 
         shader->setVec3("viewPos", camera->position);
         shader->setMat4("view", view);
@@ -87,7 +92,7 @@ void Renderer::drawScene(Scene &scene)
     }
 }
 
-void Renderer::setLighting(glm::vec3 lightPosition)
+void Renderer::setLighting(std::vector<glm::vec3> & lightPositions)
 {
     shaderModel.setFloat("material.shininess", 32.0f);
 
@@ -97,48 +102,23 @@ void Renderer::setLighting(glm::vec3 lightPosition)
     shaderModel.setVec3("directionalLight.diffuse", 0.4f, 0.4f, 0.4f);
     shaderModel.setVec3("directionalLight.specular", 0.5f, 0.5f, 0.5f);
 
-    shaderModel.setVec3("pointLight.position", lightPosition);
-    shaderModel.setVec3("pointLight.ambient", 0.05f, 0.05f, 0.05f);
-    shaderModel.setVec3("pointLight.diffuse", 1.0f, 1.0f, 1.0f);
-    shaderModel.setVec3("pointLight.specular", 1.0f, 1.0f, 1.0f);
-    shaderModel.setFloat("pointLight.constant", 1.0f);
-    shaderModel.setFloat("pointLight.linear", 0.09f);
-    shaderModel.setFloat("pointLight.quadratic", 0.032f);
+    // Lâmpada 1
+    shaderModel.setVec3("pointLights[0].position", lightPositions[0]);
+    shaderModel.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
+    shaderModel.setVec3("pointLights[0].diffuse", 1.0f, 1.0f, 1.0f);
+    shaderModel.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
+    shaderModel.setFloat("pointLights[0].constant", 1.0f);
+    shaderModel.setFloat("pointLights[0].linear", 0.09f);
+    shaderModel.setFloat("pointLights[0].quadratic", 0.032f);
 
-    // #ifdef POINT_LIGHT_TEST
-    //         // Lâmpada 1
-    //         shaderModel.setVec3("pointLights[0].position", lampPositions[0]);
-    //         shaderModel.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
-    //         shaderModel.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
-    //         shaderModel.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
-    //         shaderModel.setFloat("pointLights[0].constant", 1.0f);
-    //         shaderModel.setFloat("pointLights[0].linear", 0.09f);
-    //         shaderModel.setFloat("pointLights[0].quadratic", 0.032f);
-    //         // Lâmpada 2
-    //         shaderModel.setVec3("pointLights[1].position", lampPositions[1]);
-    //         shaderModel.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
-    //         shaderModel.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
-    //         shaderModel.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
-    //         shaderModel.setFloat("pointLights[1].constant", 1.0f);
-    //         shaderModel.setFloat("pointLights[1].linear", 0.09f);
-    //         shaderModel.setFloat("pointLights[1].quadratic", 0.032f);
-    //         // Lâmpada 3
-    //         shaderModel.setVec3("pointLights[2].position", lampPositions[2]);
-    //         shaderModel.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
-    //         shaderModel.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
-    //         shaderModel.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
-    //         shaderModel.setFloat("pointLights[2].constant", 1.0f);
-    //         shaderModel.setFloat("pointLights[2].linear", 0.09f);
-    //         shaderModel.setFloat("pointLights[2].quadratic", 0.032f);
-    //         // Lâmpada 4
-    //         shaderModel.setVec3("pointLights[3].position", lampPositions[3]);
-    //         shaderModel.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
-    //         shaderModel.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
-    //         shaderModel.setVec3("pointLights[3].specular", 1.0f, 1.0f, 1.0f);
-    //         shaderModel.setFloat("pointLights[3].constant", 1.0f);
-    //         shaderModel.setFloat("pointLights[3].linear", 0.09f);
-    //         shaderModel.setFloat("pointLights[3].quadratic", 0.032f);
-    // #endif
+    // Lâmpada 2
+    shaderModel.setVec3("pointLights[1].position", lightPositions[1]);
+    shaderModel.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
+    shaderModel.setVec3("pointLights[1].diffuse", 1.0f, 1.0f, 1.0f);
+    shaderModel.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
+    shaderModel.setFloat("pointLights[1].constant", 1.0f);
+    shaderModel.setFloat("pointLights[1].linear", 0.09f);
+    shaderModel.setFloat("pointLights[1].quadratic", 0.032f);
 
     // Holofote
     shaderModel.setBool("spotlightOn", spotlightState);

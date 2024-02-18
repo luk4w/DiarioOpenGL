@@ -63,7 +63,7 @@ void Scene::remove(unsigned int id)
     }
 }
 
-void Scene::update(LightObject &light, glm::vec3 position)
+void Scene::updateLight(unsigned int id, glm::vec3 position)
 {
-    light.setPosition(position);
+    lights[id].setPosition(position);
 }
