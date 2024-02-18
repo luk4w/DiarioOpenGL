@@ -137,3 +137,7 @@
 - Adicionar lógica para renderizar os objetos com luz na classe Renderer.
 - Remover enum ShaderType. A classificação de objetos em LightObject e Object, melhora a aplicação de seus respectivos shaders.
 - Adicionar contador de FPS.
+- Simplificar a inclusão dos arquivos de código fonte no CmakeLists.txt, a partir de file(GLOB SOURCES src/*.cpp).
+- Adicionar um id aos objetos e luzes inseridos na cena, refere-se ao indice do objeto no vetor.
+- Adicionar sistema para remover os objetos da cena a partir do id.
+- Adicionar dois pontos de luz que interagem com a iluminação dos objetos na cena.
