@@ -21,14 +21,14 @@ void Scene:: addObject(const std::string &name, const glm::vec3 &position,
     }
     else
     {
-        Object obj(objectManager.getModel(name), position, scale, rotation);
+        Object obj(objectManager.getModel(name), unsigned int(objects.size()), position, scale, rotation);
         objects.push_back(obj);
     }
 }
 
 void Scene::addObject(const std::string &name)
 {
-    Object obj(objectManager.getModel(name));
+    Object obj(objectManager.getModel(name), unsigned int(objects.size()));
     objects.push_back(obj);
 }
 
@@ -43,14 +43,14 @@ void Scene::addLight(const std::string &name, const glm::vec3 &position,
     }
     else
     {
-        LightObject obj(objectManager.getModel(name), position, scale, rotation, isOn);
+        LightObject obj(objectManager.getModel(name), unsigned int(lights.size()), position, scale, rotation, isOn);
         lights.push_back(obj);
     }
 }
 
 void Scene::addLight(const std::string &name)
 {
-    LightObject obj(objectManager.getModel(name));
+    LightObject obj(objectManager.getModel(name), unsigned int(lights.size()));
     lights.push_back(obj);
 }
 

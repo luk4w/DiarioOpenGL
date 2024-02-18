@@ -51,9 +51,9 @@ void Engine::run()
         // Calcular o FPS a cada segundo
         if (timeSinceLastFPS >= 1.0f)
         {
-            int fps = int(framesSinceLastFPS) / timeSinceLastFPS;
+            float fps = framesSinceLastFPS / timeSinceLastFPS;
             std::stringstream ss;
-            ss << windowManager.getTitle() << " " << fps << " FPS";
+            ss << windowManager.getTitle() << " " << static_cast<int>(fps) << " FPS";
             glfwSetWindowTitle(windowManager.getWindow(), ss.str().c_str());
 
             framesSinceLastFPS = 0;

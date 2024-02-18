@@ -1,8 +1,8 @@
 #include "light_object.h"
 
-LightObject::LightObject(Model *model, glm::vec3 pos,
+LightObject::LightObject(Model *model, unsigned int id, glm::vec3 pos,
                          glm::vec3 sc, Rotation rot, bool isOn)
-    : Object(model, pos, sc, rot), lightState(isOn)
+    : Object(model, id, pos, sc, rot), lightState(isOn)
 {
 }
 
