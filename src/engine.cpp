@@ -19,7 +19,7 @@ bool Engine::initialize()
     scene.initialize();
 
     // Inserir objetos na cena
-    scene.addObject("backpack", glm::vec3(0.0f, 0.0f, 4.0f));
+    scene.addObject("plane", glm::vec3(-4.0f, -2.0f, 0.0f));
     Rotation rot = {90.0f, glm::vec3(0.0f, 1.0f, 0.0f)};
     scene.addObject("backpack", glm::vec3(-6.0f, 0.0f, 0.0f),
                     glm::vec3(1.0f), rot);
@@ -31,9 +31,6 @@ bool Engine::initialize()
 
     glm::vec3 lampPosition2 = glm::vec3(-10.0f, 0.0f, 0.0f);
     scene.addLight("cube", lampPosition2, glm::vec3(0.2f));
-
-    // Remover objeto
-    scene.remove(0);
 
     return true;
 }

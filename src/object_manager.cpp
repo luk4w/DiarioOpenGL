@@ -7,6 +7,7 @@ void ObjectManager::loadModels()
     // Carregar os modelos
     models["backpack"] = new Model("models/backpack/backpack.obj");
     models["cube"] = new Model("models/cube/cube.obj");
+    models["plane"] = new Model("models/metal_plane/metal_plane.obj");
 }
 
 ObjectManager::~ObjectManager()
