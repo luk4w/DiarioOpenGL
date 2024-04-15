@@ -15,7 +15,7 @@ public:
     void run();
 
 private:
-    void update(float deltaTime);
+    void update(const float * deltaTime);
     void render();
 
     Camera camera;

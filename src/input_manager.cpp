@@ -3,7 +3,7 @@
 static void mouseCallbackInternal(GLFWwindow *window, double xpos, double ypos);
 static void scrollCallbackInternal(GLFWwindow *window, double xoffset, double yoffset);
 
-void InputManager::processInput(GLFWwindow *window, float deltaTime)
+void InputManager::processInput(GLFWwindow *window, const float *deltaTime)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
@@ -11,17 +11,17 @@ void InputManager::processInput(GLFWwindow *window, float deltaTime)
     if (camera)
     {
         if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-            camera->processKeyboard(FORWARD, deltaTime);
+            camera->processKeyboard(FORWARD, *deltaTime);
         if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-            camera->processKeyboard(BACKWARD, deltaTime);
+            camera->processKeyboard(BACKWARD, *deltaTime);
         if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-            camera->processKeyboard(LEFT, deltaTime);
+            camera->processKeyboard(LEFT, *deltaTime);
         if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-            camera->processKeyboard(RIGHT, deltaTime);
+            camera->processKeyboard(RIGHT, *deltaTime);
         if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-            camera->processKeyboard(UPWARD, deltaTime);
+            camera->processKeyboard(UPWARD, *deltaTime);
         if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
-            camera->processKeyboard(DOWNWARD, deltaTime);
+            camera->processKeyboard(DOWNWARD, *deltaTime);
         if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
         {
             double currentTime = glfwGetTime();

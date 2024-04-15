@@ -10,7 +10,7 @@ class InputManager
 {
 public:
     InputManager(Camera *camera, Renderer *renderer) : camera(camera), renderer(renderer), firstMouse(true), lastX(0), lastY(0) {}
-    void processInput(GLFWwindow *window, float deltaTime);
+    void processInput(GLFWwindow *window, const float * deltaTime);
     void mouseCallback(GLFWwindow *window, double xpos, double ypos);
     void scrollCallback(GLFWwindow *window, double xoffset, double yoffset);
     void configureCallbacks(GLFWwindow* window);
