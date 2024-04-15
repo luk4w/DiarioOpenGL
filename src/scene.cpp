@@ -63,7 +63,8 @@ void Scene::remove(unsigned int id)
     }
 }
 
-void Scene::updateLight(unsigned int id, glm::vec3 position)
+void Scene::update(const float *deltaTime)
 {
-    lights[id].setPosition(position);
+    this->accumulatedTime += *deltaTime;
+    lights[0].setPosition(glm::sin(accumulatedTime) * 4, lights[0].getPosition().y, glm::cos(accumulatedTime) * 4);	
 }

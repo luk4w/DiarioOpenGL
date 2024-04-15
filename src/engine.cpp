@@ -47,7 +47,6 @@ void Engine::run()
     {
         float currentTime = static_cast<float>(glfwGetTime());
         deltaTime = currentTime - lastTime;
-        deltaTime = std::min(deltaTime, 0.05f);
 
         framesSinceLastFPS++;
         timeSinceLastFPS += deltaTime;
@@ -63,33 +62,27 @@ void Engine::run()
             framesSinceLastFPS = 0;
             timeSinceLastFPS = 0.0f;
         }
+        
         lastTime = currentTime;
 
-        update(deltaTime);
+        update(&deltaTime);
         render();
     }
 }
 
-void Engine::update(float deltaTime)
+void Engine::update(const float *deltaTime)
 {
-    // Variavel para mover objetos indepentente da taxa de atualização
-    accumulatedTime += deltaTime;
-    // Gerenciar a entrada de mouse e teclado
+    // Realizar processamento das entradas
     inputManager.processInput(windowManager.getWindow(), deltaTime);
 
-    // Mover a lâmpada ao redor das mochilas ao longo do tempo
-    lampPosition.x = glm::sin(accumulatedTime) * 4;
-    lampPosition.z = glm::cos(accumulatedTime) * 4;
-
-    // Atualizar a posicao da lampada
-    scene.updateLight(0, lampPosition);
+    // Atualizar cena
+    scene.update(deltaTime);
 }
 
 void Engine::render()
 {
-    // Atualizar posicao do modelo na cena
+    // Atualizar posicao dos modelos na cena
     renderer.drawScene(scene);
-
     windowManager.swapBuffers();
     windowManager.pollEvents();
 }

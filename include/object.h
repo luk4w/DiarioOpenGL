@@ -23,6 +23,7 @@ public:
     Object(Model *model, unsigned int id, glm::vec3 pos = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 sc = glm::vec3(1.0f, 1.0f, 1.0f), Rotation rot = {0.0f, glm::vec3(0.0f, 0.0f, 0.0f)});
     Model *model;
     void setPosition(const glm::vec3 &pos) { position = pos; }
+    void setPosition(const float x, const float y, const float z) { position = glm::vec3(x, y, z); }
     void setScale(const glm::vec3 &sc) { scale = sc; }
     void setRotation(const Rotation rot) { rotation = rot; }
     void setId(const unsigned int &id) { this->id = id; }
