@@ -46,7 +46,7 @@ void Camera::processMouseMovement(float xoffset, float yoffset, GLboolean constr
     yoffset *= mouseSensitivity;
     this->yaw += xoffset;
     this->pitch += yoffset;
-    
+
     // Evitar flip
     if (constrainPitch)
     {
@@ -64,7 +64,7 @@ void Camera::processMouseScroll(float yoffset)
     if (fov < 1.0f)
         fov = 1.0f;
     if (fov > 45.0f)
-        fov = 45.0f; 
+        fov = 45.0f;
 }
 
 void Camera::updateCameraVectors()
@@ -74,6 +74,11 @@ void Camera::updateCameraVectors()
     front.y = sin(glm::radians(this->pitch));
     front.z = sin(glm::radians(this->yaw)) * cos(glm::radians(this->pitch));
     this->front = glm::normalize(front);
-    this->right = glm::normalize(glm::cross(this->front, this->worldUp));  
+    this->right = glm::normalize(glm::cross(this->front, this->worldUp));
     this->up = glm::normalize(glm::cross(this->right, this->front));
+}
+
+void Camera::setSpeed(float speed)
+{
+    this->movementSpeed = speed;
 }

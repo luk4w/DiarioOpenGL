@@ -31,6 +31,14 @@ void InputManager::processInput(GLFWwindow *window, const float *deltaTime)
                 lastToggleSpotlightTime = currentTime;
             }
         }
+        if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+        {
+            camera->setSpeed(5.0f);
+        }
+        else
+        {
+            camera->setSpeed(2.5f);
+        }
     }
 }
 
@@ -61,19 +69,18 @@ void InputManager::scrollCallback(GLFWwindow *window, double xoffset, double yof
         camera->processMouseScroll(static_cast<float>(yoffset));
 }
 
-
-void InputManager::configureCallbacks(GLFWwindow* window)
+void InputManager::configureCallbacks(GLFWwindow *window)
 {
-        glfwSetWindowUserPointer(window, this);
-        glfwSetCursorPosCallback(window, mouseCallbackInternal);
-        glfwSetScrollCallback(window, scrollCallbackInternal);
-        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetWindowUserPointer(window, this);
+    glfwSetCursorPosCallback(window, mouseCallbackInternal);
+    glfwSetScrollCallback(window, scrollCallbackInternal);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
 static void mouseCallbackInternal(GLFWwindow *window, double xpos, double ypos)
 {
     auto inputManager = static_cast<InputManager *>(glfwGetWindowUserPointer(window));
-    inputManager->mouseCallback(window, xpos, ypos); 
+    inputManager->mouseCallback(window, xpos, ypos);
 }
 
 static void scrollCallbackInternal(GLFWwindow *window, double xoffset, double yoffset)

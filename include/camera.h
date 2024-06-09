@@ -54,6 +54,9 @@ public:
     // Processar a entrada do scroll
     void processMouseScroll(float yoffset);
 
+    // Definir a velocidade da camera
+    void setSpeed(float speed);
+
 private:
     void updateCameraVectors();
 };
