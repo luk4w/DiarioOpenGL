@@ -9,9 +9,6 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 # Definir nome do projeto, versão e linguagens suportadas
 project(DiarioOpenGL VERSION 1.0 LANGUAGES C CXX)
 
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 # Incluir diretório(s)
 include_directories(include)
 

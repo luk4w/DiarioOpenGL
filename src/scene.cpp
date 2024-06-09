@@ -10,8 +10,8 @@ void Scene::initialize()
     objectManager.loadModels();
 }
 
-void Scene:: addObject(const std::string &name, const glm::vec3 &position,
-    const glm::vec3 &scale,const Rotation &rotation)
+void Scene::addObject(const std::string &name, const glm::vec3 &position,
+                      const glm::vec3 &scale, const Rotation &rotation)
 {
     Model *model = objectManager.getModel(name);
     if (model == nullptr)
@@ -21,19 +21,19 @@ void Scene:: addObject(const std::string &name, const glm::vec3 &position,
     }
     else
     {
-        Object obj(objectManager.getModel(name), unsigned int(objects.size()), position, scale, rotation);
+        Object obj(objectManager.getModel(name), objects.size(), position, scale, rotation);
         objects.push_back(obj);
     }
 }
 
 void Scene::addObject(const std::string &name)
 {
-    Object obj(objectManager.getModel(name), unsigned int(objects.size()));
+    Object obj(objectManager.getModel(name), objects.size());
     objects.push_back(obj);
 }
 
 void Scene::addLight(const std::string &name, const glm::vec3 &position,
-    const glm::vec3 &scale,const Rotation &rotation, bool isOn)
+                     const glm::vec3 &scale, const Rotation &rotation, bool isOn)
 {
     Model *model = objectManager.getModel(name);
     if (model == nullptr)
@@ -43,14 +43,14 @@ void Scene::addLight(const std::string &name, const glm::vec3 &position,
     }
     else
     {
-        LightObject obj(objectManager.getModel(name), unsigned int(lights.size()), position, scale, rotation, isOn);
+        LightObject obj(objectManager.getModel(name), lights.size(), position, scale, rotation, isOn);
         lights.push_back(obj);
     }
 }
 
 void Scene::addLight(const std::string &name)
 {
-    LightObject obj(objectManager.getModel(name), unsigned int(lights.size()));
+    LightObject obj(objectManager.getModel(name), lights.size());
     lights.push_back(obj);
 }
 
@@ -66,5 +66,5 @@ void Scene::remove(unsigned int id)
 void Scene::update(const float *deltaTime)
 {
     this->accumulatedTime += *deltaTime;
-    lights[0].setPosition(glm::sin(accumulatedTime) * 4, lights[0].getPosition().y, glm::cos(accumulatedTime) * 4);	
+    lights[0].setPosition(glm::sin(accumulatedTime) * 4, lights[0].getPosition().y, glm::cos(accumulatedTime) * 4);
 }
